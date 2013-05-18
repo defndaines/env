@@ -1,4 +1,5 @@
 set -o vi
+stty stop ''  # Prevent Ctrl-S from stopping the terminal.
 
 
 PATH=${PATH}:${HOME}/bin
