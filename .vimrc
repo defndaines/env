@@ -7,6 +7,7 @@ set nocompatible
 set modelines=0  " What is modelines?
 
 set encoding=utf-8
+set spelllang=en_us
 
 colorscheme slate
 
