@@ -1,0 +1,38 @@
+[ui]
+editor = vim
+
+[alias]
+latest = glog --limit 5 --style compact
+active = branches --active
+qstatus = status --rev -2:.
+show = log --color=always -pr
+
+[extensions]
+hgext.mq =
+hgext.graphlog =
+hgext.rebase =
+hgext.extdiff =
+color =
+pager =
+
+[extdiff]
+cmd.kdiff3 =
+cmd.kdiff = kdiff3
+
+[merge-tools]
+kdiff3.args  =  $base $local $other -o $output
+
+[pager]
+pager = LESS='FSRX' less
+attend = glog, log, diff, qdiff, cat, annotate, help, patdiff
+
+[color]
+status.modified = magenta bold
+status.added = green bold
+status.removed = red bold
+status.deleted = cyan bold
+status.unknown = blue bold
+status.ignored = black bold
+
+[web]
+contact = Michael Daines
