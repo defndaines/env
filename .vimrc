@@ -20,7 +20,7 @@ set softtabstop=2
 set expandtab
 set smarttab
 set autoindent " Copy indent from the previous row
-set si " Smart indent
+set smartindent
 " set cindent " alternative to smartindent
 set wrap
 " set textwidth=79 " Forces newlines on long lines.
