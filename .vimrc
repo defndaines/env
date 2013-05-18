@@ -4,12 +4,12 @@ filetype plugin indent on
 
 set nocompatible
 
-set modelines=0  " What is modelines?
-
 set encoding=utf-8
 set spelllang=en_us
+set fileformat=unix
 
-colorscheme slate
+colorscheme slate  " for gvim
+set background=dark
 
 " Syntax and indent
 syntax on
@@ -21,14 +21,13 @@ set expandtab
 set smarttab
 set autoindent " Copy indent from the previous row
 set smartindent
-" set cindent " alternative to smartindent
 set wrap
 " set textwidth=79 " Forces newlines on long lines.
 
+set scrolloff=2
+
 " Turn off auto-commenting
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-set scrolloff=3
 
 set showcmd
 set nobackup
@@ -41,6 +40,7 @@ set linebreak
 
 " Search related settings
 set hlsearch
+noremap <esc> :noh<return><esc>
 noremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 set incsearch
 set showmatch
@@ -53,30 +53,14 @@ set novisualbell
 set backspace=indent,eol,start
 
 set history=200
-set background=dark
 
 " Causes % to navigate XML tags and Ruby loops.
 runtime macros/matchit.vim
-" Allows gf to jump to Ruby requires.
-set suffixesadd+=.rb
 
 " Loads vim-repeat, vim-surround, etc. (anything in ~/.vim/bundle/ dir).
 call pathogen#infect()
 
 set t_RV=
-
-" Use different symbols for tabstops and EOLs
-set listchars=tab:▸\ ,eol:¬
-" set list
-
-" Autosave when focus changes
-" au FocusLost * :wa
-
-augroup ft_javascript
-  au!
-  au FileType javascript setlocal foldmethod=marker
-  au FileType javascript setlocal foldmarker={,}
-augroup END
 
 " Visual star search ... make *|# act upon the current visual selection.
 xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
@@ -89,21 +73,25 @@ function! s:VSetSearch()
   let @s = temp
 endfunction
 
-" Useful for Ruby
-runtime! macros/matchit.vim
+" Push Quickfix list into args
+command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
+function! QuickfixFilenames()
+  let buffer_numbers = {}
+  for quickfix_item in getqflist()
+    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+  endfor
+  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+endfunction
 
-augroup myfiletypes
-  " Clear old autocmds in group
-  autocmd!
-  " autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
-augroup END
+au BufNewFile,BufRead *.vck set filetype=xml
 
 " Strip all trailing whitespace, but doesn't include MSWin Returns
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 " Clojure options.
+
 let g:slime_target = "tmux"
+let clj_highlight_builtins = 1
 
 autocmd Syntax clojure RainbowParenthesesLoadRound
 autocmd BufEnter *.clj RainbowParenthesesToggle
@@ -121,3 +109,25 @@ let g:rbpt_colorpairs = [
     \ ['yellow',      'orange1'],
     \ ]
 let g:rbpt_max = 9
+
+" Ruby Options
+
+runtime! macros/matchit.vim
+
+" Allows gf to jump to Ruby requires.
+set suffixesadd+=.rb
+
+augroup myfiletypes
+  " Clear old autocmds in group
+  autocmd!
+  " autoindent with two spaces, always expand tabs
+  autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
+augroup END
+
+" JavaScript Options
+
+augroup ft_javascript
+  au!
+  au FileType javascript setlocal foldmethod=marker
+  au FileType javascript setlocal foldmarker={,}
+augroup END
