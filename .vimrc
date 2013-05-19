@@ -88,6 +88,9 @@ au BufNewFile,BufRead *.vck set filetype=xml
 " Strip all trailing whitespace, but doesn't include MSWin Returns
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
+" Refresh ctags 
+nnoremap <f5> :!ctags -R<CR>
+
 " Clojure options.
 
 let g:slime_target = "tmux"
