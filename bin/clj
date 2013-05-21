@@ -1,0 +1,12 @@
+tmux has-session -t clojure
+if [ $? != 0 ]
+then
+  tmux new-session -s clojure -n clojure -d
+  tmux send-keys -t clojure 'cd ~/src/clojure' C-m
+  tmux send-keys -t clojure 'vim' C-m
+  tmux split-window -v -t clojure
+  tmux select-layout -t clojure main-horizontal
+  tmux send-keys -t clojure:0.1 'cd ~/src/clojure' C-m
+  tmux send-keys -t clojure:0.1 'lein repl' C-m
+fi
+tmux attach -t clojure

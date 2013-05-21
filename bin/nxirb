@@ -1,0 +1,18 @@
+tmux has-session -t nexpose-irb
+if [ $? != 0 ]
+then
+  tmux new-session -s nexpose-irb -n nexpose-irb -d
+  tmux send-keys -t nexpose-irb 'cd ~/src/nexpose' C-m
+  tmux send-keys -t nexpose-irb 'vim' C-m
+  tmux split-window -h -t nexpose-irb
+  tmux send-keys -t nexpose-irb:0.1 'cd ~/src/nexpose' C-m
+  tmux send-keys -t nexpose-irb:0.1 'ls' C-m
+  tmux split-window -v -t nexpose-irb
+  tmux send-keys -t nexpose-irb:0.2 'cd ~/src/nexpose' C-m
+  tmux send-keys -t nexpose-irb:0.2 'irb -r nexpose' C-m
+  tmux send-keys -t nexpose-irb:0.2 'include Nexpose' C-m
+  tmux send-keys -t nexpose-irb:0.2 "nsc = Connection.new('localhost', 'nxadmin', 'password')" C-m
+  tmux send-keys -t nexpose-irb:0.2 'nsc.login' C-m
+  tmux send-keys -t nexpose-irb:0.2 'at_exit { nsc.logout }' C-m
+fi
+tmux attach -t nexpose-irb
