@@ -1,3 +1,6 @@
+require 'irb/completion'
+require 'irb/ext/save-history'
+
 def irb_verbosity_toggle
   irb_context.echo ^= true
 end
