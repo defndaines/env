@@ -4,6 +4,9 @@ filetype plugin indent on
 
 set nocompatible
 
+" Reload vimrc if edited
+autocmd! bufwritepost .vimrc source ~/.vimrc
+
 set encoding=utf-8
 set spelllang=en_us
 set fileformat=unix
@@ -25,6 +28,7 @@ set wrap
 " set textwidth=79 " Forces newlines on long lines.
 
 set scrolloff=2
+set sidescrolloff=10
 
 " Turn off auto-commenting
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -84,6 +88,15 @@ function! QuickfixFilenames()
 endfunction
 
 au BufNewFile,BufRead *.vck set filetype=xml
+
+" When editing a file, always jump to the last known cursor position.
+autocmd BufReadPost *
+  \ if line("'\"") > 1 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
+
+" Maintain some setup between sessions
+set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 
 " Strip all trailing whitespace, but doesn't include MSWin Returns
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
