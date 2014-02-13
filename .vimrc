@@ -96,12 +96,12 @@ autocmd BufReadPost *
   \ endif
 
 " Maintain some setup between sessions
-set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
+set sessionoptions=blank,buffers,curdir,help,resize,tabpages,winsize
 
 " Strip all trailing whitespace, but doesn't include MSWin Returns
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
-" Refresh ctags 
+" Refresh ctags
 nnoremap <f5> :!ctags -R<CR>
 
 " Clojure options.
@@ -139,6 +139,17 @@ augroup myfiletypes
   " autoindent with two spaces, always expand tabs
   autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
 augroup END
+
+compiler ruby
+
+" Cucumber options
+
+autocmd FileType cucumber :set spl=en_us spell
+
+" Text options
+
+autocmd FileType text setlocal nosmartindent
+autocmd FileType text :set spl=en_us spell
 
 " JavaScript Options
 
