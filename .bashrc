@@ -131,9 +131,10 @@ fi
 ###
 # Mac OS X stuff
 
-PATH=${PATH}:/usr/local/mysql/bin/
+PATH=${PATH}:/usr/local/mysql/bin
 
 # This ensures that (Exuberant) ctags takes precedence
 PATH=/usr/local/bin:${PATH}
+export PATH=/usr/local/sbin:${PATH}
 
 #alias words = '/usr/share/dict/words'
