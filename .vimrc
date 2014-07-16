@@ -126,6 +126,19 @@ let g:rbpt_colorpairs = [
     \ ]
 let g:rbpt_max = 9
 
+" OCaml Options
+
+if executable('ocamlmerlin') && has('python')
+  let s:ocamlmerlin = substitute(system('opam config var share'), '\n$', '', '''') . "/ocamlmerlin"
+  execute "set rtp+=".s:ocamlmerlin."/vim"
+  execute "set rtp+=".s:ocamlmerlin."/vimbufsync"
+endif
+
+let g:ocp_indent_vimfile = system("opam config var share")
+let g:ocp_indent_vimfile = substitute(g:ocp_indent_vimfile, '[\r\n]*$', '', '')
+let g:ocp_indent_vimfile = g:ocp_indent_vimfile . "/vim/syntax/ocp-indent.vim"
+autocmd FileType ocaml exec ":source " . g:ocp_indent_vimfile
+
 " Ruby Options
 
 runtime! macros/matchit.vim
