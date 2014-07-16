@@ -20,3 +20,6 @@ fi
 [[ -s "${HOME}/.rvm/scripts/rvm" ]] && . "${HOME}/.rvm/scripts/rvm"
 
 export PATH
+
+# OPAM configuration
+. ${HOME}/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
