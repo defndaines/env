@@ -1,5 +1,16 @@
 # Various functions meant to be loaded by .bashrc
 
+# Update only vim bundles
+function vup() {
+  echo "### Updating vim bundles"
+  bundles=(${HOME}/.vim/bundle/*)
+  for bundle in "${bundles[@]}"; do
+    pushd $bundle
+    git pull
+    popd
+  done
+}
+
 function usage {
   echo "error: $*" 2>&1
   exit 1
