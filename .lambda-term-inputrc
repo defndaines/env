@@ -1,0 +1,5 @@
+[edit]
+
+C-^ : goto-bol
+
+[read-line]
