@@ -118,6 +118,10 @@ if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
+if [ -f ~/.osx_aliases ]; then
+  . ~/.osx_aliases
+fi
+
 PATH=${PATH}:${HOME}/bin
 PATH=${PATH}:${HOME}/.rvm/bin  # Add RVM to PATH for scripting
 
@@ -136,5 +140,3 @@ PATH=${PATH}:/usr/local/mysql/bin
 # This ensures that (Exuberant) ctags takes precedence
 PATH=/usr/local/bin:${PATH}
 export PATH=/usr/local/sbin:${PATH}
-
-#alias words = '/usr/share/dict/words'
