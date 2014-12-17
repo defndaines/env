@@ -91,7 +91,7 @@ autocmd BufReadPost *
   \   exe "normal! g`\"" |
   \ endif
 
-" Maintain some setup between sessions
+" Maintain some set-up between sessions
 set sessionoptions=blank,buffers,curdir,help,resize,tabpages,winsize
 
 " Strip all trailing whitespace, but doesn't include MSWin Returns
@@ -137,8 +137,6 @@ autocmd FileType ocaml exec ":source " . g:ocp_indent_vimfile
 
 " Ruby Options
 
-runtime! macros/matchit.vim
-
 " Allows gf to jump to Ruby requires.
 set suffixesadd+=.rb
 
@@ -172,6 +170,8 @@ endfunction " from https://gist.github.com/tpope/287147
 
 autocmd FileType text setlocal nosmartindent
 autocmd FileType text :set spl=en_us spell
+" Force markdown over modula2
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " JavaScript Options
 
@@ -180,6 +180,3 @@ augroup ft_javascript
   au FileType javascript setlocal foldmethod=marker
   au FileType javascript setlocal foldmarker={,}
 augroup END
-
-" Force markdown over modula2
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
