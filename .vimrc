@@ -184,3 +184,6 @@ augroup ft_javascript
   au FileType javascript setlocal foldmethod=marker
   au FileType javascript setlocal foldmarker={,}
 augroup END
+
+" Force markdown over modula2
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
