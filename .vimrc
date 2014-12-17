@@ -16,7 +16,6 @@ set background=dark
 
 " Syntax and indent
 syntax on
-set showmatch
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
@@ -60,9 +59,6 @@ set history=200
 
 " Causes % to navigate XML tags and Ruby loops.
 runtime macros/matchit.vim
-
-" Loads vim-repeat, vim-surround, etc. (anything in ~/.vim/bundle/ dir).
-call pathogen#infect()
 
 set t_RV=
 
