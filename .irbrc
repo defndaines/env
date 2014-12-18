@@ -10,3 +10,5 @@ def source_for(object, method)
   `gvim #{location[0]} +#{location[1]}` if location
   location
 end
+
+IRB.conf[:SAVE_HISTORY] = 1000
