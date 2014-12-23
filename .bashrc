@@ -137,6 +137,9 @@ fi
 
 PATH=${PATH}:/usr/local/mysql/bin
 
+JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_HOME
+
 # This ensures that (Exuberant) ctags takes precedence
 PATH=/usr/local/bin:${PATH}
 export PATH=/usr/local/sbin:${PATH}

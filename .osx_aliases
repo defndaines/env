@@ -1,6 +1,7 @@
 # Alias command line vim to MacVim
-if [ -f /Applications/MacVim.app/Contents/MacOS/Vim ]; then
-  alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
-fi
+# Cannot enable this while there's the bug that drops 7.4 into replace mode.
+# if [ -f /Applications/MacVim.app/Contents/MacOS/Vim ]; then
+  # alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+# fi
 
 # alias words='/usr/share/dict/words'
