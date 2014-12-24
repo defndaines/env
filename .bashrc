@@ -142,4 +142,5 @@ export JAVA_HOME
 
 # This ensures that (Exuberant) ctags takes precedence
 PATH=/usr/local/bin:${PATH}
-export PATH=/usr/local/sbin:${PATH}
+PATH=/usr/local/sbin:${PATH}
+export PATH
