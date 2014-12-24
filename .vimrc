@@ -24,7 +24,7 @@ set smarttab
 set autoindent " Copy indent from the previous row
 set smartindent
 set wrap
-" set textwidth=79 " Forces newlines on long lines.
+" set textwidth=78 " Forces newlines on long lines.
 
 set scrolloff=2
 set sidescrolloff=10
@@ -54,8 +54,14 @@ set visualbell t_vb=
 set novisualbell
 
 set backspace=indent,eol,start
+set complete-=i
+
+set ttimeout
+set ttimeoutlen=100
 
 set history=200
+
+set display+=lastline
 
 " Causes % to navigate XML tags and Ruby loops.
 runtime macros/matchit.vim
@@ -99,6 +105,20 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 " Refresh ctags
 nnoremap <f5> :!ctags -R<CR>
+
+" Force save when using a read-only file
+cnoremap sudow w !sudo dd of=%
+
+" Hg options
+
+autocmd Filetype hgcommit setlocal spell textwidth=72
+
+" Git options
+
+autocmd Filetype gitcommit setlocal spell textwidth=72
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd FileType markdown setlocal spell
+autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 
 " Clojure options.
 
