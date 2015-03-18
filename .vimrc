@@ -67,6 +67,11 @@ runtime macros/matchit.vim
 
 set t_RV=
 
+" Handle my common command typos.
+cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W'))
+" This doesn't do what I want, but at least it doesn't open up a file called "3" for editing.
+cnoreabbrev <expr> e3 ((getcmdtype() is# ':' && getcmdline() is# 'e3')?('3'):(''))
+
 " Visual star search ... make *|# act upon the current visual selection.
 xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
@@ -88,6 +93,7 @@ function! QuickfixFilenames()
   return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
 
+" Handle Nexpose vuln check files as XML.
 au BufNewFile,BufRead *.vck set filetype=xml
 
 " When editing a file, always jump to the last known cursor position.
@@ -102,9 +108,6 @@ set sessionoptions=blank,buffers,curdir,help,resize,tabpages,winsize
 " Strip all trailing whitespace, but doesn't include MSWin Returns
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
-" Refresh ctags
-nnoremap <f5> :!ctags -R<CR>
-
 " Force save when using a read-only file
 cnoremap sudow w !sudo dd of=%
 
@@ -118,6 +121,20 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd FileType markdown setlocal spell
 autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+
+" Erlang options.
+
+highlight SyntaxHighlight ctermbg=darkblue guibg=darkblue
+" Highlight when a comma is not followed by a space.
+autocmd FileType erlang match SyntaxHighlight /,[ \n]\@!/
+" Highlight when a pipe is not surrounded by spaces.
+" autocmd FileType erlang match SyntaxHighlight /[ |]\@!|[ |]\@!/
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.beam
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.git$',
+  \ 'file': '\v\.(beam|png|jpg)$',
+  \ }
 
 " Clojure options.
 
@@ -163,7 +180,7 @@ augroup myfiletypes
   " Clear old autocmds in group
   autocmd!
   " autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
+  autocmd FileType ruby,yaml set ai sw=2 sts=2 et
 augroup END
 
 compiler ruby
@@ -199,3 +216,17 @@ augroup ft_javascript
   au FileType javascript setlocal foldmethod=marker
   au FileType javascript setlocal foldmarker={,}
 augroup END
+
+" TagList Options
+
+let Tlist_Use_Right_Window=1
+let Tlist_Enable_Fold_Column=0
+let Tlist_Show_One_File=1 " especially with this one
+let Tlist_Compact_Format=1
+let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
+set updatetime=1000
+nmap ,t :!(cd %:p:h;ctags *)& " Maps the updates of tags to key ,t.
+set tags=tags; " The ';' at the end will cause the ctags plugin to search for current dir and above dirs until it find a tag file.
+nnoremap <leader>T :TlistToggle<CR>
+nnoremap <f5> :!ctags -R<CR> " Refresh ctags
+
