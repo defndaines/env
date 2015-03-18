@@ -1,7 +1,21 @@
-# Alias command line vim to MacVim
-# Cannot enable this while there's the bug that drops 7.4 into replace mode.
-# if [ -f /Applications/MacVim.app/Contents/MacOS/Vim ]; then
-  # alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
-# fi
+# git
+#####
+alias g='git'
+alias b='git branch'
+alias co='git checkout'
+alias ggrep='git grep'
+alias glog='git glog'
+alias d='git diff'
+alias st='git status'
 
+# tmux
+######
+alias tl='tmux list-sessions'
+alias ta='tmux attach -t'
+alias wrok='work'
+
+# bash
+######
+alias f='find . -name'
 # alias words='/usr/share/dict/words'
+
