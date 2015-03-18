@@ -1,0 +1,10 @@
+tmux has-session -t work
+if [ $? != 0 ]
+then
+  # cd ~/work-dir
+  tmux new-session -s work -n work -d
+  tmux split-window -h -t work
+  tmux split-window -v -t work
+fi
+tmux attach -t work
+
