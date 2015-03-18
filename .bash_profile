@@ -17,6 +17,12 @@ if [ -d "${HOME}/bin" ] ; then
   PATH=${HOME}/bin:${PATH}
 fi
 
+# Bring in MySQL installation.
+if [ -d /usr/local/mysql/bin ]; then
+  PATH=${PATH}:/usr/local/mysql/bin
+  export PATH
+fi
+
 # Handle RVM if installed
 if [ -e ${HOME}/.rvm ] ; then
   [[ -s "${HOME}/.rvm/scripts/rvm" ]] && . "${HOME}/.rvm/scripts/rvm"
