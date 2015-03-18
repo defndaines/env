@@ -89,6 +89,11 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion
 fi
 
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+  complete -o default -o nospace -F _git g
+fi
+
 
 # History Options
 # ###############
@@ -148,4 +153,3 @@ export JAVA_HOME
 PATH=/usr/local/bin:${PATH}
 PATH=/usr/local/sbin:${PATH}
 export PATH
-
