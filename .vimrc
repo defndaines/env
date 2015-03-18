@@ -43,7 +43,6 @@ set linebreak
 
 " Search related settings
 set hlsearch
-noremap <esc> :noh<return><esc>
 noremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 set incsearch
 set showmatch
