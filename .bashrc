@@ -131,9 +131,6 @@ if [ -f ~/.work_aliases ]; then
   . ~/.work_aliases
 fi
 
-PATH=${PATH}:${HOME}/bin
-PATH=${PATH}:${HOME}/.rvm/bin  # Add RVM to PATH for scripting
-
 # Functions
 # #########
 
@@ -141,15 +138,12 @@ if [ -f ~/bin/shell-library.sh ]; then
   . ~/bin/shell-library.sh
 fi
 
+if [ -f ~/bin/work-library.sh ]; then
+  . ~/bin/work-library.sh
+fi
+
 ###
 # Mac OS X stuff
 
-PATH=${PATH}:/usr/local/mysql/bin
-
 JAVA_HOME=$(/usr/libexec/java_home)
 export JAVA_HOME
-
-# This ensures that (Exuberant) ctags takes precedence
-PATH=/usr/local/bin:${PATH}
-PATH=/usr/local/sbin:${PATH}
-export PATH
