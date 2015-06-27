@@ -122,6 +122,19 @@ autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd FileType markdown setlocal spell
 autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 
+" function! s:Branch()
+"   let branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
+"   if branch != ''
+"     return substitute(substitute(branch, '\n', '', 'g'), 'daines.', '', 'g')
+"   en
+"   return ''
+" endfunction
+" Output branch name to the second line of the commit message.
+" command! -nargs=0 Branch put=s:Branch()
+
+" autocmd Filetype gitcommit Branch
+" autocmd Filetype gitcommit execute "normal ggO"
+
 " Erlang options.
 
 highlight SyntaxHighlight ctermbg=darkblue guibg=darkblue
