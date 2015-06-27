@@ -18,4 +18,6 @@ alias wrok='work'
 ######
 alias f='find . -name'
 # alias words='/usr/share/dict/words'
+alias clera='clear'
+alias utc='date -u +"%Y-%m-%dT%H:%M:%SZ"'
 
