@@ -42,3 +42,4 @@ function fname {
 function lt {
   ls -targ "$@" | tail;
 }
+

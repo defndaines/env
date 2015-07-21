@@ -30,7 +30,9 @@ if [ -e ${HOME}/.rvm ] ; then
 fi
 
 # OPAM configuration
-. ${HOME}/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+if [ -e ${HOME}/.opam/opam-init/init.sh ] ; then
+  . ${HOME}/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+fi
 
 # Prioritize anything brewed in.
 PATH=/usr/local/bin:$PATH
@@ -38,3 +40,4 @@ PATH=/usr/local/bin:$PATH
 # Clear out duplication in the PATH before exporting.
 PATH="$(echo $PATH | perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, scalar <>))')"
 export PATH
+

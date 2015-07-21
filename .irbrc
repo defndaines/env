@@ -12,3 +12,4 @@ def source_for(object, method)
 end
 
 IRB.conf[:SAVE_HISTORY] = 1000
+
