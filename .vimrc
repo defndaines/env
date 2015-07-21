@@ -11,8 +11,8 @@ set encoding=utf-8
 set spelllang=en_us
 set fileformat=unix
 
-colorscheme slate  " for gvim
 set background=dark
+colorscheme elflord
 
 " Syntax and indent
 syntax on
