@@ -62,6 +62,9 @@ set history=200
 
 set display+=lastline
 
+" Copies into Mac OS X clipboard for pasting.
+set clipboard=unnamed
+
 " Causes % to navigate XML tags and Ruby loops.
 runtime macros/matchit.vim
 
@@ -225,4 +228,3 @@ nmap ,t :!(cd %:p:h;ctags *)& " Maps the updates of tags to key ,t.
 set tags=tags; " The ';' at the end will cause the ctags plugin to search for current dir and above dirs until it find a tag file.
 nnoremap <leader>T :TlistToggle<CR>
 nnoremap <f5> :!ctags -R<CR> " Refresh ctags
-
