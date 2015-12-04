@@ -29,6 +29,11 @@ set wrap
 set scrolloff=2
 set sidescrolloff=10
 
+" Use <F2> to toggle paste mode
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
 " Turn off auto-commenting
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
