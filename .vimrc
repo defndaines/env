@@ -210,11 +210,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " JavaScript Options
 
-augroup ft_javascript
-  au!
-  au FileType javascript setlocal foldmethod=marker
-  au FileType javascript setlocal foldmarker={,}
-augroup END
+au BufNewFile,BufRead *.json setf javascript
 
 " TagList Options
 
