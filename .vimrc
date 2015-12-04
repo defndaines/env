@@ -121,7 +121,8 @@ autocmd Filetype hgcommit setlocal spell textwidth=72
 " Git options
 
 autocmd Filetype gitcommit setlocal spell textwidth=72
-autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.md set filetype=mkd
+autocmd BufRead,BufNewFile *.markdown set filetype=mkd
 autocmd FileType markdown setlocal spell
 autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 
