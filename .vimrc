@@ -116,6 +116,9 @@ set sessionoptions=blank,buffers,curdir,help,resize,tabpages,winsize
 " Strip all trailing whitespace, but doesn't include MSWin Returns
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
+" Format JSON (python style).
+nnoremap <leader>j :%!python -m json.tool<CR>
+
 " Force save when using a read-only file
 cnoremap sudow w !sudo dd of=%
 
