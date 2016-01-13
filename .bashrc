@@ -15,6 +15,9 @@ if [ -f ~/.git-completion.bash ]; then
   complete -o default -o nospace -F _git g
 fi
 
+# Add SSH completion based upon .ssh/config
+[ -e "${HOME}/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+
 
 # History Options
 # ###############
