@@ -17,7 +17,7 @@ picked up by pathogen.
 * [vim-repeat](https://github.com/tpope/vim-repeat.git)
 * [vim-slime](https://github.com/jpalardy/vim-slime.git)
 * [vim-surround](https://github.com/tpope/vim-surround.git)
-* [vim-elm](https://github.com/lambdatoast/elm.vim.git)
+* [elm-vim](https://github.com/ElmCast/elm-vim.git)
 * [vimerl](https://github.com/jimenezrick/vimerl)
 * [erlang-motions](https://github.com/edkolev/erlang-motions.vim.git)
 
