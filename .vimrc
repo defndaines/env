@@ -236,3 +236,6 @@ nnoremap <f5> :!ctags -R<CR> " Refresh ctags
 
 " Gradle Options
 au BufNewFile,BufRead *.gradle setf groovy
+
+" Elm Options
+let g:elm_format_autosave=1
