@@ -18,6 +18,8 @@ picked up by pathogen.
 * [vim-slime](https://github.com/jpalardy/vim-slime.git)
 * [vim-surround](https://github.com/tpope/vim-surround.git)
 * [elm-vim](https://github.com/ElmCast/elm-vim.git)
-* [vimerl](https://github.com/jimenezrick/vimerl)
 * [erlang-motions](https://github.com/edkolev/erlang-motions.vim.git)
+* [vim-erlang-compiler](https://github.com/vim-erlang/vim-erlang-compiler.git)
+* [vim-erlang-tags](https://github.com/vim-erlang/vim-erlang-tags.git)
+* [vim-erlang-omnicomplete](https://github.com/vim-erlang/vim-erlang-omnicomplete.git)
 
