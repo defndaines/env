@@ -122,6 +122,10 @@ nnoremap <leader>j :%!python -m json.tool<CR>
 " Force save when using a read-only file
 cnoremap sudow w !sudo dd of=%
 
+" Use j and k to navigate pop-up (omnicomplete).
+inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
+inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+
 " Hg options
 
 autocmd Filetype hgcommit setlocal spell textwidth=72
