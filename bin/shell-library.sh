@@ -2,7 +2,7 @@
 
 # Update only vim bundles
 function vup() {
-  echo "### Get latest pathogen
+  echo "### Get latest pathogen"
   curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
   echo "### Updating vim bundles"
   bundles=(${HOME}/.vim/bundle/*)
