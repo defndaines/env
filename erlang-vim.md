@@ -54,6 +54,10 @@ screen.
 Additionally, you can build your entire project with `:make`. This should work
 with erlang.mk and rebar.
 
+One thing to note is that if you haven't built your entire project, you could
+get warnings on save for unknown `behavior` declarations it doesn't know about
+yet.
+
 ### Erlang Tags
 
 This builds upon exuberant ctags to allow you to navigate your project code
@@ -63,10 +67,7 @@ To generate tags while editing, type `:ErlangTags`. This will generate a tags
 file relevant to your current directory. For this reason, I always edit files
 from the project root directory. For example, `vim src/proj_sup.erl` instead of
 `vim proj_sup.erl`. You'll also want to add an exclusion to your `.gitignore`
-for this generated file:
-```
-tags
-```
+for this generated file.
 
 To navigate using the tags, use `Ctrl-]` to jump to a function definition. Then
 use `Ctrl-t` to navigate back to your original location. You can navigate in and
