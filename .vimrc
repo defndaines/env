@@ -113,6 +113,13 @@ autocmd BufReadPost *
 " Maintain some set-up between sessions
 set sessionoptions=blank,buffers,curdir,help,resize,tabpages,winsize
 
+" Persistent Undo
+if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
+  silent !mkdir ~/.vim/backups > /dev/null 2>&1
+  set undodir=~/.vim/backups
+  set undofile
+endif
+
 " Strip all trailing whitespace, but doesn't include MSWin Returns
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
