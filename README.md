@@ -22,4 +22,5 @@ picked up by pathogen.
 * [vim-erlang-compiler](https://github.com/vim-erlang/vim-erlang-compiler.git)
 * [vim-erlang-tags](https://github.com/vim-erlang/vim-erlang-tags.git)
 * [vim-erlang-omnicomplete](https://github.com/vim-erlang/vim-erlang-omnicomplete.git)
-
+* [ultisnips](https://github.com/SirVer/ultisnips.git)
+** My own fork of [vim-snippets](git@github.com:defndaines/vim-snippets.git)

@@ -221,6 +221,10 @@ autocmd FileType text :set spl=en_us spell
 " Force markdown over modula2
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
+" HTML Options
+
+autocmd BufNewFile *.html source ~/.vim/ftplugin/htmltemplate.vim
+
 " JavaScript Options
 
 au BufNewFile,BufRead *.json setf javascript
