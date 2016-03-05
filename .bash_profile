@@ -41,3 +41,5 @@ PATH=/usr/local/bin:$PATH
 PATH="$(echo $PATH | perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, scalar <>))')"
 export PATH
 
+# Pretty output
+export CLICOLOR=1
