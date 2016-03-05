@@ -11,8 +11,8 @@ set encoding=utf-8
 set spelllang=en_us
 set fileformat=unix
 
-set background=dark
 colorscheme elflord
+set background=dark
 
 " Syntax and indent
 syntax on
@@ -24,7 +24,6 @@ set smarttab
 set autoindent " Copy indent from the previous row
 set smartindent
 set wrap
-" set textwidth=78 " Forces newlines on long lines.
 
 set scrolloff=2
 set sidescrolloff=10
@@ -40,9 +39,10 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 set showcmd
 set nobackup
 set ruler
+set hidden
 set wildmenu
 set wildmode=list:longest
-" set laststatus=2
+set wildignore+=*DS_Store*
 
 set linebreak
 
@@ -125,6 +125,9 @@ cnoremap sudow w !sudo dd of=%
 " Use j and k to navigate pop-up (omnicomplete).
 inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
 inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+
+" Snippets
+let g:ultiSnipsExpandTrigger="<tab>"
 
 " Hg options
 
