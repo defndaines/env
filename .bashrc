@@ -18,6 +18,9 @@ fi
 # Add SSH completion based upon .ssh/config
 [ -e "${HOME}/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 
+# Complete gulp commands
+command -v gulp >/dev/null 2>&1 && eval "$(gulp --completion=bash)"
+
 
 # History Options
 # ###############
@@ -76,6 +79,14 @@ fi
 ###
 # Mac OS X stuff
 
-JAVA_HOME=$(/usr/libexec/java_home)
-export JAVA_HOME
+if [ -f ~/.osxrc ]; then
+  . ~/.osxrc
+fi
 
+
+###
+# Work customizations
+
+if [ -f ~/.workrc ]; then
+  . ~/.workrc
+fi
