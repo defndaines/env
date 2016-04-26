@@ -156,6 +156,9 @@ autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 
 " Erlang options.
 
+autocmd BufRead,BufNewFile *.erl,*.es.*.hrl,*.yaws,*.xrl set expandtab
+au BufNewFile,BufRead *.erl,*.es,*.hrl,*.yaws,*.xrl setf erlang
+
 highlight SyntaxHighlight ctermbg=darkblue guibg=darkblue
 " Highlight when a comma is not followed by a space.
 autocmd FileType erlang match SyntaxHighlight /,[ \n]\@!/
