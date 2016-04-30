@@ -43,6 +43,7 @@ export PATH
 
 # Pretty output
 export CLICOLOR=1
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 # Prevent Homebrew from sending analytics
 export HOMEBREW_NO_ANALYTICS=1
