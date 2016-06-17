@@ -136,6 +136,10 @@ inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 " Snippets
 let g:UltiSnipsExpandTrigger="<tab>"
 
+" Slime
+let g:slime_target = "tmux"
+let g:slime_paste_file = tempname()
+
 " Hg options
 
 autocmd Filetype hgcommit setlocal spell textwidth=72
@@ -180,7 +184,6 @@ let g:ctrlp_custom_ignore = {
 
 " Clojure options.
 
-let g:slime_target = "tmux"
 let clj_highlight_builtins = 1
 
 autocmd Syntax clojure RainbowParenthesesLoadRound
