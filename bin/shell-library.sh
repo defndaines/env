@@ -45,3 +45,11 @@ function lt {
   ls -targ "$@" | tail;
 }
 
+function eunit {
+  proj=$@
+  if [ -z ${proj} ]; then
+    d=`pwd`
+    proj=`basename $d | sed 's/-/_/g'`
+  fi
+  erl -make && erl -noshell -eval "eunit:test(${proj}, [verbose])" -s init stop
+}
