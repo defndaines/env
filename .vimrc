@@ -133,10 +133,8 @@ cnoremap sudow w !sudo dd of=%
 inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
 inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 
-" Snippets
-let g:UltiSnipsExpandTrigger="<tab>"
-
 " Slime
+
 let g:slime_target = "tmux"
 let g:slime_paste_file = tempname()
 
@@ -205,16 +203,19 @@ let g:rbpt_max = 9
 
 " OCaml Options
 
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+
 if executable('ocamlmerlin') && has('python')
   let s:ocamlmerlin = substitute(system('opam config var share'), '\n$', '', '''') . "/ocamlmerlin"
   execute "set rtp+=".s:ocamlmerlin."/vim"
   execute "set rtp+=".s:ocamlmerlin."/vimbufsync"
 endif
 
-let g:ocp_indent_vimfile = system("opam config var share")
-let g:ocp_indent_vimfile = substitute(g:ocp_indent_vimfile, '[\r\n]*$', '', '')
-let g:ocp_indent_vimfile = g:ocp_indent_vimfile . "/vim/syntax/ocp-indent.vim"
-autocmd FileType ocaml exec ":source " . g:ocp_indent_vimfile
+" let g:ocp_indent_vimfile = system("opam config var share")
+" let g:ocp_indent_vimfile = substitute(g:ocp_indent_vimfile, '[\r\n]*$', '', '')
+" let g:ocp_indent_vimfile = g:ocp_indent_vimfile . "/vim/syntax/ocp-indent.vim"
+" autocmd FileType ocaml exec ":source " . g:ocp_indent_vimfile
 
 " Ruby Options
 
@@ -257,6 +258,8 @@ nmap ,t :!(cd %:p:h;ctags *)& " Maps the updates of tags to key ,t.
 set tags=tags; " The ';' at the end will cause the ctags plugin to search for current dir and above dirs until it find a tag file.
 nnoremap <leader>T :TlistToggle<CR>
 nnoremap <f5> :!ctags -R<CR> " Refresh ctags
+
+let g:gutentags_cache_dir = '~/.tags_cache'
 
 " Gradle Options
 au BufNewFile,BufRead *.gradle setf groovy
