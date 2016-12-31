@@ -184,6 +184,8 @@ let g:ctrlp_custom_ignore = {
 
 let clj_highlight_builtins = 1
 
+" rainbow_parentheses.vim
+
 autocmd Syntax clojure RainbowParenthesesLoadRound
 autocmd BufEnter *.clj RainbowParenthesesToggle
 autocmd BufLeave *.clj RainbowParenthesesToggle

@@ -10,9 +10,13 @@ For vim, install [vim-pathogen](https://github.com/tpope/vim-pathogen).
 The following are a list of vim libraries to consider installing into .vim/bundle to be
 picked up by pathogen.
 * [rainbow_parentheses.vim](https://github.com/kien/rainbow_parentheses.vim.git)
-* [tabular](https://github.com/godlygeek/tabular.git)
-* [vim-repeat](https://github.com/tpope/vim-repeat.git)
-* [vim-slime](https://github.com/jpalardy/vim-slime.git)
+Color nested parenthesis for easy visual matching.
+* [tabular](https://github.com/godlygeek/tabular.git) Auto-align text, typically
+by a record separator. For example, `:Tabularize /|` aligns on pipe characters.
+* [vim-repeat](https://github.com/tpope/vim-repeat.git) Allows using `.` with
+plugins.
+* [vim-slime](https://github.com/jpalardy/vim-slime.git) Inject from one tmux
+pane to another.
 * [vim-surround](https://github.com/tpope/vim-surround.git)
 
 Clojure
