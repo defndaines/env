@@ -52,17 +52,21 @@ Just an interesting algorithm to explore as a kata.
 
 Figure out Amazon API (or create authenticated web scraper) to monitor wish list and notify if an item is about to go out of stock or the price had dropped dramatically.
 
+I started playing with this a couple years
+ago—[az-wish](https://github.com/defndaines/az-wish)—but it has languished
+for a while.
+
 ## OCR Photos
 
 Use OCR to automatically scan a photo on flickr and then add the text to the description.
 
 ## Twitter Bot
 
-Monitor changes to a website and automatically tweet new articles.
+Monitor changes to a website and automatically tweet links to new articles.
 
 ## Look into in-Browser Editing
 
-Use [quill.js](http://quilljs.com/) to handle article editing.
+Use [Quill](http://quilljs.com/) to handle article editing.
 
 ## Civic Analysis
 
@@ -71,12 +75,12 @@ that isn't formatted for easy use. Maybe something local like Culver City.
 
 ## Census
 
-Spider and grab all the census data from 1940: http://1940census.archives.gov/search/?search.result_type=image&search.state=OH&search.county=Athens+County&search.city=&search.street=#
+Spider and grab all the [census data from 1940](http://1940census.archives.gov/search/?search.result_type=image&search.state=OH&search.county=Athens+County&search.city=&search.street=#)
  ... then see if I can OCR it and locate the information under Daines.
 
 ## Crypto
 
-The Matasano Crypto Challenges: http://cryptopals.com/
+[Matasano Crypto Challenges](http://cryptopals.com/)
 
 ## Logic
 
