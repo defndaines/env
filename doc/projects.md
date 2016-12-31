@@ -24,7 +24,8 @@ Use the Goodreads API to find reviewers with similar tastes to mine.
 Analyze people with similar tastes based on 4-star review
 threshold. Maybe see if there's a way to filter out reviews and create a new
 score more likely to be in-line with what I'd think. In particular, it is easy
-to see that racists and misogynists down-rate some good books, so completely
+to see (put hard to programmatically analyze) that racists and misogynists
+down-rate some good books, so completely
 disregard their ratings when doing the calculation.
 
 ## Naga
