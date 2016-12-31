@@ -28,10 +28,28 @@ to see (put hard to programmatically analyze) that racists and misogynists
 down-rate some good books, so completely
 disregard their ratings when doing the calculation.
 
-## Naga
+## Technology
+
+This section lists some general technology I'd like to explore.
+
+### Naga
 
 [Naga](https://github.com/threatgrid/naga) is a Datalog-based rules engine.
 That just sounds really fun to play with.
+
+### Onyx
+
+[Onyx](https://github.com/onyx-platform/onyx) Distributed, masterless, high
+performance, fault tolerant data processing.
+
+### CouchDB
+
+[CouchDB](http://couchdb.apache.org/) Distributed DB written in Erlang.
+
+### Riak Core
+
+[Riak Core](https://github.com/basho/riak_core) Distributed systems
+infrastructure used by Riak.
 
 ## Mark Articles with Schema
 
