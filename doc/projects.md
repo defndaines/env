@@ -66,6 +66,8 @@ As an app? Into Bloomz? Google calendar?
 ## Consistent Hashing
 
 Just an interesting algorithm to explore as a kata.
+[Consistent hashing and random trees: distributed caching protocols for
+relieving hot spots on the World Wide Web](http://dl.acm.org/citation.cfm?id=258660)
 
 ## Amazon Wish List
 
