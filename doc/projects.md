@@ -42,6 +42,11 @@ That just sounds really fun to play with.
 [Onyx](https://github.com/onyx-platform/onyx) Distributed, masterless, high
 performance, fault tolerant data processing.
 
+### Arachne
+
+[Arachne](http://arachne-framework.org/) A full, highly modular web development
+framework for Clojure.
+
 ### CouchDB
 
 [CouchDB](http://couchdb.apache.org/) Distributed DB written in Erlang.
