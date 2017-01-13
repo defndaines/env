@@ -268,3 +268,8 @@ au BufNewFile,BufRead *.gradle setf groovy
 
 " Elm Options
 let g:elm_format_autosave=1
+
+" Nerdcommenter
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1

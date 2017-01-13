@@ -18,6 +18,7 @@ plugins.
 * [vim-slime](https://github.com/jpalardy/vim-slime.git) Inject from one tmux
 pane to another.
 * [vim-surround](https://github.com/tpope/vim-surround.git)
+* [nerdcommenter](https://github.com/scrooloose/nerdcommente://github.com/scrooloose/nerdcommenter) Code commenting functions.
 
 Clojure
 * [vim-clojure-highlight](https://github.com/guns/vim-clojure-highlight)
