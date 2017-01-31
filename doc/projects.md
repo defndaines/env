@@ -7,9 +7,8 @@ a place for me to consolidate several different notes I have.
 
 My graph algorithm skills are weak. I should spend some time beefing them up.
 
-A couple resources:
+A resource:
 * [Top Coder Problems](https://www.topcoder.com/community/data-science/data-science-tutorials/introduction-to-graphs-and-their-data-structures-section-1/)
-* [Khan Academy: Describing Graphs](https://www.khanacademy.org/computing/computer-science/algorithms/graph-representation/a/describing-graphs)
 
 Simple problems to use it against:
 * Implement a Hangman solver.
