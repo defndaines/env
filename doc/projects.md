@@ -55,12 +55,6 @@ framework for Clojure.
 [Riak Core](https://github.com/basho/riak_core) Distributed systems
 infrastructure used by Riak.
 
-## Mark Articles with Schema
-
-Apply [schema](http://schema.org/Article) to articles. This means, at the very
-least, writing functions to analyze and add it. It also likely means updating
-the database values in a permanent way.
-
 ## CCUSD Calendar
 
 The [CCUSD school lunch menus](http://www.culvercafe.org/index.php?sid=1211071913280201&page=menus)
@@ -102,14 +96,6 @@ that isn't formatted for easy use. Maybe something local like Culver City.
 
 Spider and grab all the [census data from 1940](http://1940census.archives.gov/search/?search.result_type=image&search.state=OH&search.county=Athens+County&search.city=&search.street=#)
  ... then see if I can OCR it and locate the information under Daines.
-
-## Crypto
-
-[Matasano Crypto Challenges](http://cryptopals.com/)
-
-## Logic
-
-Tangram - play with logic programming to design an algorithm for assigning students to classes/teachers.
 
 ## Games
 
