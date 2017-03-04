@@ -7,7 +7,8 @@ a place for me to consolidate several different notes I have.
 
 My graph algorithm skills are weak. I should spend some time beefing them up.
 
-A resource:
+Resources:
+* [Loom](https://github.com/aysylu/loom) Graph library for Clojure
 * [Top Coder Problems](https://www.topcoder.com/community/data-science/data-science-tutorials/introduction-to-graphs-and-their-data-structures-section-1/)
 
 Simple problems to use it against:
@@ -23,7 +24,7 @@ Use the Goodreads API to find reviewers with similar tastes to mine.
 Analyze people with similar tastes based on 4-star review
 threshold. Maybe see if there's a way to filter out reviews and create a new
 score more likely to be in-line with what I'd think. In particular, it is easy
-to see (put hard to programmatically analyze) that racists and misogynists
+to see (but hard to programmatically analyze?) that racists and misogynists
 down-rate some good books, so completely
 disregard their ratings when doing the calculation.
 
@@ -54,12 +55,6 @@ framework for Clojure.
 
 [Riak Core](https://github.com/basho/riak_core) Distributed systems
 infrastructure used by Riak.
-
-## CCUSD Calendar
-
-The [CCUSD school lunch menus](http://www.culvercafe.org/index.php?sid=1211071913280201&page=menus)
-are often late.  Write app to scrape CCUSD menus and make them available.
-As an app? Into Bloomz? Google calendar?
 
 ## Consistent Hashing
 
