@@ -10,6 +10,7 @@ My graph algorithm skills are weak. I should spend some time beefing them up.
 Resources:
 * [Loom](https://github.com/aysylu/loom) Graph library for Clojure
 * [Top Coder Problems](https://www.topcoder.com/community/data-science/data-science-tutorials/introduction-to-graphs-and-their-data-structures-section-1/)
+* [Techie Delight Graphs Interview Questions](http://www.techiedelight.com/graphs-interview-questions/)
 
 Simple problems to use it against:
 * Implement a Hangman solver.
@@ -27,6 +28,7 @@ score more likely to be in-line with what I'd think. In particular, it is easy
 to see (but hard to programmatically analyze?) that racists and misogynists
 down-rate some good books, so completely
 disregard their ratings when doing the calculation.
+
 
 ## Technology
 
@@ -47,20 +49,13 @@ performance, fault tolerant data processing.
 [Arachne](http://arachne-framework.org/) A full, highly modular web development
 framework for Clojure.
 
-### CouchDB
-
-[CouchDB](http://couchdb.apache.org/) Distributed DB written in Erlang.
-
-### Riak Core
-
-[Riak Core](https://github.com/basho/riak_core) Distributed systems
-infrastructure used by Riak.
 
 ## Consistent Hashing
 
 Just an interesting algorithm to explore as a kata.
 [Consistent hashing and random trees: distributed caching protocols for
 relieving hot spots on the World Wide Web](http://dl.acm.org/citation.cfm?id=258660)
+
 
 ## Amazon Wish List
 
@@ -70,27 +65,33 @@ I started playing with this a couple years
 ago—[az-wish](https://github.com/defndaines/az-wish)—but it has languished
 for a while.
 
+
 ## OCR Photos
 
 Use OCR to automatically scan a photo on flickr and then add the text to the description.
+
 
 ## Twitter Bot
 
 Monitor changes to a website and automatically tweet links to new articles.
 
+
 ## Look into in-Browser Editing
 
 Use [Quill](http://quilljs.com/) to handle article editing.
+
 
 ## Civic Analysis
 
 Analyze data from government sources. Perhaps scrape out information of interest
 that isn't formatted for easy use. Maybe something local like Culver City.
 
+
 ## Census
 
 Spider and grab all the [census data from 1940](http://1940census.archives.gov/search/?search.result_type=image&search.state=OH&search.county=Athens+County&search.city=&search.street=#)
  ... then see if I can OCR it and locate the information under Daines.
+
 
 ## Games
 
@@ -103,12 +104,12 @@ Rogue-like using D&D rules. Start with one class, like Warlock.
 For modifying Pac-Man
 * Allow a ghost to go through walls (it's a ghost, after all). Moves slower, though.
 * Implement the scent AI
- * Maybe pac-man exhales every other step?
+ * Maybe Pac-Man exhales every other step?
  * Fruit have smells? Ghost might follow them.
 
 Ghost AIs
- * Knows where other ghosts are and avoids them, unless tracking pac-man
- * Hive-mind ... able to cooperate and work together with information that each has about pac-man's location.
+ * Knows where other ghosts are and avoids them, unless tracking Pac-Man
+ * Hive-mind ... able to cooperate and work together with information that each has about Pac-Man's location.
  * Developmental AI ... playful learning.
 
 Maze generation
@@ -118,16 +119,16 @@ Maze generation
  * Home base for ghosts
  * Non-rectangular
 
-pac-man is limited by energy. For example, starts with 1, each dot gives 3, each move costs one
+Pac-Man is limited by energy. For example, starts with 1, each dot gives 3, each move costs one
  * exhaustion slows you down
  * moving faster when not stopping to "eat"
  * power pills vs. fruit? fruit is just more energy, where power pills give a skill, like killing ghosts.
 
 Movement
- * Allow pac-man to stop and wait.
+ * Allow Pac-Man to stop and wait.
  * Allow ghosts to make decisions outside of junctions.
 
 Visibility
- * What if pac-man couldn't see the whole maze?
+ * What if Pac-Man couldn't see the whole maze?
 
-Pacman mazes and AIs. AIs: use A* to always close the gap; use A*, but diminish cost of walls so that the ghost will pass through them; loner ghost that doesn't like other ghosts it can see. Not ghosts, but different monsters.
+Pac-Man mazes and AIs. AIs: use A* to always close the gap; use A*, but diminish cost of walls so that the ghost will pass through them; loner ghost that doesn't like other ghosts it can see. Not ghosts, but different monsters.
