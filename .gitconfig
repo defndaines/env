@@ -1,17 +1,28 @@
-[push]
-  default = simple
 [user]
-  email = <correct@address.here>
   name = Michael Daines
+  email = <correct@address.here>
+[push]
+	default = simple
+  followTags = true
+[merge]
+  ff = only
+	tool = vimdiff
 [alias]
-  glog = log --pretty=oneline -n 20 --graph --abbrev-commit
+  st = status
+  prune = fetch --prune
+  undo = reset --soft HEAD^
   amend = commit --amend  # Amend your last commit.
+  stash-all = stash save --include-untracked
   patdiff = difftool -y -x patdiff
+  glog = log --pretty=oneline -n 20 --graph --abbrev-commit
+  tlog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
   lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
   lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
 [apply]
   # Detect whitespace errors when applying a patch
   whitespace = fix
+[status]
+  showUntrackedFiles = all
 [core]
   # Treat spaces before tabs and all kinds of trailing whitespace as an error
   # [default] trailing-space: looks for spaces at the end of a line
