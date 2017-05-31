@@ -7,7 +7,7 @@ function vup() {
   echo "### Updating vim bundles"
   bundles=(${HOME}/.vim/bundle/*)
   for bundle in "${bundles[@]}"; do
-    pushd $bundle
+    pushd "$bundle"
     git pull
     popd
   done
@@ -27,7 +27,7 @@ function bak() {
 function tmpdir() {
   tmp=${TMPDIR-/tmp}
   tmp=$tmp/somedir.$RANDOM.$RANDOM.$RANDOM.$$
-  (umask 077 && mkdir $tmp) || {
+  (umask 077 && mkdir "$tmp") || {
     echo "Could not create temporary directory! Exiting." 1>&2 
     exit 1
   }
@@ -47,9 +47,9 @@ function lt {
 
 function eunit {
   proj=$@
-  if [ -z ${proj} ]; then
-    d=`pwd`
-    proj=`basename $d | sed 's/-/_/g'`
+  if [ -z "${proj}" ]; then
+    d=$(pwd)
+    proj=$(basename "$d" | sed 's/-/_/g')
   fi
   erl -make && erl -noshell -eval "eunit:test(${proj}, [verbose])" -s init stop
 }
