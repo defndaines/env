@@ -14,7 +14,9 @@ set fileformat=unix
 colorscheme elflord
 set background=dark
 
-" Syntax and indent
+
+""" Syntax and Indentation
+
 syntax on
 set tabstop=2
 set shiftwidth=2
@@ -46,7 +48,9 @@ set wildignore+=*DS_Store*
 
 set linebreak
 
-" Search related settings
+
+""" Search Related Settings
+
 set hlsearch
 noremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 set incsearch
@@ -73,6 +77,7 @@ set clipboard=unnamed
 " Causes % to navigate XML tags and Ruby loops.
 runtime macros/matchit.vim
 
+" Request terminal version string (for xterm)
 set t_RV=
 
 " Handle my common command typos.
@@ -80,7 +85,8 @@ cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W')
 " This doesn't do what I want, but at least it doesn't open up a file called "3" for editing.
 cnoreabbrev <expr> e3 ((getcmdtype() is# ':' && getcmdline() is# 'e3')?('3'):(''))
 
-" Visual star search ... make *|# act upon the current visual selection.
+
+"" Visual star search ... make *|# act upon the current visual selection.
 xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
 
@@ -90,6 +96,7 @@ function! s:VSetSearch()
   let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
   let @s = temp
 endfunction
+
 
 " Push Quickfix list into args
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
@@ -113,7 +120,8 @@ autocmd BufReadPost *
 " Maintain some set-up between sessions
 set sessionoptions=blank,buffers,curdir,help,resize,tabpages,winsize
 
-" Persistent Undo
+
+"" Persistent Undo
 if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
   silent !mkdir ~/.vim/backups > /dev/null 2>&1
   set undodir=~/.vim/backups
@@ -133,16 +141,19 @@ cnoremap sudow w !sudo dd of=%
 inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
 inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 
-" Slime
+
+""" Slime
 
 let g:slime_target = "tmux"
 let g:slime_paste_file = tempname()
 
-" Hg options
+
+""" Hg options
 
 autocmd Filetype hgcommit setlocal spell textwidth=72
 
-" Git options
+
+""" Git options
 
 autocmd Filetype gitcommit setlocal spell textwidth=72
 autocmd BufRead,BufNewFile *.md set filetype=mkd
@@ -163,7 +174,8 @@ autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 " autocmd Filetype gitcommit Branch
 " autocmd Filetype gitcommit execute "normal ggO"
 
-" Erlang options.
+
+""" Erlang options.
 
 autocmd BufRead,BufNewFile *.erl,*.es.*.hrl,*.yaws,*.xrl set expandtab
 au BufNewFile,BufRead *.erl,*.es,*.hrl,*.yaws,*.xrl setf erlang
@@ -180,11 +192,17 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(beam|png|jpg)$',
   \ }
 
-" Clojure options.
+
+""" Clojure options.
 
 let clj_highlight_builtins = 1
 
-" rainbow_parentheses.vim
+"" paredit
+
+" Don't insert empty line before closing parens on <Enter>
+let g:paredit_electric_return = 0
+
+"" rainbow_parentheses.vim
 
 autocmd Syntax clojure RainbowParenthesesLoadRound
 autocmd BufEnter *.clj RainbowParenthesesToggle
@@ -203,7 +221,8 @@ let g:rbpt_colorpairs = [
     \ ]
 let g:rbpt_max = 9
 
-" OCaml Options
+
+""" OCaml Options
 
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
@@ -219,7 +238,8 @@ endif
 " let g:ocp_indent_vimfile = g:ocp_indent_vimfile . "/vim/syntax/ocp-indent.vim"
 " autocmd FileType ocaml exec ":source " . g:ocp_indent_vimfile
 
-" Ruby Options
+
+""" Ruby Options
 
 " Allows gf to jump to Ruby requires.
 set suffixesadd+=.rb
@@ -233,22 +253,26 @@ augroup END
 
 compiler ruby
 
-" Text options
+
+""" Text options
 
 autocmd FileType text setlocal nosmartindent
 autocmd FileType text :set spl=en_us spell
 " Force markdown over modula2
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-" HTML Options
+
+""" HTML Options
 
 autocmd BufNewFile *.html source ~/.vim/ftplugin/htmltemplate.vim
 
-" JavaScript Options
+
+""" JavaScript Options
 
 au BufNewFile,BufRead *.json setf javascript
 
-" TagList Options
+
+""" TagList Options
 
 let Tlist_Use_Right_Window=1
 let Tlist_Enable_Fold_Column=0
@@ -263,13 +287,16 @@ nnoremap <f5> :!ctags -R<CR> " Refresh ctags
 
 let g:gutentags_cache_dir = '~/.tags_cache'
 
-" Gradle Options
+
+""" Gradle Options
 au BufNewFile,BufRead *.gradle setf groovy
 
-" Elm Options
+
+""" Elm Options
 let g:elm_format_autosave=1
 
-" Nerdcommenter
+
+""" Nerdcommenter
 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
