@@ -1,6 +1,9 @@
 set -o vi
 export EDITOR=vim
-stty stop ''  # Prevent Ctrl-S from stopping the terminal.
+
+if [ -t 0 ]; then
+  stty stop ''  # Prevent Ctrl-S from stopping the terminal.
+fi
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
