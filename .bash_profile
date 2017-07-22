@@ -47,3 +47,6 @@ export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 # Prevent Homebrew from sending analytics
 export HOMEBREW_NO_ANALYTICS=1
+
+# Allows for quicker switching between source code repositories.
+export CDPATH=${HOME}/src:${CDPATH}
