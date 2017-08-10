@@ -48,6 +48,8 @@ set wildignore+=*DS_Store*
 
 set linebreak
 
+set number
+
 
 """ Search Related Settings
 
