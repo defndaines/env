@@ -2,11 +2,11 @@
   name = Michael Daines
   email = <correct@address.here>
 [push]
-	default = simple
+  default = simple
   followTags = true
 [merge]
   ff = only
-	tool = vimdiff
+  tool = vimdiff
 [alias]
   st = status
   prune = fetch --prune
@@ -29,7 +29,7 @@
   # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
   whitespace = space-before-tab,-indent-with-non-tab,trailing-space
   pager = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
-	autocrlf = input
+  autocrlf = input
 [help]
   autocorrect = 1
 [color]
