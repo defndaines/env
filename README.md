@@ -18,7 +18,8 @@ plugins.
 * [vim-slime](https://github.com/jpalardy/vim-slime.git) Inject from one tmux
 pane to another.
 * [vim-surround](https://github.com/tpope/vim-surround.git)
-* [nerdcommenter](https://github.com/scrooloose/nerdcommente://github.com/scrooloose/nerdcommenter) Code commenting functions.
+* [nerdcommenter](https://github.com/scrooloose/nerdcommenter.git) Code commenting functions.
+* [vim-fireplace](https://github.com/tpope/vim-fireplace.git) For Clojure development leveraging nREPL integration.
 
 Clojure
 * [vim-clojure-highlight](https://github.com/guns/vim-clojure-highlight)
@@ -37,3 +38,7 @@ Elixir
 
 Elm
 * [elm-vim](https://github.com/ElmCast/elm-vim.git)
+
+Paredit
+* [paredit](https://github.com/kovisoft/paredit) For parentheses manipulation.
+This required a more manual install than the other tools above.
