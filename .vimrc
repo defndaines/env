@@ -133,8 +133,11 @@ endif
 " Strip all trailing whitespace, but doesn't include MSWin Returns
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
+" Strip double-spaces (like from a formatted paste)
+nnoremap <leader>p :%s/\>  \+/ /<CR>
+
 " Format JSON (python style).
-nnoremap <leader>j :%!python -m json.tool<CR>
+nnoremap <leader>j :%!python3 -m json.tool<CR>
 
 " Force save when using a read-only file
 cnoremap sudow w !sudo dd of=%
@@ -161,7 +164,7 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 autocmd BufRead,BufNewFile *.md set filetype=mkd
 autocmd BufRead,BufNewFile *.markdown set filetype=mkd
 autocmd FileType markdown setlocal spell
-autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+autocmd BufRead,BufNewFile *.md setlocal textwidth=78
 
 " function! s:Branch()
 "   let branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
@@ -198,11 +201,18 @@ let g:ctrlp_custom_ignore = {
 """ Clojure options.
 
 let clj_highlight_builtins = 1
+autocmd BufWritePre *.clj :%s/\s\+$//e
+autocmd Filetype clojure setlocal textwidth=78
 
 "" paredit
 
 " Don't insert empty line before closing parens on <Enter>
 let g:paredit_electric_return = 0
+
+"" sexp
+
+nnoremap <Space> <Nop>
+let maplocalleader=" "
 
 "" rainbow_parentheses.vim
 
@@ -252,6 +262,8 @@ augroup myfiletypes
   " autoindent with two spaces, always expand tabs
   autocmd FileType ruby,yaml set ai sw=2 sts=2 et
 augroup END
+
+autocmd BufWritePre *.rb :%s/\s\+$//e
 
 compiler ruby
 
