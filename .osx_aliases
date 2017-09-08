@@ -13,6 +13,7 @@ alias st='git status'
 alias tl='tmux list-sessions'
 alias ta='tmux attach -t'
 alias wrok='work'
+alias tmid='tmate show-messages'
 
 # bash
 ######
