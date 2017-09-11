@@ -31,6 +31,10 @@ alias brave='open -a Brave'
 alias pgup='pg_ctl -D /usr/local/var/postgres start'
 alias pgdown='pg_ctl -D /usr/local/var/postgres stop'
 
+# clojure
+#########
+alias ltr='lein test-refresh :changes-only'
+
 # redis
 #######
 alias rup='redis-server /usr/local/etc/redis.conf &'
