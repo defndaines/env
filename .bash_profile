@@ -12,6 +12,11 @@ if shopt -q login_shell ; then
   fi
 fi
 
+# OPAM configuration
+if [ -e ${HOME}/.opam/opam-init/init.sh ] ; then
+  . ${HOME}/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+fi
+
 # Set PATH so it includes user's private bin if it exists
 if [ -d "${HOME}/bin" ] ; then
   PATH=${HOME}/bin:${PATH}
@@ -20,22 +25,18 @@ fi
 # Bring in MySQL installation.
 if [ -d /usr/local/mysql/bin ]; then
   PATH=${PATH}:/usr/local/mysql/bin
-  export PATH
 fi
 
-# Handle RVM if installed
-if [ -e ${HOME}/.rvm ] ; then
-  [[ -s "${HOME}/.rvm/scripts/rvm" ]] && . "${HOME}/.rvm/scripts/rvm"
-  PATH=${PATH}:${HOME}/.rvm/bin
-fi
-
-# OPAM configuration
-if [ -e ${HOME}/.opam/opam-init/init.sh ] ; then
-  . ${HOME}/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-fi
+# Add Python3 installed binaries to path
+PATH=${PATH}:${HOME}/Library/Python/3.6/bin
 
 # Prioritize anything brewed in.
-PATH=/usr/local/bin:$PATH
+PATH="/usr/local/sbin:/usr/local/bin:$PATH"
+
+# Prioritize RVM if installed
+if [ -e ${HOME}/.rvm ] ; then
+  PATH="${HOME}/.rvm/bin:${PATH}"
+fi
 
 # Clear out duplication in the PATH before exporting.
 PATH="$(echo $PATH | perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, scalar <>))')"
