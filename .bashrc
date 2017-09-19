@@ -10,7 +10,7 @@ fi
 shopt -s checkwinsize
 
 
-# Completion options
+# Completion Options
 # ##################
 
 if [ -f ~/.git-completion.bash ]; then
@@ -28,7 +28,7 @@ command -v gulp >/dev/null 2>&1 && eval "$(gulp --completion=bash)"
 # History Options
 # ###############
 
-# don't put duplicate lines in the history. See bash(1) for more options
+# Don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
 
@@ -71,24 +71,25 @@ if [ -f ~/bin/work-library.sh ]; then
 fi
 
 
-###
-# Debian stuff
+
+# Debian
+# ######
 
 if [ -f ~/.debianrc ]; then
   . ~/.debianrc
 fi
 
 
-###
-# Mac OS X stuff
+# Mac OS X
+# ########
 
 if [ -f ~/.osxrc ]; then
   . ~/.osxrc
 fi
 
 
-###
-# Work customizations
+# Work Customizations
+# ###################
 
 if [ -f ~/.workrc ]; then
   . ~/.workrc
