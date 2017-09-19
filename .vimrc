@@ -53,6 +53,9 @@ set number
 
 """ Search Related Settings
 
+" Search down into subdirecties
+set path+=**
+
 set hlsearch
 noremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 set incsearch
@@ -203,6 +206,8 @@ let g:ctrlp_custom_ignore = {
 let clj_highlight_builtins = 1
 autocmd BufWritePre *.clj :%s/\s\+$//e
 autocmd Filetype clojure setlocal textwidth=78
+
+set wildignore+=*/target/*
 
 "" paredit
 
