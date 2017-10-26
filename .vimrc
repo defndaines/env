@@ -68,6 +68,7 @@ set novisualbell
 
 set backspace=indent,eol,start
 set complete-=i
+set complete+=kspell
 
 set ttimeout
 set ttimeoutlen=100
@@ -84,6 +85,10 @@ runtime macros/matchit.vim
 
 " Request terminal version string (for xterm)
 set t_RV=
+
+" Do not display banner in Netrw (file browsing).
+" See netrw-browse-maps for more info.
+let g:netrw_banner=0
 
 " Handle my common command typos.
 cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W'))
@@ -137,7 +142,7 @@ endif
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 " Strip double-spaces (like from a formatted paste)
-nnoremap <leader>p :%s/\>  \+/ /<CR>
+nnoremap <leader>p :%s/\>  \+/ /g<CR>
 
 " Format JSON (python style).
 nnoremap <leader>j :%!python3 -m json.tool<CR>
