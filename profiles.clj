@@ -11,4 +11,4 @@
                   [nightlight/lein-nightlight "1.9.3"]
                   [pjstadig/humane-test-output "0.8.3"]]}
  :repl {:dependencies
-        [^:displace [org.clojure/clojure "1.9.0-RC1"]]}}
+        [^:displace [org.clojure/clojure "1.9.0-RC2"]]}}
