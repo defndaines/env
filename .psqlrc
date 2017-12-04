@@ -1,0 +1,23 @@
+\set QUIET 1
+\pset null '∅'
+\pset linestyle 'unicode'
+set intervalstyle to 'postgres_verbose';
+
+\setenv LESS '-iMFXSx4R'
+\set ON_ERROR_STOP on
+\set ON_ERROR_ROLLBACK interactive
+
+-- Customize prompts
+\set PROMPT2 '... # '
+
+-- Show how long each query takes to execute
+\timing
+
+\set ECHO_HIDDEN true
+
+-- Use best available output format
+\set VERBOSITY verbose
+\set HISTFILE ~/.psql_history- :DBNAME
+\set HISTCONTROL ignoredups
+\set COMP_KEYWORD_CASE upper
+\unset QUIET
