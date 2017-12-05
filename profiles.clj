@@ -8,7 +8,7 @@
                   [lein-kibit "0.1.6"]
                   [lein-try "0.4.3"]
                   [lein-typed "0.4.2"]
-                  [nightlight/lein-nightlight "1.9.3"]
+                  [nightlight/lein-nightlight "2.0.4"]
                   [pjstadig/humane-test-output "0.8.3"]]}
  :repl {:dependencies
         [^:displace [org.clojure/clojure "1.9.0-RC2"]]}}
