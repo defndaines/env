@@ -1,5 +1,5 @@
 {:user {:plugins [[cider/cider-nrepl "0.15.1"]
-                  [com.jakemccrary/lein-test-refresh "0.21.1"]
+                  [com.jakemccrary/lein-test-refresh "0.22.0"]
                   [jonase/eastwood "0.2.5"]
                   [lein-ancient "0.6.14"]
                   [lein-bikeshed "0.5.0"]
@@ -11,4 +11,4 @@
                   [nightlight/lein-nightlight "2.0.4"]
                   [pjstadig/humane-test-output "0.8.3"]]}
  :repl {:dependencies
-        [^:displace [org.clojure/clojure "1.9.0-RC2"]]}}
+        [^:displace [org.clojure/clojure "1.9.0"]]}}
