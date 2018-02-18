@@ -9,9 +9,9 @@ https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completi
 
 ## `vim`
 
-For vim, install [vim-pathogen](https://github.com/tpope/vim-pathogen).
-The following are a list of vim libraries to consider installing into .vim/bundle to be
-picked up by pathogen.
+For vim, install these plugins by cloning into
+`${HOME}/.vim/pack/git-plugins/start/`.  The following are a list of vim
+libraries I've used at one point or another.
 
 * [rainbow_parentheses.vim](https://github.com/kien/rainbow_parentheses.vim.git)
 Color nested parenthesis for easy visual matching.
@@ -23,10 +23,11 @@ plugins.
 pane to another.
 * [vim-surround](https://github.com/tpope/vim-surround.git)
 * [nerdcommenter](https://github.com/scrooloose/nerdcommenter.git) Code commenting functions.
+* [ale](https://github.com/w0rp/ale.git) Asynchronous Lint Engine
 
 ### Clojure
-* [vim-clojure-highlight](https://github.com/guns/vim-clojure-highlight)
 * [vim-clojure-static](https://github.com/guns/vim-clojure-static.git)
+* [vim-clojure-highlight](https://github.com/guns/vim-clojure-highlight)
 * [vim-fireplace](https://github.com/tpope/vim-fireplace.git) For Clojure development leveraging nREPL integration.
 
 ### Erlang
@@ -53,6 +54,12 @@ I'm playing around with different color schemes lately, but here are a couple
 I have put into the `.vim/colors/` directory:
 * [dark_eyes](https://github.com/bf4/vim-dark_eyes)
 * [iceberg](https://github.com/cocopon/iceberg)
+
+
+## CTags
+
+I sometimes set up projects to use ctags.
+[universal-ctags](https://github.com/universal-ctags/ctags)
 
 
 ## OCaml

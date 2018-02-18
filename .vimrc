@@ -1,5 +1,3 @@
-filetype off
-call pathogen#infect()
 filetype plugin indent on
 
 set nocompatible
@@ -324,3 +322,26 @@ let g:elm_format_autosave=1
 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
+
+
+""" ALE
+
+" Enable completion where available.
+let g:ale_completion_enabled = 1
+
+" Navigate to ALE errors.
+nmap <silent> <C-k> <Plug>(ale_previous)
+nmap <silent> <C-j> <Plug>(ale_next)
+
+" Only lint on save.
+let g:ale_lint_on_text_changed = 'never'
+
+
+" Put these lines at the very end of your vimrc file.
+
+" Load all plugins now.
+" Plugins need to be added to runtimepath before helptags can be generated.
+packloadall
+" Load all of the helptags now, after plugins have been loaded.
+" All messages and errors will be ignored.
+silent! helptags ALL
