@@ -1,1 +1,4 @@
 set editing-mode vi
+# Cannot figure out how to enable these:
+# alias-expand-line
+# history-and-alias-expand-line

@@ -53,3 +53,14 @@ function eunit {
   fi
   erl -make && erl -noshell -eval "eunit:test(${proj}, [verbose])" -s init stop
 }
+
+# Enable branch completion for `co` alias (git checkout).
+_branches() {
+  local cur branches
+  cur="${COMP_WORDS[COMP_CWORD]}"
+  branches=$(git branch --list)
+
+  COMPREPLY=( $(compgen -W "${branches}" -- ${cur}) )
+  return 0
+}
+complete -F _branches co
