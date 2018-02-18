@@ -1,11 +1,10 @@
+#!/usr/local/bin/bash
 # Various functions meant to be loaded by .bashrc
 
 # Update only vim bundles
 function vup() {
-  echo "### Get latest pathogen"
-  curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
   echo "### Updating vim bundles"
-  bundles=(${HOME}/.vim/bundle/*)
+  bundles=(${HOME}/.vim/pack/git-plugins/start/*)
   for bundle in "${bundles[@]}"; do
     pushd "$bundle"
     git pull
