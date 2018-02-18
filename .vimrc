@@ -11,8 +11,8 @@ set encoding=utf-8
 set spelllang=en_us
 set fileformat=unix
 
-colorscheme elflord
 set background=dark
+colorscheme dark_eyes
 
 
 """ Syntax and Indentation

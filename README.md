@@ -47,6 +47,14 @@ pane to another.
 This required a more manual install than the other tools above.
 
 
+### vim Colors
+
+I'm playing around with different color schemes lately, but here are a couple
+I have put into the `.vim/colors/` directory:
+* [dark_eyes](https://github.com/bf4/vim-dark_eyes)
+* [iceberg](https://github.com/cocopon/iceberg)
+
+
 ## OCaml
 
 I'm not actively developing in OCaml at the moment, but I still like to have
