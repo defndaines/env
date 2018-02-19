@@ -53,7 +53,7 @@ This required a more manual install than the other tools above.
 I'm playing around with different color schemes lately, but here are a couple
 I have put into the `.vim/colors/` directory:
 * [dark_eyes](https://github.com/bf4/vim-dark_eyes)
-* [iceberg](https://github.com/cocopon/iceberg)
+* [iceberg](https://github.com/cocopon/iceberg.vim)
 
 
 ## CTags
