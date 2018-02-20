@@ -12,6 +12,8 @@ set fileformat=unix
 set background=dark
 colorscheme dark_eyes
 
+let mapleader=","
+
 
 """ Syntax and Indentation
 
@@ -47,6 +49,7 @@ set wildignore+=*DS_Store*
 set linebreak
 
 set number
+nnoremap <leader>n :set invnumber<CR>
 
 
 """ Search Related Settings
@@ -140,7 +143,7 @@ endif
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 " Strip double-spaces (like from a formatted paste)
-nnoremap <leader>p :%s/\>  \+/ /g<CR>
+nnoremap <leader>p :%s/\(\S \) \+/\1/g<CR>
 
 " Format JSON (python style).
 nnoremap <leader>j :%!python3 -m json.tool<CR>
