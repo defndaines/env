@@ -7,9 +7,13 @@
                   [lein-kibit "0.1.6"]
                   [lein-try "0.4.3"]
                   [lein-typed "0.4.2"]]
-        :dependencies [[pjstadig/humane-test-output "0.8.3"]]
+        :dependencies [[pjstadig/humane-test-output "0.8.3"]
+                       [com.bhauman/rebel-readline "0.1.1"]]
         :injections [(require 'pjstadig.humane-test-output)
                      (pjstadig.humane-test-output/activate!)]}
  :repl {:dependencies
         [^:displace [org.clojure/clojure "1.9.0"]]}
- :cljfmt {:remove-consecutive-blank-lines? false}}
+ :cljfmt {:remove-consecutive-blank-lines? false
+          :indents {fdef [[:inner 0]]}}
+ :aliases {"rebl" ["trampoline" "run" "-m" "rebel-readline.main"]}
+}

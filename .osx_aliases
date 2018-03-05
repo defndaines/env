@@ -36,6 +36,8 @@ alias pgdown='pg_ctl -D /usr/local/var/postgres stop'
 # clojure
 #########
 alias ltr='lein test-refresh :changes-only'
+alias rrl='clojure -R:rebel -m rebel-readline.main'
+alias lrr='lein trampoline run -m rebel-readline.main'
 
 # redis
 #######
