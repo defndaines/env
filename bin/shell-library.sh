@@ -44,6 +44,11 @@ function lt {
   ls -targ "$@" | tail;
 }
 
+# Open a man page as a PDF in Preview
+function postman() {
+  man -t $1 | open -f -a Preview.app
+}
+
 function eunit {
   proj=$@
   if [ -z "${proj}" ]; then
@@ -51,6 +56,11 @@ function eunit {
     proj=$(basename "$d" | sed 's/-/_/g')
   fi
   erl -make && erl -noshell -eval "eunit:test(${proj}, [verbose])" -s init stop
+}
+
+# Select a random line from a file.
+function rl {
+  sort --random-sort "$@" | head -1
 }
 
 # Enable branch completion for `co` alias (git checkout).
