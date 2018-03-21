@@ -27,6 +27,7 @@ alias be='bundle exec'
 alias ot='open -a TextEdit'
 alias brave='open -a Brave'
 alias bu='brew update && brew upgrade && brew cleanup && brew prune'
+alias dds='find . -name .DS_Store | xargs rm'
 
 # postgresql
 ############
@@ -38,6 +39,7 @@ alias pgdown='pg_ctl -D /usr/local/var/postgres stop'
 alias ltr='lein test-refresh :changes-only'
 alias rrl='clojure -R:rebel -m rebel-readline.main'
 alias lrr='lein trampoline run -m rebel-readline.main'
+alias node-cljs='clj -m cljs.main --repl-env node'
 
 # redis
 #######
