@@ -8,6 +8,7 @@ alias glog='git glog'
 alias d='git diff'
 alias st='git status'
 alias pd='git patdiff'
+alias pull='git pull'
 
 # tmux
 ######
