@@ -8,28 +8,30 @@
   ff = only
   tool = vimdiff
 [alias]
-  st = status
-  prune = fetch --prune
-  undo = reset --soft HEAD^
   amend = commit --amend  # Amend your last commit.
-  stash-all = stash save --include-untracked
-  patdiff = difftool -y -x patdiff
   glog = log --pretty=oneline -n 20 --graph --abbrev-commit
-  tlog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
   lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
   lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+  patdiff = difftool -y -x patdiff
+  prune = fetch --prune
+  st = status
+  stash-all = stash save --include-untracked
+  tlog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+  undo = reset --soft HEAD^
+  upstream-merge = !"git fetch origin -v && git fetch upstream -v && git merge upstream/master && git push"
+  wip = diff --name-only
 [apply]
   # Detect whitespace errors when applying a patch
   whitespace = fix
 [status]
   showUntrackedFiles = all
 [core]
+  pager = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
+  autocrlf = input
   # Treat spaces before tabs and all kinds of trailing whitespace as an error
   # [default] trailing-space: looks for spaces at the end of a line
   # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
   whitespace = space-before-tab,-indent-with-non-tab,trailing-space
-  pager = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
-  autocrlf = input
 [help]
   autocorrect = 1
 [color]
