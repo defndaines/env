@@ -1,34 +1,41 @@
 # git
 #####
-alias g='git'
 alias b='git branch'
 alias co='git checkout'
+alias co-='git checkout --'
+alias d='git diff'
+alias g.='git add .'
+alias g='git'
+alias ga='git add'
+alias ga-p='git add -p'
+alias gcm='git commit'
 alias ggrep='git grep'
 alias glog='git glog'
-alias d='git diff'
-alias st='git status'
+alias gph='git push'
+alias gph-f='git push --force'
+alias gpl='git pull'
 alias pd='git patdiff'
-alias pull='git pull'
+alias st='git status'
 
 # tmux
 ######
-alias tl='tmux list-sessions'
 alias ta='tmux attach -t'
-alias wrok='work'
+alias tl='tmux list-sessions'
 alias tmid='tmate show-messages'
+alias wrok='work'
 
 # bash
 ######
-alias f='find . -name'
-# alias words='/usr/share/dict/words'
-alias clera='clear'
-alias utc='date -u +"%Y-%m-%dT%H:%M:%SZ"'
 alias art='vim -c "source ${HOME}/bin/prep.vim"'
 alias be='bundle exec'
-alias ot='open -a TextEdit'
 alias brave='open -a Brave'
 alias bu='brew update && brew upgrade && brew cleanup && brew prune'
+alias clera='clear'
 alias dds='find . -name .DS_Store | xargs rm'
+alias f='find . -name'
+alias ot='open -a TextEdit'
+alias utc='date -u +"%Y-%m-%dT%H:%M:%SZ"'
+# alias words='/usr/share/dict/words'
 
 # postgresql
 ############
@@ -37,10 +44,10 @@ alias pgdown='pg_ctl -D /usr/local/var/postgres stop'
 
 # clojure
 #########
-alias ltr='lein test-refresh :changes-only'
-alias rrl='clojure -R:rebel -m rebel-readline.main'
 alias lrr='lein trampoline run -m rebel-readline.main'
+alias ltr='lein test-refresh :changes-only'
 alias node-cljs='clj -m cljs.main --repl-env node'
+alias rrl='clojure -R:rebel -m rebel-readline.main'
 
 # redis
 #######
