@@ -1,6 +1,6 @@
 filetype plugin indent on
 
-set nocompatible
+" set nocompatible
 
 " Reload vimrc if edited
 autocmd! bufwritepost .vimrc source ~/.vimrc
@@ -12,7 +12,7 @@ set fileformat=unix
 set background=dark
 colorscheme dark_eyes
 
-let g:mapleader=","
+let g:mapleader=','
 
 
 """ Syntax and Indentation
@@ -105,7 +105,7 @@ function! s:VSetSearch()
   let s:temp = @s
   norm! gv"sy
   let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
-  let @s = temp
+  let @s = s:temp
 endfunction
 
 
@@ -113,10 +113,10 @@ endfunction
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
 function! QuickfixFilenames()
   let s:buffer_numbers = {}
-  for quickfix_item in getqflist()
-    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+  for s:quickfix_item in getqflist()
+    let s:buffer_numbers[s:quickfix_item['bufnr']] = bufname(s:quickfix_item['bufnr'])
   endfor
-  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+  return join(map(values(s:buffer_numbers), 'fnameescape(v:val)'))
 endfunction
 
 " Handle Nexpose vuln check files as XML.
@@ -158,7 +158,7 @@ inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 
 """ Slime
 
-let g:slime_target = "tmux"
+let g:slime_target = 'tmux'
 let g:slime_paste_file = tempname()
 
 
@@ -223,7 +223,7 @@ let g:paredit_electric_return = 0
 "" sexp
 
 nnoremap <Space> <Nop>
-let g:maplocalleader=" "
+let g:maplocalleader=' '
 
 "" rainbow_parentheses.vim
 
@@ -248,12 +248,12 @@ let g:rbpt_max = 9
 """ OCaml Options
 
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
+execute 'set rtp+=' . g:opamshare . '/merlin/vim'
 
 if executable('ocamlmerlin') && has('python')
-  let s:ocamlmerlin = substitute(system('opam config var share'), '\n$', '', '''') . "/ocamlmerlin"
-  execute "set rtp+=".s:ocamlmerlin."/vim"
-  execute "set rtp+=".s:ocamlmerlin."/vimbufsync"
+  let s:ocamlmerlin = substitute(system('opam config var share'), '\n$', '', '''') . '/ocamlmerlin'
+  execute 'set rtp+='.s:ocamlmerlin.'/vim'
+  execute 'set rtp+='.s:ocamlmerlin.'/vimbufsync'
 endif
 
 " let g:ocp_indent_vimfile = system("opam config var share")
