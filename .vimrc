@@ -120,7 +120,7 @@ function! QuickfixFilenames()
 endfunction
 
 " Handle Nexpose vuln check files as XML.
-au BufNewFile,BufRead *.vck set filetype=xml
+autocmd BufNewFile,BufRead *.vck set filetype=xml
 
 " When editing a file, always jump to the last known cursor position.
 autocmd BufReadPost *
@@ -192,7 +192,7 @@ autocmd BufRead,BufNewFile *.md setlocal textwidth=78
 """ Erlang options.
 
 autocmd BufRead,BufNewFile *.erl,*.es.*.hrl,*.yaws,*.xrl set expandtab
-au BufNewFile,BufRead *.erl,*.es,*.hrl,*.yaws,*.xrl setf erlang
+autocmd BufNewFile,BufRead *.erl,*.es,*.hrl,*.yaws,*.xrl setf erlang
 
 highlight SyntaxHighlight ctermbg=darkblue guibg=darkblue
 " Highlight when a comma is not followed by a space.
@@ -294,7 +294,7 @@ autocmd BufNewFile *.html source ~/.vim/ftplugin/htmltemplate.vim
 
 """ JavaScript Options
 
-au BufNewFile,BufRead *.json setf javascript
+autocmd BufNewFile,BufRead *.json setf javascript
 
 
 """ TagList Options
@@ -314,7 +314,7 @@ let g:gutentags_cache_dir = '~/.tags_cache'
 
 
 """ Gradle Options
-au BufNewFile,BufRead *.gradle setf groovy
+autocmd BufNewFile,BufRead *.gradle setf groovy
 
 
 """ Elm Options
