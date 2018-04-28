@@ -12,7 +12,7 @@ set fileformat=unix
 set background=dark
 colorscheme dark_eyes
 
-let mapleader=","
+let g:mapleader=","
 
 
 """ Syntax and Indentation
@@ -102,7 +102,7 @@ xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
 
 function! s:VSetSearch()
-  let temp = @s
+  let s:temp = @s
   norm! gv"sy
   let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
   let @s = temp
@@ -112,7 +112,7 @@ endfunction
 " Push Quickfix list into args
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
 function! QuickfixFilenames()
-  let buffer_numbers = {}
+  let s:buffer_numbers = {}
   for quickfix_item in getqflist()
     let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
   endfor
@@ -176,7 +176,7 @@ autocmd FileType markdown setlocal spell
 autocmd BufRead,BufNewFile *.md setlocal textwidth=78
 
 " function! s:Branch()
-"   let branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
+"   let s:branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
 "   if branch != ''
 "     return substitute(substitute(branch, '\n', '', 'g'), 'daines.', '', 'g')
 "   en
@@ -209,7 +209,7 @@ let g:ctrlp_custom_ignore = {
 
 """ Clojure options.
 
-let clj_highlight_builtins = 1
+let g:clj_highlight_builtins = 1
 autocmd BufWritePre *.clj :%s/\s\+$//e
 autocmd Filetype clojure setlocal textwidth=78
 
@@ -223,7 +223,7 @@ let g:paredit_electric_return = 0
 "" sexp
 
 nnoremap <Space> <Nop>
-let maplocalleader=" "
+let g:maplocalleader=" "
 
 "" rainbow_parentheses.vim
 
@@ -299,11 +299,11 @@ autocmd BufNewFile,BufRead *.json setf javascript
 
 """ TagList Options
 
-let Tlist_Use_Right_Window=1
-let Tlist_Enable_Fold_Column=0
-let Tlist_Show_One_File=1 " especially with this one
-let Tlist_Compact_Format=1
-let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
+let g:Tlist_Use_Right_Window=1
+let g:Tlist_Enable_Fold_Column=0
+let g:Tlist_Show_One_File=1 " especially with this one
+let g:Tlist_Compact_Format=1
+let g:Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 set updatetime=1000
 nmap ,t :!(cd %:p:h;ctags *)& " Maps the updates of tags to key ,t.
 set tags=tags; " The ';' at the end will cause the ctags plugin to search for current dir and above dirs until it find a tag file.
