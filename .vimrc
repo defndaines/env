@@ -63,6 +63,8 @@ set incsearch
 set showmatch
 set ignorecase
 set smartcase
+" uppercase previously typed word and continue on.
+inoremap <c-u> <esc>viwUea
 
 set visualbell t_vb=
 set novisualbell
@@ -285,6 +287,12 @@ autocmd FileType text setlocal nosmartindent
 autocmd FileType text :set spl=en_us spell
 " Force markdown over modula2
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+iabbrev teh the
+" Wrap selection with quotation marks.
+vnoremap <leader>" <esc>`>a"<esc>`<i"<esc>
+vnoremap <leader>' <esc>`>a'<esc>`<i'<esc>
+vnoremap <leader>` <esc>`>a`<esc>`<i`<esc>
 
 
 """ HTML Options
