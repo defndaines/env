@@ -36,7 +36,7 @@ HISTCONTROL=ignoredups:ignorespace
 export HISTCONTROL="ignoredups"
 
 # Ignore some controlling instructions
-export HISTIGNORE="[   ]*:&:bg:fg:exit"
+export HISTIGNORE="&:bg:fg:exit"
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
