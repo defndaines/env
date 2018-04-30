@@ -34,6 +34,7 @@ alias clera='clear'
 alias dds='find . -name .DS_Store | xargs rm'
 alias f='find . -name'
 alias ot='open -a TextEdit'
+alias preview='open -a preview'
 alias utc='date -u +"%Y-%m-%dT%H:%M:%SZ"'
 # alias words='/usr/share/dict/words'
 
