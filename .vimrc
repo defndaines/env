@@ -36,7 +36,9 @@ set pastetoggle=<F2>
 set showmode
 
 " Turn off auto-commenting
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+augroup all-files
+  autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+augroup END
 
 set showcmd
 set nobackup
@@ -121,14 +123,20 @@ function! QuickfixFilenames()
   return join(map(values(s:buffer_numbers), 'fnameescape(v:val)'))
 endfunction
 
+
 " Handle Nexpose vuln check files as XML.
-autocmd BufNewFile,BufRead *.vck set filetype=xml
+augroup nexpose
+  autocmd BufNewFile,BufRead *.vck set filetype=xml
+augroup END
+
 
 " When editing a file, always jump to the last known cursor position.
-autocmd BufReadPost *
-  \ if line("'\"") > 1 && line("'\"") <= line("$") |
-  \   exe "normal! g`\"" |
-  \ endif
+augroup all-files
+  autocmd BufReadPost *
+        \ if line("'\"") > 1 && line("'\"") <= line("$") |
+        \   exe "normal! g`\"" |
+        \ endif
+augroup END
 
 " Maintain some set-up between sessions
 set sessionoptions=blank,buffers,curdir,help,resize,tabpages,winsize
@@ -166,16 +174,16 @@ let g:slime_paste_file = tempname()
 
 """ Hg options
 
-autocmd Filetype hgcommit setlocal spell textwidth=72
+augroup mercurial
+  autocmd Filetype hgcommit setlocal spell textwidth=72
+augroup END
 
 
 """ Git options
 
-autocmd Filetype gitcommit setlocal spell textwidth=72
-autocmd BufRead,BufNewFile *.md set filetype=mkd
-autocmd BufRead,BufNewFile *.markdown set filetype=mkd
-autocmd FileType markdown setlocal spell
-autocmd BufRead,BufNewFile *.md setlocal textwidth=78
+augroup git
+  autocmd Filetype gitcommit setlocal spell textwidth=72
+augroup END
 
 " function! s:Branch()
 "   let s:branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
@@ -193,16 +201,21 @@ autocmd BufRead,BufNewFile *.md setlocal textwidth=78
 
 """ Erlang options.
 
-autocmd BufRead,BufNewFile *.erl,*.es.*.hrl,*.yaws,*.xrl set expandtab
-autocmd BufNewFile,BufRead *.erl,*.es,*.hrl,*.yaws,*.xrl setf erlang
+augroup erlang
+  autocmd BufRead,BufNewFile *.erl,*.es.*.hrl,*.yaws,*.xrl set expandtab
+  autocmd BufNewFile,BufRead *.erl,*.es,*.hrl,*.yaws,*.xrl setf erlang
+
+  " Highlight when a comma is not followed by a space.
+  autocmd FileType erlang match SyntaxHighlight /,[ \n]\@!/
+
+  " Highlight when a pipe is not surrounded by spaces.
+  " autocmd FileType erlang match SyntaxHighlight /[ |]\@!|[ |]\@!/
+augroup END
 
 highlight SyntaxHighlight ctermbg=darkblue guibg=darkblue
-" Highlight when a comma is not followed by a space.
-autocmd FileType erlang match SyntaxHighlight /,[ \n]\@!/
-" Highlight when a pipe is not surrounded by spaces.
-" autocmd FileType erlang match SyntaxHighlight /[ |]\@!|[ |]\@!/
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.beam
+
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.git$',
   \ 'file': '\v\.(beam|png|jpg)$',
@@ -212,8 +225,11 @@ let g:ctrlp_custom_ignore = {
 """ Clojure options.
 
 let g:clj_highlight_builtins = 1
-autocmd BufWritePre *.clj :%s/\s\+$//e
-autocmd Filetype clojure setlocal textwidth=78
+
+augroup clojure
+  autocmd BufWritePre *.clj :%s/\s\+$//e
+  autocmd Filetype clojure setlocal textwidth=78
+augroup END
 
 set wildignore+=*/target/*
 
@@ -229,9 +245,11 @@ let g:maplocalleader=' '
 
 "" rainbow_parentheses.vim
 
-autocmd Syntax clojure RainbowParenthesesLoadRound
-autocmd BufEnter *.clj RainbowParenthesesToggle
-autocmd BufLeave *.clj RainbowParenthesesToggle
+augroup lisp
+  autocmd Syntax clojure RainbowParenthesesLoadRound
+  autocmd BufEnter *.clj RainbowParenthesesToggle
+  autocmd BufLeave *.clj RainbowParenthesesToggle
+augroup END
 
 let g:rbpt_colorpairs = [
     \ ['magenta',     'purple1'],
@@ -269,26 +287,33 @@ endif
 " Allows gf to jump to Ruby requires.
 set suffixesadd+=.rb
 
-augroup myfiletypes
+augroup ruby
   " Clear old autocmds in group
   autocmd!
   " autoindent with two spaces, always expand tabs
   autocmd FileType ruby,yaml set ai sw=2 sts=2 et
+
+  autocmd BufWritePre *.rb :%s/\s\+$//e
 augroup END
 
-autocmd BufWritePre *.rb :%s/\s\+$//e
 
 compiler ruby
 
 
 """ Text options
 
-autocmd FileType text setlocal nosmartindent
-autocmd FileType text :set spl=en_us spell
-" Force markdown over modula2
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+augroup text
+  autocmd FileType text setlocal nosmartindent
+  autocmd FileType text :set spl=en_us spell
+  " Force markdown over modula2
+  autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd FileType markdown setlocal spell
+  autocmd BufRead,BufNewFile *.md setlocal textwidth=78
+augroup END
 
 iabbrev teh the
+
 " Wrap selection with quotation marks.
 vnoremap <leader>" <esc>`>a"<esc>`<i"<esc>
 vnoremap <leader>' <esc>`>a'<esc>`<i'<esc>
@@ -297,12 +322,16 @@ vnoremap <leader>` <esc>`>a`<esc>`<i`<esc>
 
 """ HTML Options
 
-autocmd BufNewFile *.html source ~/.vim/ftplugin/htmltemplate.vim
+augroup html
+  autocmd BufNewFile *.html source ~/.vim/ftplugin/htmltemplate.vim
+augroup END
 
 
 """ JavaScript Options
 
-autocmd BufNewFile,BufRead *.json setf javascript
+augroup javascript
+  autocmd BufNewFile,BufRead *.json setf javascript
+augroup END
 
 
 """ TagList Options
@@ -322,7 +351,9 @@ let g:gutentags_cache_dir = '~/.tags_cache'
 
 
 """ Gradle Options
-autocmd BufNewFile,BufRead *.gradle setf groovy
+augroup groovy
+  autocmd BufNewFile,BufRead *.gradle setf groovy
+augroup END
 
 
 """ Elm Options
@@ -346,6 +377,10 @@ nmap <silent> <C-j> <Plug>(ale_next)
 
 " Only lint on save.
 let g:ale_lint_on_text_changed = 'never'
+
+
+""" fzf (fuzzy finder)
+set runtimepath+=/usr/local/opt/fzf
 
 
 " Put these lines at the very end of your vimrc file.
