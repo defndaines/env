@@ -1,8 +1,6 @@
 filetype plugin indent on
 
-" set nocompatible
-
-" Reload vimrc if edited
+" Reload vimrc immediately when saved.
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
 set encoding=utf-8
@@ -37,6 +35,7 @@ set showmode
 
 " Turn off auto-commenting
 augroup all-files
+  autocmd!
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 augroup END
 
@@ -126,6 +125,7 @@ endfunction
 
 " Handle Nexpose vuln check files as XML.
 augroup nexpose
+  autocmd!
   autocmd BufNewFile,BufRead *.vck set filetype=xml
 augroup END
 
@@ -175,6 +175,7 @@ let g:slime_paste_file = tempname()
 """ Hg options
 
 augroup mercurial
+  autocmd!
   autocmd Filetype hgcommit setlocal spell textwidth=72
 augroup END
 
@@ -182,6 +183,7 @@ augroup END
 """ Git options
 
 augroup git
+  autocmd!
   autocmd Filetype gitcommit setlocal spell textwidth=72
 augroup END
 
@@ -202,6 +204,7 @@ augroup END
 """ Erlang options.
 
 augroup erlang
+  autocmd!
   autocmd BufRead,BufNewFile *.erl,*.es.*.hrl,*.yaws,*.xrl set expandtab
   autocmd BufNewFile,BufRead *.erl,*.es,*.hrl,*.yaws,*.xrl setf erlang
 
@@ -227,6 +230,7 @@ let g:ctrlp_custom_ignore = {
 let g:clj_highlight_builtins = 1
 
 augroup clojure
+  autocmd!
   autocmd BufWritePre *.clj :%s/\s\+$//e
   autocmd Filetype clojure setlocal textwidth=78
 augroup END
@@ -246,6 +250,7 @@ let g:maplocalleader=' '
 "" rainbow_parentheses.vim
 
 augroup lisp
+  autocmd!
   autocmd Syntax clojure RainbowParenthesesLoadRound
   autocmd BufEnter *.clj RainbowParenthesesToggle
   autocmd BufLeave *.clj RainbowParenthesesToggle
@@ -288,7 +293,6 @@ endif
 set suffixesadd+=.rb
 
 augroup ruby
-  " Clear old autocmds in group
   autocmd!
   " autoindent with two spaces, always expand tabs
   autocmd FileType ruby,yaml set ai sw=2 sts=2 et
@@ -303,6 +307,7 @@ compiler ruby
 """ Text options
 
 augroup text
+  autocmd!
   autocmd FileType text setlocal nosmartindent
   autocmd FileType text :set spl=en_us spell
   " Force markdown over modula2
@@ -323,6 +328,7 @@ vnoremap <leader>` <esc>`>a`<esc>`<i`<esc>
 """ HTML Options
 
 augroup html
+  autocmd!
   autocmd BufNewFile *.html source ~/.vim/ftplugin/htmltemplate.vim
 augroup END
 
@@ -330,6 +336,7 @@ augroup END
 """ JavaScript Options
 
 augroup javascript
+  autocmd!
   autocmd BufNewFile,BufRead *.json setf javascript
 augroup END
 
@@ -352,6 +359,7 @@ let g:gutentags_cache_dir = '~/.tags_cache'
 
 """ Gradle Options
 augroup groovy
+  autocmd!
   autocmd BufNewFile,BufRead *.gradle setf groovy
 augroup END
 
