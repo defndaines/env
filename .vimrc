@@ -323,6 +323,9 @@ iabbrev teh the
 vnoremap <leader>" <esc>`>a"<esc>`<i"<esc>
 vnoremap <leader>' <esc>`>a'<esc>`<i'<esc>
 vnoremap <leader>` <esc>`>a`<esc>`<i`<esc>
+nnoremap <leader>" viw<esc>`>a"<esc>`<i"<esc>
+nnoremap <leader>' viw<esc>`>a'<esc>`<i'<esc>
+nnoremap <leader>` viw<esc>`>a`<esc>`<i`<esc>
 
 
 """ HTML Options
