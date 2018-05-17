@@ -228,14 +228,17 @@ let g:ctrlp_custom_ignore = {
 """ Clojure options.
 
 let g:clj_highlight_builtins = 1
+let g:clojure_special_indent_words = 'deftype,defrecord,reify,proxy,extend-type,extend-protocol,letfn,defcomponent'
 
 augroup clojure
   autocmd!
   autocmd BufWritePre *.clj :%s/\s\+$//e
   autocmd Filetype clojure setlocal textwidth=78
+  autocmd Filetype clojure setlocal lispwords+=fdef
 augroup END
 
 set wildignore+=*/target/*
+
 
 "" paredit
 
