@@ -380,6 +380,34 @@ let g:elm_format_autosave=1
 let g:NERDSpaceDelims = 1
 
 
+""" VimL and Vader (for Exercism)
+
+function! s:exercism_tests()
+  if expand('%:e') == 'vim'
+    let s:testfile = printf('%s/%s.vader', expand('%:p:h'),
+          \ tr(expand('%:p:h:t'), '-', '_'))
+    if !filereadable(s:testfile)
+      echoerr 'File does not exist: '. s:testfile
+      return
+    endif
+    source %
+    execute 'Vader' s:testfile
+  else
+    let s:sourcefile = printf('%s/%s.vim', expand('%:p:h'),
+          \ tr(expand('%:p:h:t'), '-', '_'))
+    if !filereadable(s:sourcefile)
+      echoerr 'File does not exist: '. s:sourcefile
+      return
+    endif
+    execute 'source' s:sourcefile
+    Vader
+  endif
+endfunction
+
+autocmd BufRead *.{vader,vim}
+      \ command! -buffer Test call s:exercism_tests()
+
+
 """ ALE
 
 " Enable completion where available.
