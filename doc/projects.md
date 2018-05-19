@@ -3,32 +3,6 @@
 This is a page of project idea and TODOs. It isn't necessarily ordered, just
 a place for me to consolidate several different notes I have.
 
-## Graph Problems
-
-My graph algorithm skills are weak. I should spend some time beefing them up.
-
-Resources:
-* [Loom](https://github.com/aysylu/loom) Graph library for Clojure
-* [Top Coder Problems](https://www.topcoder.com/community/data-science/data-science-tutorials/introduction-to-graphs-and-their-data-structures-section-1/)
-* [Techie Delight Graphs Interview Questions](http://www.techiedelight.com/graphs-interview-questions/)
-
-Simple problems to use it against:
-* Implement a Hangman solver.
-* Implement a word ladder solver.
-
-## Affinity Reviews
-
-Honestly, I don't have much faith in the reviews and recommendations provided
-by different sites, but lets start with [Goodreads](https://www.goodreads.com/).
-
-Use the Goodreads API to find reviewers with similar tastes to mine.
-Analyze people with similar tastes based on 4-star review
-threshold. Maybe see if there's a way to filter out reviews and create a new
-score more likely to be in-line with what I'd think. In particular, it is easy
-to see (but hard to programmatically analyze?) that racists and misogynists
-down-rate some good books, so completely
-disregard their ratings when doing the calculation.
-
 
 ## Technology
 
@@ -44,10 +18,23 @@ That just sounds really fun to play with.
 [Onyx](https://github.com/onyx-platform/onyx) Distributed, masterless, high
 performance, fault tolerant data processing.
 
-### Arachne
+### Aeron
 
-[Arachne](http://arachne-framework.org/) A full, highly modular web development
-framework for Clojure.
+[Aeron](https://github.com/real-logic/aeron) Efficient messaging.
+
+
+## Affinity Reviews
+
+Honestly, I don't have much faith in the reviews and recommendations provided
+by different sites, but lets start with [Goodreads](https://www.goodreads.com/).
+
+Use the Goodreads API to find reviewers with similar tastes to mine.
+Analyze people with similar tastes based on 4-star review
+threshold. Maybe see if there's a way to filter out reviews and create a new
+score more likely to be in-line with what I'd think. In particular, it is easy
+to see (but hard to programmatically analyze?) that racists and misogynists
+down-rate some good books, so completely
+disregard their ratings when doing the calculation.
 
 
 ## Consistent Hashing
@@ -59,16 +46,41 @@ relieving hot spots on the World Wide Web](http://dl.acm.org/citation.cfm?id=258
 
 ## Amazon Wish List
 
-Figure out Amazon API (or create authenticated web scraper) to monitor wish list and notify if an item is about to go out of stock or the price had dropped dramatically.
+Figure out Amazon API (or create authenticated web scraper) to monitor wish
+list and notify if an item is about to go out of stock or the price had
+dropped dramatically.
 
 I started playing with this a couple years
 ago—[az-wish](https://github.com/defndaines/az-wish)—but it has languished
 for a while.
 
+I also threw together a [gist on using
+Jsoup](https://gist.github.com/defndaines/8e4124fa2d6c530d477e06f91223188d)
+from Clojure. It is probably a simpler scraper compared to the library I was
+using before (which caused problems in the REPL).
+
+
+## Graph Problems
+
+My graph algorithm skills are weak. I could spend some time beefing them up.
+
+Resources:
+* [Loom](https://github.com/aysylu/loom) Graph library for Clojure
+* [Top Coder Problems](https://www.topcoder.com/community/data-science/data-science-tutorials/introduction-to-graphs-and-their-data-structures-section-1/)
+* [Techie Delight Graphs Interview Questions](http://www.techiedelight.com/graphs-interview-questions/)
+
+Simple problems to use it against:
+* Implement a Hangman solver.
+* Implement a word ladder solver.
+
 
 ## OCR Photos
 
-Use OCR to automatically scan a photo on flickr and then add the text to the description.
+Use OCR to automatically scan a photo on
+[flickr](https://www.flickr.com/photos/ax2groin) and then add the text to the
+description. I have played with using
+[tesseract](https://github.com/tesseract-ocr/tesseract), but still need to
+capture that learning in a repository.
 
 
 ## Twitter Bot
