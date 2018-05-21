@@ -155,6 +155,11 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " Strip double-spaces (like from a formatted paste)
 nnoremap <leader>p :%s/\(\S \) \+/\1/g<CR>
 
+set colorcolumn=80
+highlight ColorColumn ctermbg=0 guifg=lightgrey
+
+highlight rightMargin term=bold ctermfg=blue guifg=blue
+
 " Format JSON (python style).
 nnoremap <leader>j :%!python3 -m json.tool<CR>
 
@@ -383,7 +388,7 @@ let g:NERDSpaceDelims = 1
 """ VimL and Vader (for Exercism)
 
 function! s:exercism_tests()
-  if expand('%:e') == 'vim'
+  if expand('%:e') ==? 'vim'
     let s:testfile = printf('%s/%s.vader', expand('%:p:h'),
           \ tr(expand('%:p:h:t'), '-', '_'))
     if !filereadable(s:testfile)
@@ -404,8 +409,10 @@ function! s:exercism_tests()
   endif
 endfunction
 
-autocmd BufRead *.{vader,vim}
-      \ command! -buffer Test call s:exercism_tests()
+augroup exercism
+  autocmd BufRead *.{vader,vim}
+        \ command! -buffer Test call s:exercism_tests()
+augroup END
 
 
 """ ALE
