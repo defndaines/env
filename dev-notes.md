@@ -41,6 +41,16 @@ dot -Tsvg file.dot -o ruby-deps.svg
 > file-name ssh remote-host "cat - < file-name"
 ```
 
+### Loop over Files with Spaces in Name
+```bash
+OIFS="$IFS"
+IFS=$'\n'
+for f in `ls *.html`; do
+  echo "$f"
+done
+IFS="$OIFS"
+```
+
 ### Generate a UUID
 ```bash
 uuidgen
