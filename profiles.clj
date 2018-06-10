@@ -1,14 +1,14 @@
 {:user {:plugins [[com.jakemccrary/lein-test-refresh "0.22.0"]
-                  [jonase/eastwood "0.2.5"]
+                  [jonase/eastwood "0.2.6"]
                   [lein-ancient "0.6.15"]
                   [lein-bikeshed "0.5.1"]
                   [lein-cljfmt "0.5.7"]
                   [lein-cloverage "1.0.10"]
                   [lein-kibit "0.1.6"]
                   [lein-try "0.4.3"]
-                  [lein-typed "0.4.2"]]
+                  [lein-typed "0.4.6"]]
         :dependencies [[pjstadig/humane-test-output "0.8.3"]
-                       [com.bhauman/rebel-readline "0.1.1"]]
+                       [com.bhauman/rebel-readline "0.1.3"]]
         :injections [(require 'pjstadig.humane-test-output)
                      (pjstadig.humane-test-output/activate!)]}
  :repl {:dependencies

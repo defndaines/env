@@ -49,5 +49,10 @@
 :%s#</span>##g
 :%s/<meta[^>]*>/\r&/g
 :%s/ / /g
+:%s#<style[^>]*>.\{-}</style>##g
+:%s#<script[^>]*>.\{-}</script>##g
+:%s#<noscript[^>]*>.\{-}</noscript>##g
+:%s#<iframe[^>]*>.\{-}</iframe>##g
+:%s/ style="[^"]*"//g
 " Search for more non-ASCII with /[^\x00-\x7F]
 " Also look for <meta name="author" content="">
