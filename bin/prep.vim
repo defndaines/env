@@ -26,16 +26,16 @@
 :%s/Ó/\&Oacute;/g
 :%s/Ù/\&Ugrave;/g
 :%s/Ú/\&Uacute;/g
-:%s/ā/\&amacr;/g
-:%s/ē/\&emacr;/g
-:%s/ī/\&imacr;/g
-:%s/ō/\&omacr;/g
-:%s/ū/\&umacr;/g
-:%s/Ā/\&Amacr;/g
-:%s/Ē/\&Emacr;/g
-:%s/Ī/\&Imacr;/g
-:%s/Ō/\&Omacr;/g
-:%s/Ū/\&Umacr;/g
+:%s/ā/aa/g
+:%s/ē/ee/g
+:%s/ī/ii/g
+:%s/ō/ou/g
+:%s/ū/uu/g
+:%s/Ā/Aa/g
+:%s/Ē/Ee/g
+:%s/Ī/Ii/g
+:%s/Ō/Ou/g
+:%s/Ū/Uu/g
 :%s/ç/\&ccedil;/g
 :%s/<body[^>]*>/<body>\r/g
 :%s/<h1 [^>]*>/\r<h1>/g
@@ -56,3 +56,15 @@
 :%s/ style="[^"]*"//g
 " Search for more non-ASCII with /[^\x00-\x7F]
 " Also look for <meta name="author" content="">
+
+" These don't work with the current gen script
+" :%s/ā/\&amacr;/g
+" :%s/ē/\&emacr;/g
+" :%s/ī/\&imacr;/g
+" :%s/ō/\&omacr;/g
+" :%s/ū/\&umacr;/g
+" :%s/Ā/\&Amacr;/g
+" :%s/Ē/\&Emacr;/g
+" :%s/Ī/\&Imacr;/g
+" :%s/Ō/\&Omacr;/g
+" :%s/Ū/\&Umacr;/g
