@@ -238,6 +238,7 @@ let g:clojure_special_indent_words = 'deftype,defrecord,reify,proxy,extend-type,
 augroup clojure
   autocmd!
   autocmd BufWritePre *.clj :%s/\s\+$//e
+  autocmd BufWritePre *.clj :%s/\t/  /ge
   autocmd Filetype clojure setlocal textwidth=78
   autocmd Filetype clojure setlocal lispwords+=fdef
 augroup END
