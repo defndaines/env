@@ -1,4 +1,4 @@
-{:user {:plugins [[com.jakemccrary/lein-test-refresh "0.22.0"]
+{:user {:plugins [[com.jakemccrary/lein-test-refresh "0.23.0"]
                   [jonase/eastwood "0.2.6"]
                   [lein-ancient "0.6.15"]
                   [lein-bikeshed "0.5.1"]
