@@ -163,6 +163,9 @@ highlight rightMargin term=bold ctermfg=blue guifg=blue
 " Format JSON (python style).
 nnoremap <leader>j :%!python3 -m json.tool<CR>
 
+" Insert the current date
+nnoremap <leader>d "=strftime("%Y-%m-%d")<CR>p
+
 " Force save when using a read-only file
 cnoremap sudow w !sudo dd of=%
 
@@ -234,6 +237,8 @@ let g:ctrlp_custom_ignore = {
 
 let g:clj_highlight_builtins = 1
 let g:clojure_special_indent_words = 'deftype,defrecord,reify,proxy,extend-type,extend-protocol,letfn,defcomponent'
+" Don't stop indentation fixes at 100 lines.
+let g:clojure_maxlines = 0
 
 augroup clojure
   autocmd!
