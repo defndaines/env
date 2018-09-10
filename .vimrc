@@ -160,8 +160,9 @@ highlight ColorColumn ctermbg=0 guifg=lightgrey
 
 highlight rightMargin term=bold ctermfg=blue guifg=blue
 
-" Format JSON (python style).
-nnoremap <leader>j :%!python3 -m json.tool<CR>
+" Format JSON
+nnoremap <leader>j :%!python3 -m json.tool<CR>1G=G<CR>:%s/ \[\n\(  *\)  /\r\1[ <CR>:%s/{\n  *"/{ "/<CR>:%s/,\n\( *\)  /\r\1, /<CR>
+nnoremap <leader>r :%s/ \[\n\(  *\)  /\r\1[ <CR>:%s/{\n  *"/{ "/<CR>:%s/,\n\( *\)  /\r\1, /<CR>
 
 " Insert the current date
 nnoremap <leader>d "=strftime("%Y-%m-%d")<CR>p
