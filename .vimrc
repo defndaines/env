@@ -4,7 +4,7 @@ filetype plugin indent on
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
 set encoding=utf-8
-set spelllang=en_us
+set spelllang=en_us,cjk
 set fileformat=unix
 
 set background=dark
@@ -51,6 +51,8 @@ set linebreak
 
 set number
 nnoremap <leader>n :set invnumber<CR>
+
+nnoremap <leader>s :set spell!<CR>
 
 
 """ Search Related Settings
