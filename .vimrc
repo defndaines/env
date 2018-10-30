@@ -162,9 +162,46 @@ highlight ColorColumn ctermbg=0 guifg=lightgrey
 
 highlight rightMargin term=bold ctermfg=blue guifg=blue
 
+
 " Format JSON
-nnoremap <leader>j :%!python3 -m json.tool<CR>1G=G<CR>:%s/ \[\n\(  *\)  /\r\1[ <CR>:%s/{\n  *"/{ "/<CR>:%s/,\n\( *\)  /\r\1, /<CR>
-nnoremap <leader>r :%s/ \[\n\(  *\)  /\r\1[ <CR>:%s/{\n  *"/{ "/<CR>:%s/,\n\( *\)  /\r\1, /<CR>
+nnoremap <leader>j :%!python3 -m json.tool<CR>1G=G<CR>:call FormatJSON()<CR>
+nnoremap <leader>r :call FormatJSON()<CR>
+
+function! FormatJSON()
+  " :%s/\t/  /g
+  if search("\t")
+    execute '%s/\t/  /g'
+  endif
+  " :%s/ \[\n\(  *\)  /\r\1[
+  if search(' \[\n\(  *\)  ')
+    execute '%s/ \[\n\(  *\)  /\r\1[ '
+  endif
+  " :%s/{\n  *"/{ "/
+  if search('{\n  *"')
+    execute '%s/{\n  *"/{ "/'
+  endif
+  " :%s/,\n\( *\)  /\r\1, /
+  if search(',\n\( *\)  ')
+    execute '%s/,\n\( *\)  /\r\1, /'
+  endif
+  " :%s/^\( *\)\([^{]*\): {/\1\2:\r\1  {/g
+  if search('^\( *\)\([^{]*\): {')
+    execute '%s/^\( *\)\([^{]*\): {/\1\2:\r\1  {/g'
+  endif
+  " :%s/^\( *\)\(.[^{]*\): {/\1\2:\r\1  {/g
+  if search('^\( *\)\(.[^{]*\): {')
+    execute '%s/^\( *\)\(.[^{]*\): {/\1\2:\r\1  {/g'
+  endif
+  " :%s/^\( *\)\(.[^{]*\): {/\1\2:\r\1  {/g
+  if search('^\( *\)\(.[^{]*\): {')
+    execute '%s/^\( *\)\(.[^{]*\): {/\1\2:\r\1  {/g'
+  endif
+  " :%s/^\( *\)\(.[^{]*\): {/\1\2:\r\1  {/g
+  if search('^\( *\)\(.[^{]*\): {')
+    execute '%s/^\( *\)\(.[^{]*\): {/\1\2:\r\1  {/g'
+  endif
+endfunction
+
 
 " Insert the current date
 nnoremap <leader>d "=strftime("%Y-%m-%d")<CR>p
@@ -253,6 +290,8 @@ augroup END
 
 set wildignore+=*/target/*
 
+nnoremap <leader>c :s/_/-/g<CR>:s#/#.#g<CR>:s/\.clj//<CR>:s/ src./ /<CR>:s/ src.\| test./ /<CR>
+
 
 "" paredit
 
@@ -297,11 +336,6 @@ if executable('ocamlmerlin') && has('python')
   execute 'set rtp+='.s:ocamlmerlin.'/vim'
   execute 'set rtp+='.s:ocamlmerlin.'/vimbufsync'
 endif
-
-" let g:ocp_indent_vimfile = system("opam config var share")
-" let g:ocp_indent_vimfile = substitute(g:ocp_indent_vimfile, '[\r\n]*$', '', '')
-" let g:ocp_indent_vimfile = g:ocp_indent_vimfile . "/vim/syntax/ocp-indent.vim"
-" autocmd FileType ocaml exec ":source " . g:ocp_indent_vimfile
 
 
 """ Ruby Options
@@ -375,13 +409,6 @@ nnoremap <leader>T :TlistToggle<CR>
 nnoremap <f5> :!ctags -R<CR> " Refresh ctags
 
 let g:gutentags_cache_dir = '~/.tags_cache'
-
-
-""" Gradle Options
-augroup groovy
-  autocmd!
-  autocmd BufNewFile,BufRead *.gradle setf groovy
-augroup END
 
 
 """ Elm Options
