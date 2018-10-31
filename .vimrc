@@ -290,7 +290,27 @@ augroup END
 
 set wildignore+=*/target/*
 
-nnoremap <leader>c :s/_/-/g<CR>:s#/#.#g<CR>:s/\.clj//<CR>:s/ src./ /<CR>:s/ src.\| test./ /<CR>
+nnoremap <leader>c :call AddClojureNamespace()<CR>
+
+function! AddClojureNamespace()
+  let s:ns = ["(ns " . fnamemodify(expand('%'), ':r:s#^src/##:s#^test/##:gs#/#.#:gs#_#-#')]
+  if (expand('%') =~ "test/")
+    let s:under_test = fnamemodify(expand('%'), ':r:s#^test/##:s#_test$##:gs#/#.#:gs#_#-#')
+    call add(s:ns, '  "Tests against the ' . s:under_test . ' namespace."')
+    call add(s:ns, "  (:require [clojure.test :refer [deftest testing is]]))")
+  else
+    call add(s:ns, '  "TODO: Write a clear explanation of what purpose this namespace serves."')
+    call add(s:ns, "  (:require [clojure.spec.alpha :as s]))")
+  endif
+  call add(s:ns, "")
+
+  let s:failed = append(0, s:ns)
+  if (s:failed)
+    echo "Problem creating namespace!"
+  else
+    let &modified = 1
+  endif
+endfunction
 
 
 "" paredit
