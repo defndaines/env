@@ -168,35 +168,35 @@ nnoremap <leader>j :%!python3 -m json.tool<CR>1G=G<CR>:call FormatJSON()<CR>
 nnoremap <leader>r :call FormatJSON()<CR>
 
 function! FormatJSON()
-  " :%s/\t/  /g
+  " Make sure there are no tabs in the file.
   if search("\t")
     execute '%s/\t/  /g'
   endif
-  " :%s/ \[\n\(  *\)  /\r\1[
+  " Move trailing [ to the next line.
   if search(' \[\n\(  *\)  ')
     execute '%s/ \[\n\(  *\)  /\r\1[ '
   endif
-  " :%s/{\n  *"/{ "/
+  " Move line-ending { to the next line.
   if search('{\n  *"')
     execute '%s/{\n  *"/{ "/'
   endif
-  " :%s/,\n\( *\)  /\r\1, /
+  " Move trailing , to the next line.
   if search(',\n\( *\)  ')
     execute '%s/,\n\( *\)  /\r\1, /'
   endif
-  " :%s/^\( *\)\([^{]*\): {/\1\2:\r\1  {/g
+  " Move object-defining { to the next line.
   if search('^\( *\)\([^{]*\): {')
     execute '%s/^\( *\)\([^{]*\): {/\1\2:\r\1  {/g'
   endif
-  " :%s/^\( *\)\(.[^{]*\): {/\1\2:\r\1  {/g
+  " Move object-defining { to the next line.
   if search('^\( *\)\(.[^{]*\): {')
     execute '%s/^\( *\)\(.[^{]*\): {/\1\2:\r\1  {/g'
   endif
-  " :%s/^\( *\)\(.[^{]*\): {/\1\2:\r\1  {/g
+  " Repeat above to capture depth.
   if search('^\( *\)\(.[^{]*\): {')
     execute '%s/^\( *\)\(.[^{]*\): {/\1\2:\r\1  {/g'
   endif
-  " :%s/^\( *\)\(.[^{]*\): {/\1\2:\r\1  {/g
+  " Repeat above to capture depth.
   if search('^\( *\)\(.[^{]*\): {')
     execute '%s/^\( *\)\(.[^{]*\): {/\1\2:\r\1  {/g'
   endif
