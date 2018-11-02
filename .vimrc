@@ -314,6 +314,13 @@ function! AddClojureNamespace()
   endif
 endfunction
 
+nnoremap <leader>z :call OpenClojureTestFile()<CR>
+
+function! OpenClojureTestFile()
+  let s:ns = 'test/' . fnamemodify(expand('%'), ':r:s#^src/##') . '_test.clj'
+  execute "edit " . s:ns
+endfunction
+
 
 "" paredit
 
