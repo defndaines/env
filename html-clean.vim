@@ -154,36 +154,57 @@ function! KindleGenPrep()
   if search('</a>')
     execute '%s#</a>##g'
   endif
-  if search('<link[^>]*>')
-    execute '%s/<link[^>]*>//g'
-  endif
   if search('<span[^>]*>')
     execute '%s/<span[^>]*>//g'
   endif
   if search('</span>')
     execute '%s#</span>##g'
   endif
-  if search('<meta[^>]*>')
-    execute '%s/<meta[^>]*>/\r&/g'
-  endif
-  "" TODO Several of these would be better with something like 'dat'
-  if search('<style[^>]*>.\{-}</style>')
-    execute '%s#<style[^>]*>.\{-}</style>##g'
-  endif
-  if search('<script[^>]*>.\{-}</script>')
-    execute '%s#<script[^>]*>.\{-}</script>##g'
-  endif
-  if search('<noscript[^>]*>.\{-}</noscript>')
-    execute '%s#<noscript[^>]*>.\{-}</noscript>##g'
-  endif
-  if search('<iframe[^>]*>.\{-}</iframe>')
-    execute '%s#<iframe[^>]*>.\{-}</iframe>##g'
-  endif
+  " if search('<meta[^>]*>')
+    " execute '%s/<meta[^>]*>/\r&/g'
+  " endif
   if search(' style="[^"]*"')
     execute '%s/ style="[^"]*"//g'
   endif
+  if search('<!--.\{-}-->')
+    execute '%s/<!--.\{-}-->//g'
+  endif
+
+  " Strip references to external stylesheets.
+  if search('<link[^>]*>')
+    execute '%s/<link[^>]*>//g'
+  endif
+
+  while search('<iframe')
+    execute 'normal dat'
+  endwhile
+  while search('<noscript')
+    execute 'normal dat'
+  endwhile
+  while search('<script')
+    execute 'normal dat'
+  endwhile
+  while search('<style')
+    execute 'normal dat'
+  endwhile
+  while search('<aside')
+    execute 'normal dat'
+  endwhile
+
+  " Japan Times
+  while search('<div class="teads-adCall')
+    execute 'normal dat'
+  endwhile
+  while search('div class="jt_content_ad')
+    execute 'normal dat'
+  endwhile
 
   " TODO Search for more non-ASCII with /[^\x00-\x7F]
   " Also look for <meta name="author" content="">
+
+  execute 'g/^\s*$/d'
+
+  if search('<title')
+  endif
 
 endfunction
