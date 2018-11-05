@@ -188,18 +188,10 @@ function! FormatJSON()
   if search('^\( *\)\([^{]*\): {')
     execute '%s/^\( *\)\([^{]*\): {/\1\2:\r\1  {/g'
   endif
-  " Move object-defining { to the next line.
-  if search('^\( *\)\(.[^{]*\): {')
+  " Move object-defining { to the next line. In while loop to capture depth.
+  while search('^\( *\)\(.[^{]*\): {')
     execute '%s/^\( *\)\(.[^{]*\): {/\1\2:\r\1  {/g'
-  endif
-  " Repeat above to capture depth.
-  if search('^\( *\)\(.[^{]*\): {')
-    execute '%s/^\( *\)\(.[^{]*\): {/\1\2:\r\1  {/g'
-  endif
-  " Repeat above to capture depth.
-  if search('^\( *\)\(.[^{]*\): {')
-    execute '%s/^\( *\)\(.[^{]*\): {/\1\2:\r\1  {/g'
-  endif
+  endwhile
 endfunction
 
 
