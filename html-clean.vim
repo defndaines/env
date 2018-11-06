@@ -9,9 +9,6 @@ function! KindleGenPrep()
   while search('<noscript')
     execute 'normal dat'
   endwhile
-  while search('<script')
-    execute 'normal dat'
-  endwhile
   while search('<style')
     execute 'normal dat'
   endwhile
@@ -19,6 +16,13 @@ function! KindleGenPrep()
     execute 'normal dat'
   endwhile
   while search('<figure')
+    execute 'normal dat'
+  endwhile
+  while search('<picture')
+    execute 'normal dat'
+  endwhile
+  " WARNING: This fails horribly against some sites, deleting everything.
+  while search('<script')
     execute 'normal dat'
   endwhile
 
@@ -213,6 +217,20 @@ function! KindleGenPrep()
   if search('<div class="jtarticle_related"/')
     execute '/<div class="jtarticle_related"/,/<\/body/-d'
   endif
+
+  " New Yorker
+  while search('<div class="Callout')
+    execute 'normal dat'
+  endwhile
+  while search('<div id="RecircCarousel')
+    execute 'normal dat'
+  endwhile
+  while search('<ul class="ArticleSocial')
+    execute 'normal dat'
+  endwhile
+  while search('<div class="bxc')
+    execute 'normal dat'
+  endwhile
 
   execute 'g/^\s*$/d'
   if search('</body')
