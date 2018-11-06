@@ -1,6 +1,28 @@
 nnoremap <leader>k :call KindleGenPrep()<CR>
 
 function! KindleGenPrep()
+  " Remove tags we know we don't want.
+  " Do this first, less other regex step on tag endings.
+  while search('<iframe')
+    execute 'normal dat'
+  endwhile
+  while search('<noscript')
+    execute 'normal dat'
+  endwhile
+  while search('<script')
+    execute 'normal dat'
+  endwhile
+  while search('<style')
+    execute 'normal dat'
+  endwhile
+  while search('<aside')
+    execute 'normal dat'
+  endwhile
+  while search('<figure')
+    execute 'normal dat'
+  endwhile
+
+  " Handle some unicode and other oddities
   if search('“')
     execute '%s/“/\&ldquo;/g'
   endif
@@ -120,7 +142,7 @@ function! KindleGenPrep()
   if search('Ū')
     execute '%s/Ū/Uu/g'
   endif
-  " These don't work with the current gen script
+  " These don't display properly with the current kindlegen script
   " :%s/ā/\&amacr;/g
   " :%s/ē/\&emacr;/g
   " :%s/ī/\&imacr;/g
@@ -131,6 +153,8 @@ function! KindleGenPrep()
   " :%s/Ī/\&Imacr;/g
   " :%s/Ō/\&Omacr;/g
   " :%s/Ū/\&Umacr;/g
+
+  " TODO Search for more non-ASCII with /[^\x00-\x7F]
 
   "" Clean up HTML Tags
   if search('<body[^>]*>')
@@ -160,36 +184,20 @@ function! KindleGenPrep()
   if search('</span>')
     execute '%s#</span>##g'
   endif
-  " if search('<meta[^>]*>')
-    " execute '%s/<meta[^>]*>/\r&/g'
-  " endif
   if search(' style="[^"]*"')
     execute '%s/ style="[^"]*"//g'
   endif
   if search('<!--.\{-}-->')
     execute '%s/<!--.\{-}-->//g'
   endif
+  if search('<img .\{-}>')
+    execute '%s/<img .\{-}>//g'
+  endif
 
   " Strip references to external stylesheets.
   if search('<link[^>]*>')
     execute '%s/<link[^>]*>//g'
   endif
-
-  while search('<iframe')
-    execute 'normal dat'
-  endwhile
-  while search('<noscript')
-    execute 'normal dat'
-  endwhile
-  while search('<script')
-    execute 'normal dat'
-  endwhile
-  while search('<style')
-    execute 'normal dat'
-  endwhile
-  while search('<aside')
-    execute 'normal dat'
-  endwhile
 
   " Japan Times
   while search('<div class="teads-adCall')
@@ -198,13 +206,23 @@ function! KindleGenPrep()
   while search('div class="jt_content_ad')
     execute 'normal dat'
   endwhile
-
-  " TODO Search for more non-ASCII with /[^\x00-\x7F]
-  " Also look for <meta name="author" content="">
-
-  execute 'g/^\s*$/d'
-
-  if search('<title')
+  if search('ul class="single-sns-area"')
+    execute 'normal dat'
+  endif
+  " Remove everything after the article body.
+  if search('<div class="jtarticle_related"/')
+    execute '/<div class="jtarticle_related"/,/<\/body/-d'
   endif
 
+  execute 'g/^\s*$/d'
+  if search('</body')
+    execute 's#</body#\r&#'
+  endif
+
+  " Risky, but almost always right. Disrespects tags, so run last.
+  execute '/<body/+,/<h1/-d'
+
+  if search('<title')
+    " Just leave the focus on the <title> tag when we're done.
+  endif
 endfunction
