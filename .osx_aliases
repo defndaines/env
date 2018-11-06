@@ -26,7 +26,6 @@ alias wrok='work'
 
 # bash
 ######
-alias art='vim -c "source ${HOME}/bin/prep.vim"'
 alias be='bundle exec'
 alias brave='open -a Brave'
 alias bu='brew cleanup && brew prune && brew update && brew upgrade'
