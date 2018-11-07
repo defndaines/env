@@ -217,6 +217,9 @@ function! KindleGenPrep()
   if search('<div class="jtarticle_related"/')
     execute '/<div class="jtarticle_related"/,/<\/body/-d'
   endif
+  if search('[あ-を]')
+    execute '%s/<html.\{-}>/<html lang="ja"/'
+  endif
 
   " New Yorker
   while search('<div class="Callout')
