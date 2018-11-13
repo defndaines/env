@@ -240,7 +240,7 @@ function! KindleGenPrep()
   while search('<div class="bxc')
     execute 'normal dat'
   endwhile
-  
+
   " Longreads
   while search('<div class="featured-image-container">')
     execute 'normal dat'
