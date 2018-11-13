@@ -197,6 +197,12 @@ function! KindleGenPrep()
   if search('<img .\{-}>')
     execute '%s/<img .\{-}>//g'
   endif
+  if search('<meta name="twitter')
+    execute '%s/<meta name="twitter[^>]*>//'
+  endif
+  if search('<meta property="fb')
+    execute '%s/<meta property="fb[^>]*>//'
+  endif
 
   " Strip references to external stylesheets.
   if search('<link[^>]*>')
@@ -218,7 +224,7 @@ function! KindleGenPrep()
     execute '/<div class="jtarticle_related"/,/<\/body/-d'
   endif
   if search('[あ-を]')
-    execute '%s/<html.\{-}>/<html lang="ja"/'
+    execute '%s/<html.\{-}>/<html lang="ja">/'
   endif
 
   " New Yorker
@@ -232,6 +238,20 @@ function! KindleGenPrep()
     execute 'normal dat'
   endwhile
   while search('<div class="bxc')
+    execute 'normal dat'
+  endwhile
+  
+  " Longreads
+  while search('<div class="featured-image-container">')
+    execute 'normal dat'
+  endwhile
+  if search('<div class="member-promo slim">')
+    execute 'normal dat'
+  endif
+  while search('<div class="in-story">')
+    execute 'normal dat'
+  endwhile
+  while search('<div data-shortcode="caption"')
     execute 'normal dat'
   endwhile
 
