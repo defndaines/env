@@ -197,12 +197,12 @@ function! KindleGenPrep()
   if search('<img .\{-}>')
     execute '%s/<img .\{-}>//g'
   endif
-  if search('<meta name="twitter')
+  while search('<meta name="twitter')
     execute '%s/<meta name="twitter[^>]*>//'
-  endif
-  if search('<meta property="fb')
+  endwhile
+  while search('<meta property="fb')
     execute '%s/<meta property="fb[^>]*>//'
-  endif
+  endwhile
 
   " Strip references to external stylesheets.
   if search('<link[^>]*>')
