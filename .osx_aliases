@@ -35,6 +35,7 @@ alias f='find . -name'
 alias ot='open -a TextEdit'
 alias preview='open -a preview'
 alias utc='date -u +"%Y-%m-%dT%H:%M:%SZ"'
+alias ll='ls -lhtr'
 # alias words='/usr/share/dict/words'
 
 # postgresql
