@@ -53,3 +53,7 @@ alias rrl='clojure -R:rebel -m rebel-readline.main'
 # redis
 #######
 alias rup='redis-server /usr/local/etc/redis.conf &'
+
+# javascript
+############
+alias ntw='npm run test -- --watch'
