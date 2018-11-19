@@ -14,7 +14,7 @@
         :injections [(require 'pjstadig.humane-test-output)
                      (pjstadig.humane-test-output/activate!)]}
  :repl {:dependencies
-        [^:displace [org.clojure/clojure "1.10.0-beta3"]]}
+        [^:displace [org.clojure/clojure "1.10.0-beta7"]]}
  :cljfmt {:remove-consecutive-blank-lines? false
           :indents {fdef [[:inner 0]]}}
 }
