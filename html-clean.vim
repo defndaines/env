@@ -203,6 +203,16 @@ function! KindleGenPrep()
   while search('<meta property="fb')
     execute '%s/<meta property="fb[^>]*>//'
   endwhile
+  while search('<meta name="msapplication-')
+    execute '%s/<meta name="msapplication-[^>]*>//'
+  endwhile
+  while search('<meta name="apple-mobile-web-')
+    execute '%s/<meta name="apple-mobile-web-[^>]*>//'
+  endwhile
+  while search('<div class="ad-unit')
+    execute 'normal dat'
+  endwhile
+
 
   " Strip references to external stylesheets.
   if search('<link[^>]*>')
