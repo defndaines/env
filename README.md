@@ -66,7 +66,7 @@ I sometimes set up projects to use ctags.
 
 I'm not actively developing in OCaml at the moment, but I still like to have
 it set up in my environment, particularly so I can take advantage of
-[patdiff](https://janestreet.github.io/patdiff.html). My
+[patdiff](https://github.com/janestreet/patdiff). My
 [.bash_profile](.bash_profile) already checks for `opam` installation (the
 OCaml package manager), [.ocamlinit](.ocamlinit) is already set up, and
 [.gitconfig](.gitconfig) is set up to allow `git patdiff <file>`.
