@@ -57,3 +57,6 @@ alias rup='redis-server /usr/local/etc/redis.conf &'
 # javascript
 ############
 alias ntw='npm run test -- --watch'
+if [ $(command -v rlwrap) ]; then
+  alias node='NODE_NO_READLINE=1 rlwrap node'
+fi
