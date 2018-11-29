@@ -71,7 +71,6 @@ if [ -f ~/bin/work-library.sh ]; then
 fi
 
 
-
 # Debian
 # ######
 
@@ -94,3 +93,5 @@ fi
 if [ -f ~/.workrc ]; then
   . ~/.workrc
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

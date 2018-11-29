@@ -324,27 +324,9 @@ let g:paredit_electric_return = 0
 nnoremap <Space> <Nop>
 let g:maplocalleader=' '
 
-"" rainbow_parentheses.vim
+"" rainbow
 
-augroup lisp
-  autocmd!
-  autocmd Syntax clojure RainbowParenthesesLoadRound
-  autocmd BufEnter *.clj RainbowParenthesesToggle
-  autocmd BufLeave *.clj RainbowParenthesesToggle
-augroup END
-
-let g:rbpt_colorpairs = [
-    \ ['magenta',     'purple1'],
-    \ ['cyan',        'magenta1'],
-    \ ['green',       'slateblue1'],
-    \ ['yellow',      'cyan1'],
-    \ ['red',         'springgreen1'],
-    \ ['magenta',     'green1'],
-    \ ['cyan',        'greenyellow'],
-    \ ['green',       'yellow1'],
-    \ ['yellow',      'orange1'],
-    \ ]
-let g:rbpt_max = 9
+let g:rainbow_active = 1
 
 
 """ OCaml Options
@@ -487,6 +469,28 @@ let g:ale_lint_on_text_changed = 'never'
 
 """ fzf (fuzzy finder)
 set runtimepath+=/usr/local/opt/fzf
+
+
+""" Learn VimScript the Hard Way
+nnoremap <leader>g :set operatorfunc=<SID>GrepOperator<cr>g@
+vnoremap <leader>g :<c-u>call <SID>GrepOperator(visualmode())<cr>
+
+function! s:GrepOperator(type)
+  let saved_unnamed_register = @@
+
+  if a:type ==# 'v'
+    normal! `<v`>y
+  elseif a:type ==# 'char'
+    normal! `[v`]y
+  else
+    return
+  endif
+
+  silent execute "grep! -R " . shellescape(@@) . " ."
+  copen
+
+  let @@ = saved_unnamed_register
+endfunction
 
 
 " Put these lines at the very end of your vimrc file.
