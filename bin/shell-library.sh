@@ -4,7 +4,7 @@
 # Update only vim bundles
 function vup() {
   echo "### Updating vim bundles"
-  bundles=(${HOME}/.vim/pack/start/*)
+  bundles=(${HOME}/.vim/pack/bundle/start/*)
   for bundle in "${bundles[@]}"; do
     pushd "$bundle"
     git pull
