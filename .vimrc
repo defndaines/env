@@ -313,6 +313,22 @@ function! OpenClojureTestFile()
   execute "edit " . s:ns
 endfunction
 
+nnoremap <leader>e :call FormatEDN()<CR>1G=G<CR>
+
+function! FormatEDN()
+  " Separate sequences of strings to separate lines.
+  if search('" "')
+    execute '%s/" "/"\r"/g'
+  endif
+  " Break lists of maps onto separate lines.
+  if search('} {')
+    execute '%s/} {/}\r{/g'
+  endif
+  " Convert commas into newlines in maps.
+  if search(', :')
+    execute '%s/, :/\r:/g'
+  endif
+endfunction
 
 "" paredit
 
