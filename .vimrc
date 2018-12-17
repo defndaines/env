@@ -485,6 +485,7 @@ let g:ale_lint_on_text_changed = 'never'
 
 """ fzf (fuzzy finder)
 set runtimepath+=/usr/local/opt/fzf
+nnoremap <C-p> :<C-u>FZF<CR>
 
 
 """ Learn VimScript the Hard Way
