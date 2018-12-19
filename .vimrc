@@ -79,8 +79,16 @@ set complete+=kspell
 set ttimeout
 set ttimeoutlen=100
 
-set history=200
+set history=500
+
+" Persistent Undo across sessions
 set undofile
+set undodir=$VIMDATA/undo
+call mkdir(&undodir, 'p')
+augroup vimrc
+  autocmd!
+  autocmd BufWritePre */tmp/* setlocal noundofile
+augroup END
 
 set display+=lastline
 
