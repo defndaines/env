@@ -28,7 +28,10 @@ if [ -d /usr/local/mysql/bin ]; then
 fi
 
 # Add Python3 installed binaries to path
-PATH=${PATH}:${HOME}/Library/Python/3.6/bin
+PATH=${PATH}:${HOME}/Library/Python/3.7/bin
+
+# Add SQLite to PATH
+PATH="/usr/local/opt/sqlite/bin:$PATH"
 
 # Prioritize anything brewed in.
 PATH="/usr/local/sbin:/usr/local/bin:$PATH"
@@ -51,3 +54,16 @@ export HOMEBREW_NO_ANALYTICS=1
 
 # Allows for quicker switching between source code repositories.
 export CDPATH=${HOME}/src:${CDPATH}
+
+export GREP_OPTIONS='--color=auto'
+
+# If using both fzf and rg.
+if [ -x "$(command -v fzf)" ] ; then
+  if [ -x "$(command -v rg)" ] ; then
+    export FZF_DEFAULT_COMMAND='rg --files'
+  fi
+fi
+
+# vim Options
+export VIMCONFIG=~/.vim
+export VIMDATA=~/.vim

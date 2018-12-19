@@ -80,6 +80,7 @@ set ttimeout
 set ttimeoutlen=100
 
 set history=200
+set undofile
 
 set display+=lastline
 
