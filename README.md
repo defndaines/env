@@ -25,6 +25,8 @@ I've used at one point or another.
 * [nerdcommenter](https://github.com/scrooloose/nerdcommenter.git) Code
   commenting functions.
 * [ale](https://github.com/w0rp/ale.git) Asynchronous Lint Engine
+* [vim-grepper](https://github.com/mhinz/vim-grepper.git) Grepper for
+  asynchronous greps
 
 ### Clojure
 * [vim-clojure-static](https://github.com/guns/vim-clojure-static.git)

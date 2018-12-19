@@ -488,26 +488,17 @@ set runtimepath+=/usr/local/opt/fzf
 nnoremap <C-p> :<C-u>FZF<CR>
 
 
-""" Learn VimScript the Hard Way
-nnoremap <leader>g :set operatorfunc=<SID>GrepOperator<cr>g@
-vnoremap <leader>g :<c-u>call <SID>GrepOperator(visualmode())<cr>
+""" Grepper
+let g:grepper = {}
+" let g:grepper.tools = ['rg', 'git, 'grep']
+let g:grepper.tools = ['rg']
 
-function! s:GrepOperator(type)
-  let saved_unnamed_register = @@
+" Search for the current word.
+nnoremap <leader>* :Grepper -cword -noprompt<CR>
 
-  if a:type ==# 'v'
-    normal! `<v`>y
-  elseif a:type ==# 'char'
-    normal! `[v`]y
-  else
-    return
-  endif
-
-  silent execute "grep! -R " . shellescape(@@) . " ."
-  copen
-
-  let @@ = saved_unnamed_register
-endfunction
+" Search for the current selection.
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
 
 
 " Put these lines at the very end of your vimrc file.
