@@ -14,8 +14,6 @@
         :injections [(require 'pjstadig.humane-test-output)
                      (pjstadig.humane-test-output/activate!)]
         :middleware [cider-nrepl.plugin/middleware]}
- :repl {:dependencies
-        [^:displace [org.clojure/clojure "1.10.0"]]}
  :cljfmt {:remove-consecutive-blank-lines? false
           :indents {fdef [[:inner 0]]}}
  }
