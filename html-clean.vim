@@ -15,6 +15,10 @@ function! KindleGenPrep()
   while search('<aside')
     execute 'normal dat'
   endwhile
+  " Only turn on for wikipedia
+  " while search('<sup ')
+    " execute 'normal dat'
+  " endwhile
   while search('<figure')
     execute 'normal dat'
   endwhile
