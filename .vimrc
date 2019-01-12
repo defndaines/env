@@ -172,6 +172,10 @@ highlight ColorColumn ctermbg=0 guifg=lightgrey
 highlight rightMargin term=bold ctermfg=blue guifg=blue
 
 
+" Format XML
+command! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
+nnoremap <leader>x :FormatXML<CR>
+
 " Format JSON
 nnoremap <leader>j :%!python3 -m json.tool<CR>1G=G<CR>:call FormatJSON()<CR>
 nnoremap <leader>r :call FormatJSON()<CR>
