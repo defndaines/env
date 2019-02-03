@@ -277,6 +277,8 @@ function! KindleGenPrep()
   " Risky, but almost always right. Disrespects tags, so run last.
   execute '/<body/+,/<h1/-d'
 
+  call 1G<CR>
+
   if search('<title')
     " Just leave the focus on the <title> tag when we're done.
   endif
