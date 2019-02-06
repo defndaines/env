@@ -12,6 +12,12 @@ function vup() {
   done
 }
 
+function alert() {
+  say -v Kyoko "終わったよ"
+  say -v Moira "Well ... that went well."
+  osascript -e 'tell application "Finder" to display dialog "DONE!"'
+}
+
 function usage {
   echo "error: $*" 2>&1
   exit 1
