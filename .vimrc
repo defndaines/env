@@ -223,6 +223,8 @@ inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 
 let g:slime_target = 'tmux'
 let g:slime_paste_file = tempname()
+" This allows slime to work with tmate!
+let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.1"}
 
 
 """ Hg options
