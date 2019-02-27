@@ -6,6 +6,7 @@
                   [lein-cljfmt "0.6.4"]
                   [lein-cloverage "1.0.13"]
                   [lein-kibit "0.1.6"]
+                  [lein-nvd "0.6.0"]
                   [lein-try "0.4.3"]
                   [lein-typed "0.4.6"]
                   [venantius/yagni "0.1.7"]
