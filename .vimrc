@@ -284,6 +284,7 @@ let g:ctrlp_custom_ignore = {
 
 let g:clj_highlight_builtins = 1
 let g:clojure_special_indent_words = 'deftype,defrecord,reify,proxy,extend-type,extend-protocol,letfn,defcomponent'
+let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^for-all']
 " Don't stop indentation fixes at 100 lines.
 let g:clojure_maxlines = 0
 
