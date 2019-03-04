@@ -4,7 +4,7 @@
                   [lein-ancient "0.6.15"]
                   [lein-bikeshed "0.5.1"]
                   [lein-cljfmt "0.6.4"]
-                  [lein-cloverage "1.0.13"]
+                  [lein-cloverage "1.1.0"]
                   [lein-kibit "0.1.6"]
                   [lein-nvd "0.6.0"]
                   [lein-try "0.4.3"]
