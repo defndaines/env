@@ -373,6 +373,18 @@ if executable('ocamlmerlin') && has('python')
 endif
 
 
+""" ReasonML Options
+
+let g:LanguageClient_serverCommands = {
+      \ 'reason': ['/Users/msd/bin/reason-language-server.exe']
+      \ }
+
+" per https://github.com/autozimu/LanguageClient-neovim/blob/next/INSTALL.md
+set runtimepath+=~/.vim-plugins/LanguageClient-neovim
+
+let g:deoplete#enable_at_startup = 1
+
+
 """ Ruby Options
 
 " Allows gf to jump to Ruby requires.
