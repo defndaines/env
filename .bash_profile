@@ -39,6 +39,8 @@ PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 # Prioritize RVM if installed
 if [ -e ${HOME}/.rvm ] ; then
   PATH="${HOME}/.rvm/bin:${PATH}"
+elif [ -e /usr/local/opt/ruby/bin ] ; then
+  PATH="/usr/local/opt/ruby/bin:$PATH"
 fi
 
 # Clear out duplication in the PATH before exporting.
