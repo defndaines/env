@@ -18,6 +18,10 @@ function alert() {
   osascript -e 'tell application "Finder" to display dialog "DONE!"'
 }
 
+function most-common {
+  sort "$@" | uniq -c | sort -n | tail
+}
+
 function usage {
   echo "error: $*" 2>&1
   exit 1
