@@ -45,14 +45,9 @@ alias pgdown='pg_ctl -D /usr/local/var/postgres stop'
 
 # clojure
 #########
-alias lrr='lein trampoline run -m rebel-readline.main'
 alias ltr='lein test-refresh :changes-only'
+alias lf='lein cljfmt fix'
 alias node-cljs='clj -m cljs.main --repl-env node'
-alias rrl='clojure -R:rebel -m rebel-readline.main'
-
-# redis
-#######
-alias rup='redis-server /usr/local/etc/redis.conf &'
 
 # javascript
 ############
