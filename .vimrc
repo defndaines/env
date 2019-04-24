@@ -290,6 +290,8 @@ let g:clojure_special_indent_words = 'deftype,defrecord,reify,proxy,extend-type,
 let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^for-all']
 " Don't stop indentation fixes at 100 lines.
 let g:clojure_maxlines = 0
+" Causes 1-space indent if there is no argument after a function.
+let g:clojure_align_subforms = 1
 
 augroup clojure
   autocmd!
