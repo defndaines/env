@@ -205,6 +205,9 @@ function! FormatJSON()
   while search('^\( *\)\(.[^{]*\): {')
     execute '%s/^\( *\)\(.[^{]*\): {/\1\2:\r\1  {/g'
   endwhile
+  if search('\n\( *])\[ .*\n\1]')
+    execute '%s#\n\( *\)\[ \(.*\)\n\1]# [ \2 ]#'
+  endif
 endfunction
 
 
