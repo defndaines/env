@@ -429,6 +429,8 @@ vnoremap <leader>` <esc>`>a`<esc>`<i`<esc>
 nnoremap <leader>" viw<esc>`>a"<esc>`<i"<esc>
 nnoremap <leader>' viw<esc>`>a'<esc>`<i'<esc>
 nnoremap <leader>` viw<esc>`>a`<esc>`<i`<esc>
+vnoremap <leader>i <esc>`>a*<esc>`<i*<esc>
+vnoremap <leader>b <esc>`>a**<esc>`<i**<esc>
 
 
 """ HTML Options
