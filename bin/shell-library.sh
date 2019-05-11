@@ -10,12 +10,14 @@ function vup() {
     git pull
     popd
   done
-  bundles=(${HOME}/.vim/pack/bundle/opt/*)
-  for bundle in "${bundles[@]}"; do
-    pushd "$bundle"
-    git pull
-    popd
-  done
+  if [ -d "${HOME}/.vim/pack/bundle/opt" ]; then
+    bundles=(${HOME}/.vim/pack/bundle/opt/*)
+    for bundle in "${bundles[@]}"; do
+      pushd "$bundle"
+      git pull
+      popd
+    done
+  fi
 }
 
 function alert() {
