@@ -303,6 +303,7 @@ augroup END
 
 set wildignore+=*/target/*
 
+" TODO Make this only applicable if editing a Clojure file?
 nnoremap <leader>c :call AddClojureNamespace()<CR>
 
 function! AddClojureNamespace()
@@ -397,12 +398,13 @@ set suffixesadd+=.rb
 
 augroup ruby
   autocmd!
+  autocmd BufWritePre *.rb :%s/\s\+$//e
+  autocmd BufWritePre *.rb :%s/\t/  /ge
   " autoindent with two spaces, always expand tabs
   autocmd FileType ruby,yaml set ai sw=2 sts=2 et
 
   autocmd BufWritePre *.rb :%s/\s\+$//e
 augroup END
-
 
 compiler ruby
 
