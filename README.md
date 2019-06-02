@@ -1,6 +1,7 @@
 # env
 
-Environmental configuration files to be shared across any machine I happen to be using.
+Environmental configuration files to be shared across any machine I happen to
+be using.
 
 In addition to these files, it is also recommended to install git completion:
 https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
@@ -49,10 +50,9 @@ I've used at one point or another.
 
 ### vim Colors
 
-These are the color schemes I've settled on for now, installed in the
-`.vim/colors/` directory:
-* [dark_eyes](https://github.com/bf4/vim-dark_eyes)
-* [iceberg](https://github.com/cocopon/iceberg.vim)
+This is the color scheme I've settled on for now, installed in the
+`.vim/colors/` directory. I've recently switched back to a light theme.
+* [solarized8_flat](https://raw.githubusercontent.com/lifepillar/vim-solarized8/master/colors/solarized8_flat.vim)
 
 
 ## CTags
