@@ -7,8 +7,8 @@ set encoding=utf-8
 set spelllang=en_us,cjk
 set fileformat=unix
 
-set background=dark
-colorscheme dark_eyes
+set background=light
+colorscheme solarized8_flat
 
 let g:mapleader=','
 
@@ -167,9 +167,9 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>p :%s/\(\S \) \+/\1/g<CR>
 
 set colorcolumn=80
-highlight ColorColumn ctermbg=0 guifg=lightgrey
+highlight ColorColumn ctermbg=7 guifg=black
 
-highlight rightMargin term=bold ctermfg=blue guifg=blue
+highlight rightMargin term=bold ctermfg=black guifg=brown
 
 
 " Format XML
