@@ -81,6 +81,10 @@ function rl {
   sort --random-sort "$@" | head -1
 }
 
+function _current_branch {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
 # Enable branch completion for `co` alias (git checkout).
 _branches() {
   local cur branches modified
