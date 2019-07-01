@@ -205,9 +205,9 @@ function! FormatJSON()
   while search('^\( *\)\(.[^{]*\): {')
     execute '%s/^\( *\)\(.[^{]*\): {/\1\2:\r\1  {/g'
   endwhile
-  if search('\n\( *])\[ .*\n\1]')
-    execute '%s#\n\( *\)\[ \(.*\)\n\1]# [ \2 ]#'
-  endif
+  " if search('\n\( *])\[ .*\n\1]')
+    " execute '%s#\n\( *\)\[ \(.*\)\n\1]# [ \2 ]#'
+  " endif
 endfunction
 
 
@@ -364,7 +364,8 @@ let g:maplocalleader=' '
 
 "" rainbow
 
-let g:rainbow_active = 1
+" TODO Reconfigure for light background. Default is for dark.
+" let g:rainbow_active = 1
 
 
 """ OCaml Options
