@@ -1,4 +1,22 @@
 set editing-mode vi
+
+set history-size 10000
+
+# Just show instead of ringing the bell.
+set show-all-if-ambiguous on
+
+# Display possible completions using different colors.
+set colored-stats on
+
+# Maximum characters from a common prefix to display for completions.
+set completion-prefix-display-length 3
+
+# Append slash to symlinked directories.
+set mark-symlinked-directories on
+
+# Include stat information in autocompletion.
+set visible-stats on
+
 # Cannot figure out how to enable these:
 # alias-expand-line
 # history-and-alias-expand-line
