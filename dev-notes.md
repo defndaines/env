@@ -60,6 +60,15 @@ uuidgen
 ```bash
 new_id=$(uuidgen) && jq ".request" file.json | jq ".user.ids[0].value = \"${new_id}\"" | pbcopy
 ```
+### Display Multiple Fields
+```bash
+jq '.selected_diagnostics[] | .date, .name' source.json
+```
+
+### Conditionally Show Selected Fields
+```bash
+jq '.selected_diagnostics[] | select ( .name | contains("MP")) | .date, .name' source.json
+```
 
 ### Join Every Line but the Seventh:
 ```bash
@@ -100,6 +109,26 @@ curl ipinfo.io
 java -XX:+UnlockDiagnosticVMOptions -XX:+PrintFlagsFinal -version
 ```
 
+### List Unique Lines without Sorting
+```bash
+awk '! seen[$0]++'
+```
+
+### Remove Lines from file2 that Are Found in file1
+```bash
+grep -F -v -f file1 file2 > remaining
+```
+
+### To Redirect where slime Is Pointing
+```
+^-c v
+```
+
+### To Sort a File by Line Length, Longest First
+```bash
+cat testfile | awk '{ print length, $0 }' | sort -nr | cut -d" " -f2-
+```
+
 
 ## PostgreSQL (and `psql` in Particular)
 
@@ -121,17 +150,62 @@ SHOW ALL;
 
 ## vim
 
-Copy to clipboard
+### Copy to Clipboard
 ```
 :w !pbcopy
 " or use "+
 ```
 
-See what the current mappings are:
+### See What the Current Mappings Are:
 ```
 :map
 :nmap " normal mode
 :vmap " visual mode
 :imap " insert mode
 :help index " to see all the build-in commands
+```
+
+### Copy Contents of File into Current Position
+```
+:read <file-name>
+```
+
+### Address Spelling Highlights
+```
+" Move to next highlight
+]s
+" Move to previous highlight
+[s
+```
+
+### Redraw the Screen if Things Have Gone Odd
+```
+:redraw!
+```
+
+### Text Alignment with 
+```
+:right
+:center
+:left
+```
+
+### Saving and Restoring Sessions
+```
+" May want to add 'Session.vim' to .gitignore
+:mksession!
+$ vim -S
+```
+
+
+## Ruby
+
+### Read in Hash-syntax Map from File
+```ruby
+data = JSON.parse(File.read('/path/to/file-name').gsub('=>', ':'))
+```
+
+### Use Rails to Access DB
+```
+RAILS_ENV=production bundle exec rails dbconsole -p
 ```
