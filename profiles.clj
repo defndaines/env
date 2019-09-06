@@ -1,5 +1,5 @@
 {:user {:plugins [[com.jakemccrary/lein-test-refresh "0.24.1"]
-                  [cider/cider-nrepl "0.22.0"]
+                  [cider/cider-nrepl "0.22.2"]
                   [jonase/eastwood "0.3.6" :exclusions [org.clojure/clojure]]
                   [lein-ancient "0.6.15"]
                   [lein-bikeshed "0.5.2" :exclusions [org.clojure/tools.cli]]
