@@ -3,7 +3,7 @@
                   [jonase/eastwood "0.3.6" :exclusions [org.clojure/clojure]]
                   [lein-ancient "0.6.15"]
                   [lein-bikeshed "0.5.2" :exclusions [org.clojure/tools.cli]]
-                  [lein-cljfmt "0.6.4"]
+                  [lein-cljfmt "0.6.5"]
                   [lein-cloverage "1.1.2"]
                   [lein-kibit "0.1.7"]
                   [lein-nvd "1.3.0"]
