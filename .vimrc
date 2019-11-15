@@ -174,6 +174,7 @@ highlight rightMargin term=bold ctermfg=black guifg=brown
 
 " Format XML
 command! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
+" command! C14N11 :!xmllint --c14n11 %
 nnoremap <leader>x :FormatXML<CR>
 
 " Format JSON
@@ -293,6 +294,9 @@ let g:clojure_maxlines = 0
 " Causes 1-space indent if there is no argument after a function.
 let g:clojure_align_subforms = 1
 
+" Only use kondo for now.
+let g:ale_linters = {'clojure': ['clj-kondo']}
+
 augroup clojure
   autocmd!
   autocmd BufWritePre *.clj :%s/\s\+$//e
@@ -403,6 +407,9 @@ augroup ruby
   autocmd BufWritePre *.rb :%s/\t/  /ge
   " autoindent with two spaces, always expand tabs
   autocmd FileType ruby,yaml set ai sw=2 sts=2 et
+  " treat thor files as Ruby
+  autocmd BufNewFile,BufReadPost *.thor set filetype=ruby
+  autocmd BufRead,BufNewFile *.thor set filetype=ruby
 
   autocmd BufWritePre *.rb :%s/\s\+$//e
 augroup END
