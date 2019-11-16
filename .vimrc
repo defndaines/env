@@ -342,6 +342,7 @@ endfunction
 nnoremap <leader>e :call FormatEDN()<CR>1G=G<CR>
 
 function! FormatEDN()
+  " TODO: There are better tools for this, just plug into them (joker?)
   " Separate sequences of strings to separate lines.
   if search('" "')
     execute '%s/" "/"\r"/g'
@@ -459,6 +460,12 @@ augroup javascript
 augroup END
 
 
+""" PHP Options
+
+augroup php
+  " set expandtab tabstop=4 shiftwidth=4 softtabstop=4
+augroup END
+
 """ TagList Options
 
 let g:Tlist_Use_Right_Window=1
@@ -526,6 +533,10 @@ nmap <silent> <C-j> <Plug>(ale_next)
 
 " Only lint on save.
 let g:ale_lint_on_text_changed = 'never'
+
+" PHP settings
+let g:ale_php_phpstan_level = '7'
+let g:phpstan_analyse_level = '7'
 
 
 """ fzf (fuzzy finder)
