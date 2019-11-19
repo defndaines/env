@@ -459,6 +459,9 @@ augroup javascript
   autocmd BufNewFile,BufRead *.json setf javascript
 augroup END
 
+" Fix files with prettier, and then ESLint.
+let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
+
 
 """ PHP Options
 
