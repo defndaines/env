@@ -5,7 +5,7 @@
                   [lein-bikeshed "0.5.2" :exclusions [org.clojure/tools.cli]]
                   [lein-cljfmt "0.6.5"]
                   [lein-cloverage "1.1.2"]
-                  [lein-kibit "0.1.7"]
+                  [lein-kibit "0.1.8"]
                   [lein-nvd "1.3.0"]
                   [lein-try "0.4.3"]
                   [lein-typed "0.4.6"]
