@@ -39,6 +39,12 @@ augroup all-files
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 augroup END
 
+" Delete comment characters when joining commented lines
+set formatoptions+=j
+
+" Don't redraw screen during macro execution (makes them faster)
+set lazyredraw
+
 set showcmd
 set nobackup
 set ruler
@@ -108,7 +114,7 @@ let g:netrw_banner=0
 " Handle my common command typos.
 cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W'))
 " This doesn't do what I want, but at least it doesn't open up a file called "3" for editing.
-cnoreabbrev <expr> e3 ((getcmdtype() is# ':' && getcmdline() is# 'e3')?('3'):(''))
+cnoreabbrev <expr> e3 ((getcmdtype() is# ':' && getcmdline() is# 'e3')?(''):(''))
 
 
 "" Visual star search ... make *|# act upon the current visual selection.
