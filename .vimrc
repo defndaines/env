@@ -363,20 +363,17 @@ function! FormatEDN()
   endif
 endfunction
 
-"" paredit
-
-" Don't insert empty line before closing parens on <Enter>
-let g:paredit_electric_return = 0
-
 "" sexp
 
 nnoremap <Space> <Nop>
 let g:maplocalleader=' '
 
-"" rainbow
+"" iced
 
-" TODO Reconfigure for light background. Default is for dark.
-" let g:rainbow_active = 1
+" Enable vim-iced's default key mapping
+let g:iced_enable_default_key_mappings = v:true
+" Automatically display expected arguments to the right
+" let g:iced_enable_auto_document = 'every'
 
 
 """ OCaml Options
@@ -535,6 +532,9 @@ augroup END
 
 " Enable completion where available.
 let g:ale_completion_enabled = 1
+
+" Enable alex for all files
+let g:ale_alex_use_global = 1
 
 " Navigate to ALE errors.
 nmap <silent> <C-k> <Plug>(ale_previous)
