@@ -22,9 +22,13 @@ if [ -d "${HOME}/bin" ] ; then
   PATH=${HOME}/bin:${PATH}
 fi
 
-# Bring in MySQL installation.
-if [ -d /usr/local/mysql/bin ]; then
-  PATH=${PATH}:/usr/local/mysql/bin
+# Bring in MySQL, if installed.
+if [ -d /usr/local/opt/mysql/bin ]; then
+  PATH=${PATH}:/usr/local/opt/mysql/bin
+fi
+# Check for mysql command-line client.
+if [ -d /usr/local/opt/mysql-client/bin ]; then
+  PATH="/usr/local/opt/mysql-client/bin:$PATH"
 fi
 
 # Add Python3 installed binaries to path
