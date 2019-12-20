@@ -13,29 +13,24 @@ For vim, install these plugins by cloning into
 `${HOME}/.vim/pack/bundle/start/`. The following are a list of vim libraries
 I've used at one point or another.
 
-* [rainbow](https://github.com/luochen1990/rainbow.git) Color nested
-  parenthesis for easy visual matching.
+* [vim-slime](https://github.com/jpalardy/vim-slime.git) Inject from one tmux
+  pane to another.
+* [ale](https://github.com/w0rp/ale.git) Asynchronous Lint Engine
 * [tabular](https://github.com/godlygeek/tabular.git) Auto-align text,
   typically by a record separator. For example, `:Tabularize /|` aligns on
   pipe characters.
 * [vim-repeat](https://github.com/tpope/vim-repeat.git) Allows using `.` with
   plugins.
-* [vim-slime](https://github.com/jpalardy/vim-slime.git) Inject from one tmux
-  pane to another.
 * [vim-surround](https://github.com/tpope/vim-surround.git)
 * [nerdcommenter](https://github.com/scrooloose/nerdcommenter.git) Code
   commenting functions.
-* [ale](https://github.com/w0rp/ale.git) Asynchronous Lint Engine
 * [vim-grepper](https://github.com/mhinz/vim-grepper.git) Grepper for
   asynchronous greps
 
 ### Clojure
 * [vim-clojure-static](https://github.com/guns/vim-clojure-static.git)
-* [vim-clojure-highlight](https://github.com/guns/vim-clojure-highlight)
-* [vim-fireplace](https://github.com/tpope/vim-fireplace.git) For Clojure
-  development leveraging nREPL integration.
-* [paredit](https://github.com/kovisoft/paredit.git) For parentheses
-  manipulation.
+* [vim-iced](https://github.com/liquidz/vim-iced.git)
+* [vim-sexp](https://github.com/guns/vim-sexp.git)
 
 ### Erlang
 * [erlang-motions](https://github.com/edkolev/erlang-motions.vim.git)
