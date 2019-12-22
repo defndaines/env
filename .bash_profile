@@ -13,7 +13,7 @@ if shopt -q login_shell ; then
 fi
 
 # OPAM configuration
-if [ -e ${HOME}/.opam/opam-init/init.sh ] ; then
+if [ -e "${HOME}/.opam/opam-init/init.sh" ] ; then
   . ${HOME}/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 fi
 
@@ -41,10 +41,14 @@ PATH="/usr/local/opt/sqlite/bin:$PATH"
 PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 
 # Prioritize RVM if installed
-if [ -e ${HOME}/.rvm ] ; then
+if [ -e "${HOME}/.rvm" ] ; then
   PATH="${HOME}/.rvm/bin:${PATH}"
 elif [ -e /usr/local/opt/ruby/bin ] ; then
   PATH="/usr/local/opt/ruby/bin:$PATH"
+fi
+
+if [ -e "${HOME}/.vim/pack/bundle/start/vim-iced/bin" ]; then
+  PATH="$PATH:${HOME}/.vim/pack/bundle/start/vim-iced/bin"
 fi
 
 # Clear out duplication in the PATH before exporting.
