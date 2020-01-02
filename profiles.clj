@@ -4,7 +4,8 @@
                   [lein-cljfmt "0.6.6"]
                   [lein-cloverage "1.1.2"]
                   [lein-nvd "1.3.1"]
-                  [lein-try "0.4.3"]]
+                  [lein-try "0.4.3"]
+                  [lein-zprint "0.5.3"]]
         :middleware [cider-nrepl.plugin/middleware]
         :dependencies [[clj-kondo "RELEASE"]]
         ;; For testing older libraries:
