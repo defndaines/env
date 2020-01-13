@@ -5,7 +5,8 @@
                   [lein-cloverage "1.1.2"]
                   [lein-nvd "1.3.1"]
                   [lein-try "0.4.3"]
-                  [lein-zprint "0.5.3"]]
+                  [lein-zprint "0.5.3"]
+                  [venantius/yagni "0.1.7"]]
         :middleware [cider-nrepl.plugin/middleware]
         :dependencies [[clj-kondo "RELEASE"]]
         ;; For testing older libraries:
