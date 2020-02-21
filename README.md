@@ -21,7 +21,7 @@ I've used at one point or another.
   pipe characters.
 * [vim-repeat](https://github.com/tpope/vim-repeat.git) Allows using `.` with
   plugins.
-* [vim-sandwich](https://github.com/tpope/vim-sandwich.git)
+* [vim-sandwich](https://github.com/machakann/vim-sandwich.git)
 * [nerdcommenter](https://github.com/scrooloose/nerdcommenter.git) Code
   commenting functions.
 * [vim-grepper](https://github.com/mhinz/vim-grepper.git) Grepper for
