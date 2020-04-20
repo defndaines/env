@@ -1,0 +1,70 @@
+---
+AllCops:
+  DisabledByDefault: false
+  DisplayCopNames: true
+  TargetRubyVersion: 2.7
+  Exclude:
+    - 'bin/**/*'
+    - 'coverage/**/*'
+    - 'db/migrate/201*'
+    - 'vendor/**/*'
+    - 'scratch.rb'
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - 'spec/**/*'
+
+Style/BlockDelimiters:
+  EnforcedStyle: semantic
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+
+# The following cops were added to RuboCop, but are not configured.
+# For more information: https://docs.rubocop.org/en/latest/versioning/
+
+Layout/SpaceAroundMethodCallOperator:
+  Description: Checks method call operators to not have spaces around them.
+  Enabled: true
+
+Lint/RaiseException:
+  Description: >-
+                 Checks for `raise` or `fail` statements which are raising
+                 `Exception` class.
+  Enabled: true
+
+Lint/StructNewOverride:
+  Description: >-
+                 'Disallow overriding the `Struct` built-in methods via
+                 `Struct.new`.'
+  Enabled: true
+
+Style/ExponentialNotation:
+  Description: >-
+                 When using exponential notation, favor a mantissa between 1
+                 (inclusive) and 10 (exclusive).
+  Enabled: true
+
+Style/HashEachMethods:
+  Description: 'Use Hash#each_key and Hash#each_value.'
+  Enabled: true
+
+Style/HashTransformKeys:
+  Description: 'Prefer `transform_keys` over `each_with_object` and `map`.'
+  Enabled: true
+
+Style/HashTransformValues:
+  Description: 'Prefer `transform_values` over `each_with_object` and `map`.'
+  Enabled: true
