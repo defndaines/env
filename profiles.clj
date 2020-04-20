@@ -4,7 +4,7 @@
                   [lein-ancient "0.6.15"]
                   [lein-cljfmt "0.6.7"]
                   [lein-cloverage "1.1.2"]
-                  [lein-nvd "1.3.1"]
+                  [lein-nvd "1.4.0"]
                   [lein-try "0.4.3"]
                   [lein-zprint "0.5.4"]
                   [venantius/yagni "0.1.7"]]
