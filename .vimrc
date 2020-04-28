@@ -87,6 +87,10 @@ set ttimeoutlen=100
 
 set history=500
 
+" Move up or down in column to next non-blank line.
+nnoremap g<up> ?\%<C-R>=virtcol(".")<CR>v\S<CR>
+nnoremap g<down> /\%<C-R>=virtcol(".")<CR>v\S<CR>
+
 " Persistent Undo across sessions
 set undofile
 set undodir=$VIMDATA/undo
