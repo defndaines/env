@@ -10,8 +10,9 @@ function vup() {
     git pull
     popd
   done
-  if [ -d "${HOME}/.vim/pack/bundle/opt" ]; then
-    bundles=(${HOME}/.vim/pack/bundle/opt/*)
+  OPT_DIR=${HOME}/.vim/pack/bundle/opt
+  if [[ $(ls -A $OPT_DIR) ]]; then
+    bundles=(${OPT_DIR}/*)
     for bundle in "${bundles[@]}"; do
       pushd "$bundle"
       git pull
