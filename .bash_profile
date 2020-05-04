@@ -47,8 +47,14 @@ elif [ -e /usr/local/opt/ruby/bin ] ; then
   PATH="/usr/local/opt/ruby/bin:$PATH"
 fi
 
+# vim-iced
 if [ -e "${HOME}/.vim/pack/bundle/start/vim-iced/bin" ]; then
   PATH="$PATH:${HOME}/.vim/pack/bundle/start/vim-iced/bin"
+fi
+
+# GNU grep
+if [ -e "/usr/local/opt/grep/libexec/gnubin" ]; then
+  PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 fi
 
 # Clear out duplication in the PATH before exporting.
@@ -77,3 +83,12 @@ fi
 # vim Options
 export VIMCONFIG=~/.vim
 export VIMDATA=~/.vim
+
+# Bash prompt
+export PS1="\h:\[\033[32m\]\W\[\033[33m\]\$(_current_branch)\[\033[00m\] $ "
+
+# SRC_DIR
+export SRC_DIR=${HOME}/src
+
+# Quiet the lein warning about -Xverify:none is deprecated in JDK 13
+export LEIN_JVM_OPTS="-XX:TieredStopAtLevel=1"
