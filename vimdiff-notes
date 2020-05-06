@@ -1,0 +1,8 @@
+]c               Advance to the next block with differences
+[c               Reverse search for the previous block with differences
+do (diff obtain) Bring changes from the other file to the current file
+dp (diff put)    Send changes from the current file to the other file
+zo               Unfold/unhide text
+zc               Refold/rehide text
+zr               Unfold both files completely
+zm               Fold both files completely
