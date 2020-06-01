@@ -6,7 +6,7 @@ AllCops:
   Exclude:
     - 'bin/**/*'
     - 'coverage/**/*'
-    - 'db/migrate/201*'
+    - 'db/schema.rb'
     - 'vendor/**/*'
     - 'scratch.rb'
 
@@ -34,6 +34,10 @@ Style/TrailingCommaInHashLiteral:
 
 # The following cops were added to RuboCop, but are not configured.
 # For more information: https://docs.rubocop.org/en/latest/versioning/
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Description: "Keep blank lines around attribute accessors."
+  Enabled: true
 
 Layout/SpaceAroundMethodCallOperator:
   Description: Checks method call operators to not have spaces around them.
@@ -67,4 +71,8 @@ Style/HashTransformKeys:
 
 Style/HashTransformValues:
   Description: 'Prefer `transform_values` over `each_with_object` and `map`.'
+  Enabled: true
+
+Style/SlicingWithRange:
+  Description: 'Checks array slicing is done with endless ranges when suitable.'
   Enabled: true

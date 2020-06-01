@@ -1,5 +1,5 @@
 {:user {:plugins [[com.jakemccrary/lein-test-refresh "0.24.1"]
-                  [cider/cider-nrepl "0.24.0"]
+                  [cider/cider-nrepl "0.25.0"]
                   [com.livingsocial/lein-dependency-check "1.1.4"]
                   [lein-ancient "0.6.15"]
                   [lein-cljfmt "0.6.7"]
@@ -11,7 +11,7 @@
         :injections [(require 'hashp.core)]
         :middleware [cider-nrepl.plugin/middleware]
         :dependencies [[clj-kondo "RELEASE"]
-                       [hashp "0.1.1"]]
+                       [hashp "0.2.0"]]
         ;; For testing older libraries:
         ; :java-cmd "/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home/bin/java"
         ; :java-cmd "/Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/bin/java"
