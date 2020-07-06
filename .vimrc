@@ -286,7 +286,7 @@ augroup END
 
 highlight SyntaxHighlight ctermbg=darkblue guibg=darkblue
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.beam
+set wildignore+=*.so,*.swp,*.beam
 
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.git$',
@@ -302,7 +302,7 @@ let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^for-all']
 " Don't stop indentation fixes at 100 lines.
 let g:clojure_maxlines = 0
 " Causes 1-space indent if there is no argument after a function.
-let g:clojure_align_subforms = 1
+" let g:clojure_align_subforms = 1
 
 " Only use kondo for now.
 let g:ale_linters = {'clojure': ['clj-kondo']}
@@ -418,6 +418,7 @@ augroup ruby
   " treat thor files as Ruby
   autocmd BufNewFile,BufReadPost *.thor set filetype=ruby
   autocmd BufRead,BufNewFile *.thor set filetype=ruby
+  autocmd BufRead,BufNewFile *.jbuilder set filetype=ruby
 
   autocmd BufWritePre *.rb :%s/\s\+$//e
 augroup END
