@@ -2,7 +2,7 @@
                   [cider/cider-nrepl "0.25.2"]
                   [com.livingsocial/lein-dependency-check "1.1.4"]
                   [lein-ancient "0.6.15"]
-                  [lein-cljfmt "0.6.7"]
+                  [lein-cljfmt "0.6.8"]
                   [lein-cloverage "1.1.2"]
                   [lein-nvd "1.4.0"]
                   [lein-try "0.4.3"]
