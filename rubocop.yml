@@ -4,10 +4,9 @@ AllCops:
   DisplayCopNames: true
   TargetRubyVersion: 2.7
   Exclude:
-    - 'bin/**/*'
     - 'coverage/**/*'
-    - 'db/schema.rb'
     - 'vendor/**/*'
+    - 'db/schema.rb'
     - 'scratch.rb'
 
 Lint/AmbiguousBlockAssociation:
@@ -36,11 +35,16 @@ Style/TrailingCommaInHashLiteral:
 # For more information: https://docs.rubocop.org/en/latest/versioning/
 
 Layout/EmptyLinesAroundAttributeAccessor:
-  Description: "Keep blank lines around attribute accessors."
   Enabled: true
 
 Layout/SpaceAroundMethodCallOperator:
   Description: Checks method call operators to not have spaces around them.
+  Enabled: true
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+Lint/MixedRegexpCaptureTypes:
   Enabled: true
 
 Lint/RaiseException:
@@ -71,6 +75,12 @@ Style/HashTransformKeys:
 
 Style/HashTransformValues:
   Description: 'Prefer `transform_values` over `each_with_object` and `map`.'
+  Enabled: true
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+
+Style/RedundantRegexpEscape:
   Enabled: true
 
 Style/SlicingWithRange:
