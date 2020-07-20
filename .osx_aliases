@@ -59,4 +59,4 @@ fi
 
 # ruby
 # ####
-alias rc='rubocop --safe-auto-correct'
+alias rc='rubocop --auto-correct'
