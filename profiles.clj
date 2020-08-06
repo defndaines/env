@@ -3,7 +3,7 @@
                   [com.livingsocial/lein-dependency-check "1.1.4"]
                   [lein-ancient "0.6.15"]
                   [lein-cljfmt "0.6.8"]
-                  [lein-cloverage "1.1.3"]
+                  [lein-cloverage "RELEASE"]
                   [lein-nvd "1.4.1"]
                   [lein-try "0.4.3"]
                   [lein-zprint "1.0.0"]
