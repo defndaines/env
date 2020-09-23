@@ -313,6 +313,7 @@ augroup clojure
   autocmd BufWritePre *.clj :%s/\t/  /ge
   autocmd Filetype clojure setlocal textwidth=78
   autocmd Filetype clojure setlocal lispwords+=fdef
+  autocmd BufNewFile,BufReadPost .lein-env set filetype=clojure
 augroup END
 
 set wildignore+=*/target/*
@@ -326,7 +327,7 @@ function! AddClojureNamespace()
     let s:under_test = fnamemodify(expand('%'), ':r:s#^test/##:s#_test$##:gs#/#.#:gs#_#-#')
     let s:as_var = split(s:under_test, '\.')[-1]
     call add(s:ns, '  "Tests against the ' . s:under_test . ' namespace."')
-    call add(s:ns, "  (:require [clojure.test :refer [deftest testing is]]")
+    call add(s:ns, "  (:require [clojure.test :refer [deftest is testing]]")
     call add(s:ns, "            [" . s:under_test . " :as " . s:as_var . "]))")
   else
     call add(s:ns, '  "TODO: Write a clear explanation of what purpose this namespace serves."')
