@@ -31,6 +31,9 @@ Style/TrailingCommaInArrayLiteral:
 Style/TrailingCommaInHashLiteral:
   Enabled: false
 
+Style/TrailingUnderscoreVariable:
+  Enabled: false
+
 # The following cops were added to RuboCop, but are not configured.
 # For more information: https://docs.rubocop.org/en/latest/versioning/
 
