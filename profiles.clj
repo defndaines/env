@@ -1,5 +1,5 @@
 {:user {:plugins [[com.jakemccrary/lein-test-refresh "0.24.1"]
-                  [cider/cider-nrepl "0.25.3"]
+                  [cider/cider-nrepl "0.25.4"]
                   [com.livingsocial/lein-dependency-check "1.1.4"]
                   [lein-ancient "0.6.15"]
                   [lein-cljfmt "0.7.0"]
@@ -17,4 +17,5 @@
         ; :java-cmd "/Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/bin/java"
         :aliases {"clj-kondo" ["run" "-m" "clj-kondo.main"]}}
  :cljfmt {:remove-consecutive-blank-lines? false
-          :indents {fdef [[:inner 0]]}}}
+          ; :indents {fdef [[:inner 0]]}
+          }}
