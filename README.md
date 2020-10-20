@@ -3,7 +3,8 @@
 Environmental configuration files to be shared across any machine I happen to
 be using.
 
-In addition to these files, it is also recommended to install git completion:
+In addition to these files, it have also installed git completion manually
+(not sure if this is still needed):
 https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 
 
@@ -26,6 +27,8 @@ I've used at one point or another.
   commenting functions.
 * [vim-grepper](https://github.com/mhinz/vim-grepper.git) Grepper for
   asynchronous greps
+* [rainbow](https://github.com/luochen1990/rainbow.git) For rainbow
+  parentheses.
 
 ### Clojure
 * [vim-clojure-static](https://github.com/guns/vim-clojure-static.git)
@@ -45,9 +48,11 @@ I've used at one point or another.
 
 ### vim Colors
 
-This is the color scheme I've settled on for now, installed in the
-`.vim/colors/` directory. I've recently switched back to a light theme.
-* [solarized8_flat](https://raw.githubusercontent.com/lifepillar/vim-solarized8/master/colors/solarized8_flat.vim)
+I've been favoring light themes for a bit now, but I keep a sparse
+.`.vim/colors/` directory. Currently using
+[PaperColor](https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim),
+but have also been happy with
+[solarized8_flat](https://raw.githubusercontent.com/lifepillar/vim-solarized8/master/colors/solarized8_flat.vim).
 
 
 ## CTags
