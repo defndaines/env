@@ -69,3 +69,11 @@ export VIMDATA=~/.vim
 
 # SRC_DIR
 export SRC_DIR=${HOME}/src
+
+
+# Work Customizations
+# ###################
+
+if [ -f ~/.workenv ]; then
+  . ~/.workenv
+fi
