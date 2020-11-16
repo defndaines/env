@@ -1,3 +1,17 @@
+# basics
+########
+alias be='bundle exec'
+alias brave='open -a Brave'
+alias bu='brew cleanup && brew update && brew upgrade'
+alias clera='clear'
+alias dds='find . -name .DS_Store | xargs rm'
+alias f='find . -name'
+alias ot='open -a TextEdit'
+alias excel='open -a Microsoft\ Excel'
+alias preview='open -a preview'
+alias utc='date -u +"%Y-%m-%dT%H:%M:%SZ"'
+alias ll='ls -lhtr'
+
 # git
 #####
 alias b='git branch'
@@ -23,21 +37,6 @@ alias ta='tmux attach -t'
 alias tl='tmux list-sessions'
 alias tmid='tmate show-messages'
 alias wrok='work'
-
-# bash
-######
-alias be='bundle exec'
-alias brave='open -a Brave'
-alias bu='brew cleanup && brew update && brew upgrade'
-alias clera='clear'
-alias dds='find . -name .DS_Store | xargs rm'
-alias f='find . -name'
-alias ot='open -a TextEdit'
-alias excel='open -a Microsoft\ Excel'
-alias preview='open -a preview'
-alias utc='date -u +"%Y-%m-%dT%H:%M:%SZ"'
-alias ll='ls -lhtr'
-# alias words='/usr/share/dict/words'
 
 # postgresql
 ############
