@@ -6,7 +6,7 @@
                   [lein-cloverage "RELEASE"]
                   [lein-nvd "1.4.1"]
                   [lein-try "0.4.3"]
-                  [lein-zprint "1.0.1"]
+                  [lein-zprint "1.0.2"]
                   [venantius/yagni "0.1.7"]]
         :injections [(require 'hashp.core)]
         :middleware [cider-nrepl.plugin/middleware]
