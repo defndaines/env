@@ -8,7 +8,7 @@ set spelllang=en_us,cjk
 set fileformat=unix
 
 set background=light
-colorscheme solarized8_flat
+colorscheme PaperColor
 
 let g:mapleader=','
 
