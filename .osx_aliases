@@ -59,3 +59,7 @@ fi
 # ruby
 # ####
 alias rc='rubocop --auto-correct'
+
+# minecraft
+# #########
+alias minecraft-server='java -Xmx1024M -Xms1024M -jar minecraft_server.1.16.2.jar nogui'
