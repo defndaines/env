@@ -197,6 +197,11 @@ SHOW ALL;
 $ vim -S
 ```
 
+### Search for non-ASCII Characters
+```
+/[^\x00-\x7F]
+```
+
 
 ## Ruby
 
