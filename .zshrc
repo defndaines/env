@@ -3,8 +3,11 @@
 # It should contain commands to set up aliases, functions, options, key
 # bindings, etc.
 
-set -o vi
+bindkey -v
 export EDITOR=vim
+
+# Fix the "do you wish to see all #### possibilities" issue when searching.
+bindkey '\e/' history-incremental-pattern-search-backward
 
 
 # Git Completion
