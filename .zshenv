@@ -3,8 +3,6 @@
 # It often contains exported variables that should be available to other
 # programs. For example, $PATH.
 
-export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
-
 # Add SQLite to PATH
 PATH="/usr/local/opt/sqlite/bin:$PATH"
 
