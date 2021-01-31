@@ -3,9 +3,6 @@
 # It often contains exported variables that should be available to other
 # programs. For example, $PATH.
 
-# Add SQLite to PATH
-PATH="/usr/local/opt/sqlite/bin:$PATH"
-
 # Prioritize anything brewed in.
 PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 

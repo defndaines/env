@@ -9,12 +9,11 @@ export EDITOR=vim
 # Fix the "do you wish to see all #### possibilities" issue when searching.
 bindkey '\e/' history-incremental-pattern-search-backward
 
-
 # Git Completion
-zstyle ':completion:*:*:git:*' script /usr/local/opt/git/share/zsh/site-functions/git-completion.bash
-fpath=(/usr/local/opt/git/share/zsh/site-functions $fpath)
+# zstyle ':completion:*:*:git:*' script /usr/local/opt/git/share/zsh/site-functions/git-completion.bash
+# fpath=(/usr/local/opt/git/share/zsh/site-functions $fpath)
 
-autoload -Uz compinit && compinit
+# autoload -Uz compinit && compinit
 
 
 # History Options
@@ -63,13 +62,13 @@ fi
 # ######
 
 # Load version control information
-autoload -Uz vcs_info
-precmd() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
-setopt prompt_subst
+# autoload -Uz vcs_info
+# precmd() { vcs_info }
+# precmd_functions+=( precmd_vcs_info )
+# setopt prompt_subst
 
-RPROMPT=\$vcs_info_msg_0_
-zstyle ':vcs_info:git:*' formats '%F{magenta}(%b)%f'
-zstyle ':vcs_info:*' enable git
+# RPROMPT=\$vcs_info_msg_0_
+# zstyle ':vcs_info:git:*' formats '%F{magenta}(%b)%f'
+# zstyle ':vcs_info:*' enable git
  
-PROMPT='%* %F{cyan}%2~%f %(?.%#.%F{red}%? %#)%f '
+PROMPT='%* %F{cyan}%5~%f %(?.%#.%F{red}%? %#)%f '
