@@ -30,6 +30,9 @@ export JAVA_HOME=$(/usr/libexec/java_home);
 
 export PATH=$JAVA_HOME/bin:$PATH
 
+# Quiet warning about "Options -Xverify:none and -noverify were deprecated in JDK 13"
+export LEIN_JVM_OPTS="-XX:TieredStopAtLevel=1"
+
 # Set PATH so it includes user's private bin if it exists
 if [ -d "${HOME}/bin" ] ; then
   PATH=${HOME}/bin:${PATH}
