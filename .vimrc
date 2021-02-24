@@ -381,18 +381,6 @@ let g:iced_enable_default_key_mappings = v:true
 " let g:iced_enable_auto_document = 'every'
 
 
-""" OCaml Options
-
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute 'set rtp+=' . g:opamshare . '/merlin/vim'
-
-if executable('ocamlmerlin') && has('python')
-  let s:ocamlmerlin = substitute(system('opam config var share'), '\n$', '', '''') . '/ocamlmerlin'
-  execute 'set rtp+='.s:ocamlmerlin.'/vim'
-  execute 'set rtp+='.s:ocamlmerlin.'/vimbufsync'
-endif
-
-
 """ ReasonML Options
 
 let g:LanguageClient_serverCommands = {
