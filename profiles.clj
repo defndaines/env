@@ -11,7 +11,8 @@
         :injections [(require 'hashp.core)]
         :middleware [cider-nrepl.plugin/middleware]
         :dependencies [[clj-kondo "RELEASE"]
-                       [hashp "0.2.0"]]
+                       [hashp "0.2.1"]
+                       [org.clojure/tools.reader "1.3.5"]]
         ;; For testing older libraries:
         ; :java-cmd "/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home/bin/java"
         ; :java-cmd "/Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/bin/java"
