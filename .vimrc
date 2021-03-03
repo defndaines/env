@@ -144,13 +144,6 @@ function! QuickfixFilenames()
 endfunction
 
 
-" Handle Nexpose vuln check files as XML.
-augroup nexpose
-  autocmd!
-  autocmd BufNewFile,BufRead *.vck set filetype=xml
-augroup END
-
-
 " When editing a file, always jump to the last known cursor position.
 augroup all-files
   autocmd BufReadPost *
