@@ -109,6 +109,12 @@ curl ipinfo.io
 java -XX:+UnlockDiagnosticVMOptions -XX:+PrintFlagsFinal -version
 ```
 
+### Get Latest Java
+```shell
+brew search adoptopenjdk
+brew install adoptopenjdk16
+```
+
 ### List Unique Lines without Sorting
 ```bash
 awk '! seen[$0]++'
