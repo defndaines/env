@@ -1,5 +1,5 @@
 {:user {:plugins [[com.jakemccrary/lein-test-refresh "0.24.1"]
-                  [cider/cider-nrepl "0.25.10"]
+                  [cider/cider-nrepl "0.26.0"]
                   [com.livingsocial/lein-dependency-check "1.1.5"]
                   [lein-ancient "0.7.0"]
                   [lein-cljfmt "0.7.0"]
