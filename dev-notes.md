@@ -99,7 +99,7 @@ brew reinstall `brew list`
 aws s3 cp --sse AES256 <file> s3://destination/path/
 ```
 
-### Get Your IP Address
+### Get Your External IP Address
 ```bash
 curl ipinfo.io
 ```
@@ -133,6 +133,11 @@ grep -F -v -f file1 file2 > remaining
 ### To Sort a File by Line Length, Longest First
 ```bash
 cat testfile | awk '{ print length, $0 }' | sort -nr | cut -d" " -f2-
+```
+
+### Largest Directories Relative to .
+```bash
+du -hs */ | sort -hr | head
 ```
 
 
