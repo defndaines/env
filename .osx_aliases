@@ -48,6 +48,7 @@ alias pgdown='pg_ctl -D /usr/local/var/postgres stop'
 alias ltr='lein test-refresh :changes-only'
 alias lf='lein cljfmt fix'
 alias node-cljs='clj -m cljs.main --repl-env node'
+alias br='rlwrap bb repl'
 
 # javascript
 ############
