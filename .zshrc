@@ -21,9 +21,15 @@ bindkey '\e/' history-incremental-pattern-search-backward
 
 setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
 
+export HISTFILESIZE=1000000
 export HISTSIZE=2000
-export SAVEHIST=1500
+export SAVEHIST=100000
+
+setopt INC_APPEND_HISTORY
+export HISTTIMEFORMAT="[%F %T] "
+setopt EXTENDED_HISTORY
 
 
 # Aliases
