@@ -140,6 +140,16 @@ cat testfile | awk '{ print length, $0 }' | sort -nr | cut -d" " -f2-
 du -hs */ | sort -hr | head
 ```
 
+### Find git Commits Involving File, Even if File Doesn't Exist Anymore
+```
+git log --full-history -- app/assets/images/3.gif
+```
+
+### Search Old Changeset for String
+```
+git log -Swhat_i_am_looking_for
+```
+
 
 ## PostgreSQL (and `psql` in Particular)
 
@@ -213,6 +223,21 @@ $ vim -S
 /[^\x00-\x7F]
 ```
 
+### Increment with Every Matching Line of Visual Selection
+```
+g ctrl-a/ctrl-x
+```
+
+### Column-wise Deletion
+```
+d<c-v>2j
+```
+
+### Delete until Matching Line
+```
+d/regex/-1
+```
+
 
 ## Ruby
 
@@ -224,4 +249,45 @@ data = JSON.parse(File.read('/path/to/file-name').gsub('=>', ':'))
 ### Use Rails to Access DB
 ```
 RAILS_ENV=production bundle exec rails dbconsole -p
+```
+
+### Create pg_dump Command from Rails Config
+```
+awk '/host/ {host=$2}; /password/ {pass=$2}; /database/ {dbname=$2}; /port/ {port=$2}; /username/ {username=$2}; END {printf("\npassword is: %s\n\ndump command is:\n pg_dump --format=c --host=%s --port=%s --dbname=%s --username=%s > /tmp/%s-$(date +%%F).dump\n", pass, host, port, dbname, username, dbname)}' config/local_database.yml
+```
+
+
+## ClojureScript
+
+### Use a RegEx as a Filter
+```clojure
+(extend-type js/RegExp
+ IFn
+ (-invoke
+  ([this a]
+   (re-find this a))))
+```
+
+
+## JavaScript
+
+### List Methods on Specific Object
+```javascript
+getMethods = (obj) => Object.getOwnPropertyNames(obj).filter(item => typeof obj[item] === 'function')
+```
+
+```javascript
+const getMethods = (obj) => {
+  let properties = new Set()
+  let currentObj = obj
+  do {
+    Object.getOwnPropertyNames(currentObj).map(item => properties.add(item))
+  } while ((currentObj = Object.getPrototypeOf(currentObj)))
+  return [...properties.keys()].filter(item => typeof obj[item] === 'function')
+}
+```
+
+### Use json-server to Treat JSON File as DB
+```
+npx json-server --watch db.json --port 3001
 ```

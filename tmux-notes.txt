@@ -27,6 +27,10 @@ P x  # kill the current pane
 
 P z  # Zoom (or un-zoom) current pane to full window.
 
+P :break-pane -dP
+
+P :join-pane -vs <#:#.# id of pane given when hidden>
+
 
 ### Status
 39 - Changing the Status Line Colors

@@ -1,6 +1,12 @@
 -- connect to a db.
 \c db_name
 
+-- Turn off paging
+\pset pager off
+
+-- See all settings
+SHOW ALL;
+
 -- Identify index use
 SELECT * FROM pg_stat_user_indexes WHERE relname='orders';
 
