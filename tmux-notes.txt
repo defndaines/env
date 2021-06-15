@@ -1,0 +1,32 @@
+P <- PREFIX
+
+P ?  # List all the pre-defined keybindings
+
+### Windows
+
+# Create a window
+P c
+
+# Rename current window
+P , 
+
+# Move between window
+P n  # .. OR .. P p ... but this is set to something else for me.
+P 0  # move to first window.
+P w  # show visual display of windows (good for searching/switching when you aren't sure)
+P f  # search for window by string
+
+### Panes
+
+P x  # kill the current pane
+
+:capture-pane  # Capture contents of current pane to paste buffer.
+:capture-pane; save-buffer out.txt  # Capture buffer and write to file.
+:list-buffers  # Show the stack in the paste buffer.
+:choose-buffer  # To select and paste contents of paste buffer.
+
+P z  # Zoom (or un-zoom) current pane to full window.
+
+
+### Status
+39 - Changing the Status Line Colors
