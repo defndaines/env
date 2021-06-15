@@ -226,6 +226,9 @@ inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
 inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 
 
+let g:markdown_fenced_languages = ['bash', 'shell=bash', 'sql', 'html', 'css', 'javascript', 'js=javascript', 'json=javascript', 'clojure', 'erlang', 'ruby', 'eruby', 'erb=eruby', 'vim', 'xml', 'yaml']
+
+
 """ Slime
 
 let g:slime_target = 'tmux'
