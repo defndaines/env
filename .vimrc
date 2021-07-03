@@ -169,7 +169,7 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " Strip double-spaces (like from a formatted paste)
 nnoremap <leader>p :%s/\(\S \) \+/\1/g<CR>
 
-set colorcolumn=80
+set colorcolumn=98
 highlight ColorColumn ctermbg=7 guifg=black
 
 highlight rightMargin term=bold ctermfg=black guifg=brown
