@@ -38,6 +38,11 @@ if [ -d "${HOME}/bin" ] ; then
   PATH=${HOME}/bin:${PATH}
 fi
 
+# Use node LTS version from homebrew.
+if [ -d "/usr/local/opt/node@14" ] ; then
+  PATH="/usr/local/opt/node@14/bin:$PATH"
+end
+
 # Clear out duplication in the PATH before exporting.
 PATH="$(echo $PATH | perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, scalar <>))')"
 export PATH
