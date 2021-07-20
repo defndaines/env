@@ -71,8 +71,6 @@ export HOMEBREW_NO_ANALYTICS=1
 # Allows for quicker switching between source code repositories.
 export CDPATH=${HOME}/src:${CDPATH}
 
-export GREP_OPTIONS='--color=auto'
-
 # If using both fzf and rg.
 if [ -x "$(command -v fzf)" ] ; then
   if [ -x "$(command -v rg)" ] ; then
