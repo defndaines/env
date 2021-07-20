@@ -69,6 +69,10 @@ if [ -f ~/bin/shell-library.sh ]; then
   . ~/bin/shell-library.sh
 fi
 
+if [ -f ~/bin/bash-library.sh ]; then
+  . ~/bin/bash-library.sh
+fi
+
 if [ -f ~/bin/work-library.sh ]; then
   . ~/bin/work-library.sh
 fi
