@@ -2,7 +2,7 @@
 ########
 alias be='bundle exec'
 alias brave='open -a Brave'
-alias bu='brew cleanup && brew update && brew upgrade'
+alias bu='brew update && brew upgrade'
 alias clera='clear'
 alias dds='find . -name .DS_Store | xargs rm'
 alias f='find . -name'
