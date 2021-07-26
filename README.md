@@ -16,7 +16,7 @@ I've used at one point or another.
 
 * [vim-slime](https://github.com/jpalardy/vim-slime.git) Inject from one tmux
   pane to another.
-* [ale](https://github.com/w0rp/ale.git) Asynchronous Lint Engine
+* [ale](https://github.com/dense-analysis/ale) Asynchronous Lint Engine
 * [tabular](https://github.com/godlygeek/tabular.git) Auto-align text,
   typically by a record separator. For example, `:Tabularize /|` aligns on
   pipe characters.
