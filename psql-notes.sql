@@ -64,7 +64,7 @@ ORDER BY n_live_tup DESC;
 ORDER BY pg_relation_size(s.indexrelid) DESC;
 
 -- DB size
-SELECT pg_size_pretty(pg_database_size('db_name_here'));
+SELECT pg_size_pretty(pg_database_size(current_database()));
 
 -- Export to CSV
 COPY products TO '/tmp/products.csv' WITH (FORMAT CSV, HEADER);
@@ -106,6 +106,12 @@ SELECT count(meta) FROM job_states WHERE (meta->'task'->>'id') IS NOT NULL;
 SELECT DISTINCT ARRAY (SELECT jsonb_object_keys(meta->'task')) AS keys
   FROM job_states
  WHERE (meta->>'task') IS NOT NULL;
+
+ -- Update a nested field in JSON.
+UPDATE events
+   SET payload = jsonb_set(payload, '{"companies"}', '[]')
+ WHERE id = 821252;
+
 
 -- CTEs
   WITH x AS (SELECT * FROM y), z AS (SELECT * FROM w WHERE id > 666)

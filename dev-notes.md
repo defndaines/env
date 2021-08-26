@@ -238,6 +238,11 @@ d<c-v>2j
 d/regex/-1
 ```
 
+### Why Is Start-up Slow?
+```
+vim --startuptime /dev/stdout slow_to_open_file.ex +q | less
+```
+
 
 ## Ruby
 

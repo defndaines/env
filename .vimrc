@@ -241,7 +241,7 @@ let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_
 
 augroup mercurial
   autocmd!
-  autocmd Filetype hgcommit setlocal spell textwidth=72
+  autocmd FileType hgcommit setlocal spell textwidth=72
 augroup END
 
 
@@ -249,7 +249,7 @@ augroup END
 
 augroup git
   autocmd!
-  autocmd Filetype gitcommit setlocal spell textwidth=72
+  autocmd FileType gitcommit setlocal spell textwidth=72
 augroup END
 
 " function! s:Branch()
@@ -262,8 +262,8 @@ augroup END
 " Output branch name to the second line of the commit message.
 " command! -nargs=0 Branch put=s:Branch()
 
-" autocmd Filetype gitcommit Branch
-" autocmd Filetype gitcommit execute "normal ggO"
+" autocmd FileType gitcommit Branch
+" autocmd FileType gitcommit execute "normal ggO"
 
 
 """ Erlang options.
@@ -300,22 +300,20 @@ let g:clojure_maxlines = 1000
 " Causes 1-space indent if there is no argument after a function.
 " let g:clojure_align_subforms = 1
 
-" Only use kondo for now.
-let g:ale_linters = {'clojure': ['clj-kondo']}
 
 augroup clojure
   autocmd!
   autocmd BufWritePre *.clj :%s/\s\+$//e
   autocmd BufWritePre *.clj :%s/\t/  /ge
-  autocmd Filetype clojure setlocal textwidth=78
-  autocmd Filetype clojure setlocal lispwords+=fdef
+  autocmd FileType clojure setlocal textwidth=78
+  autocmd FileType clojure setlocal lispwords+=fdef
   autocmd BufNewFile,BufReadPost .lein-env set filetype=clojure
 augroup END
 
 set wildignore+=*/target/*
 
 " TODO Make this only applicable if editing a Clojure file?
-nnoremap <leader>c :call AddClojureNamespace()<CR>
+" nnoremap <leader>c :call AddClojureNamespace()<CR>
 
 function! AddClojureNamespace()
   let s:ns = ["(ns " . fnamemodify(expand('%'), ':r:s#^src/##:s#^test/##:gs#/#.#:gs#_#-#')]
@@ -339,14 +337,7 @@ function! AddClojureNamespace()
   endif
 endfunction
 
-nnoremap <leader>z :call OpenClojureTestFile()<CR>
-
-function! OpenClojureTestFile()
-  let s:ns = 'test/' . fnamemodify(expand('%'), ':r:s#^src/##') . '_test.clj'
-  execute "edit " . s:ns
-endfunction
-
-nnoremap <leader>e :call FormatEDN()<CR>1G=G<CR>
+" nnoremap <leader>e :call FormatEDN()<CR>1G=G<CR>
 
 function! FormatEDN()
   " TODO: There are better tools for this, just plug into them (joker?)
@@ -362,6 +353,19 @@ function! FormatEDN()
   if search(', :')
     execute '%s/, :/\r:/g'
   endif
+endfunction
+
+"" Elixir
+
+augroup elixir
+  autocmd FileType elixir setlocal textwidth=98
+augroup END
+
+nnoremap <leader>z :call OpenElixirTestFile()<CR>
+
+function! OpenElixirTestFile()
+  let s:ns = 'test/' . fnamemodify(expand('%'), ':r:s#^lib/##') . '_test.exs'
+  execute "edit " . s:ns
 endfunction
 
 "" sexp
@@ -439,9 +443,6 @@ augroup javascript
   autocmd!
   autocmd BufNewFile,BufRead *.json setf javascript
 augroup END
-
-" Fix files with prettier, and then ESLint.
-let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
 
 
 """ PHP Options
@@ -525,9 +526,31 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_php_phpstan_level = '7'
 let g:phpstan_analyse_level = '7'
 
+let g:ale_linters = {
+      \ 'elixir': ['elixir-ls'],
+      \}
+
+let b:ale_fixers = {
+      \ 'javascript': ['prettier', 'eslint'],
+      \ 'elixir': ['mix_format'],
+      \}
+
+let g:ale_elixir_elixir_ls_release=expand("~/src/elixir-ls/release")
+
+let g:ale_sign_error = '✘'
+" let g:ale_sign_warning = '⚠'
+" highlight ALEErrorSign ctermbg=NONE ctermfg=red
+" highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+
+noremap <leader>ad :ALEGoToDefinition<CR>
+nnoremap <leader>af :ALEFix<CR>
+noremap <leader>ar :ALEFindReferences<CR>
+
 
 """ fzf (fuzzy finder)
-set runtimepath+=/usr/local/opt/fzf
+set runtimepath+=/usr/bin/fzf
 nnoremap <C-p> :<C-u>FZF<CR>
 
 

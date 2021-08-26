@@ -69,7 +69,7 @@ export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export HOMEBREW_NO_ANALYTICS=1
 
 # Allows for quicker switching between source code repositories.
-export CDPATH=${HOME}/src:${CDPATH}
+# export CDPATH=${HOME}/src:${CDPATH}
 
 # If using both fzf and rg.
 if [ -x "$(command -v fzf)" ] ; then

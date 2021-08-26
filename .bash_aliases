@@ -5,6 +5,7 @@ alias clera='clear'
 alias f='find . -name'
 alias utc='date -u +"%Y-%m-%dT%H:%M:%SZ"'
 alias ll='ls -lhtr'
+alias h='history'
 
 # git
 #####
