@@ -1,3 +1,4 @@
+" to be placed in ~/.vim/plugin/
 nnoremap <leader>k :call KindleGenPrep()<CR>
 
 function! KindleGenPrep()
