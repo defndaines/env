@@ -63,7 +63,7 @@ nnoremap <leader>s :set spell!<CR>
 
 """ Search Related Settings
 
-" Search down into subdirecties
+" Search down into subdirectories
 set path+=**
 
 set hlsearch
@@ -81,6 +81,7 @@ set novisualbell
 set backspace=indent,eol,start
 set complete-=i
 set complete+=kspell
+set completeopt=menuone,preview,noinsert
 
 set ttimeout
 set ttimeoutlen=100
@@ -475,6 +476,7 @@ let g:elm_format_autosave=1
 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
 
 
 """ VimL and Vader (for Exercism)
