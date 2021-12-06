@@ -47,6 +47,11 @@ elif [ -e /usr/local/opt/ruby/bin ] ; then
   PATH="/usr/local/opt/ruby/bin:$PATH"
 fi
 
+# OpenJDK 17
+JAVA_HOME=/usr/java/openjdk/jdk-17
+export JAVA_HOME
+PATH=$PATH:$JAVA_HOME/bin
+
 # vim-iced
 if [ -e "${HOME}/.vim/pack/bundle/start/vim-iced/bin" ]; then
   PATH="$PATH:${HOME}/.vim/pack/bundle/start/vim-iced/bin"
@@ -59,6 +64,7 @@ fi
 
 # Clear out duplication in the PATH before exporting.
 PATH="$(echo $PATH | perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, scalar <>))')"
+
 export PATH
 
 # Pretty output
@@ -90,3 +96,6 @@ export SRC_DIR=${HOME}/src
 
 # Quiet the lein warning about -Xverify:none is deprecated in JDK 13
 export LEIN_JVM_OPTS="-XX:TieredStopAtLevel=1"
+
+# Enable Erlang/Elixir shell history
+export ERL_AFLAGS="-kernel shell_history enabled"
