@@ -70,6 +70,9 @@ fi
 export VIMCONFIG=~/.vim
 export VIMDATA=~/.vim
 
+# Enable Erlang/Elixir shell history
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 # SRC_DIR
 export SRC_DIR=${HOME}/src
 
