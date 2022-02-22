@@ -39,9 +39,6 @@ augroup all-files
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 augroup END
 
-" Delete comment characters when joining commented lines
-set formatoptions+=j
-
 " Don't redraw screen during macro execution (makes them faster)
 set lazyredraw
 
@@ -81,7 +78,8 @@ set novisualbell
 set backspace=indent,eol,start
 set complete-=i
 set complete+=kspell
-set completeopt=menuone,preview,noinsert
+" set completeopt=menuone,preview,noinsert
+set completeopt=menuone,preview
 
 set ttimeout
 set ttimeoutlen=100
@@ -529,15 +527,22 @@ let g:ale_php_phpstan_level = '7'
 let g:phpstan_analyse_level = '7'
 
 let g:ale_linters = {
-      \ 'elixir': ['elixir-ls'],
+      \ 'elixir': ['elixir-ls', 'credo'],
+      \ 'rust': ['rust-analyzer'],
       \}
 
 let b:ale_fixers = {
-      \ 'javascript': ['prettier', 'eslint'],
+      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
       \ 'elixir': ['mix_format'],
+      \ 'javascript': ['prettier', 'eslint'],
+      \ 'rust': ['rustfmt'],
       \}
 
-let g:ale_elixir_elixir_ls_release=expand("~/src/elixir-ls/release")
+let g:ale_elixir_elixir_ls_release = expand("/home/daines/src/elixir-ls/rel/")
+
+let g:ale_elixir_credo_strict = 1
+
+" let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}
 
 let g:ale_sign_error = '✘'
 " let g:ale_sign_warning = '⚠'
@@ -549,6 +554,7 @@ let g:ale_fix_on_save = 1
 noremap <leader>ad :ALEGoToDefinition<CR>
 nnoremap <leader>af :ALEFix<CR>
 noremap <leader>ar :ALEFindReferences<CR>
+nnoremap <leader>K :ALEHover<CR>
 
 
 """ fzf (fuzzy finder)
@@ -574,6 +580,7 @@ xmap gs <plug>(GrepperOperator)
 " Load all plugins now.
 " Plugins need to be added to runtimepath before helptags can be generated.
 packloadall
+
 " Load all of the helptags now, after plugins have been loaded.
 " All messages and errors will be ignored.
 silent! helptags ALL
