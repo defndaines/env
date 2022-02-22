@@ -150,6 +150,13 @@ git log --full-history -- app/assets/images/3.gif
 git log -Swhat_i_am_looking_for
 ```
 
+### Audit git for Authors
+```
+for f in $(find lib/finance_api -type f); do
+  echo $f
+  git annotate -w -M -C -C --line-porcelain "$f" | grep -I '^author ' | sort -f | uniq -ic | sort -n --reverse
+done
+```
 
 ## PostgreSQL (and `psql` in Particular)
 
