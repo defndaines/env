@@ -39,14 +39,19 @@ I've used at one point or another.
   parentheses.
 * [spelunker](https://github.com/kamykn/spelunker.vim.git) For catching
   spelling errors inside code (smart about camelCase, etc.)
+* [endwise.vim](https://github.com/tpope/vim-endwise.git) For automatically
+  adding `end` statements in Elixir, Ruby, etc.
+* [fzf](https://github.com/junegunn/fzf.git) and
+  [fzf.vim](https://github.com/junegunn/fzf.vim.git) Fuzzy finder for quickly
+  locating files.
+
+### Elixir
+* [vim-elixir](https://github.com/elixir-editors/vim-elixir.git)
 
 ### Clojure
 * [vim-clojure-static](https://github.com/guns/vim-clojure-static.git)
 * [vim-iced](https://github.com/liquidz/vim-iced.git)
 * [vim-sexp](https://github.com/guns/vim-sexp.git)
-
-### Elixir
-* [vim-elixir](https://github.com/elixir-editors/vim-elixir.git)
 
 ### Erlang
 * [erlang-motions](https://github.com/edkolev/erlang-motions.vim.git)
