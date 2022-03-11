@@ -66,6 +66,14 @@ I've been favoring light themes for a bit now, but I keep a sparse
 .`.vim/colors/` directory. Currently using
 [PaperColor](https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim).
 
+### Customizations
+
+When we want to track pairing at work, I'll add a `.vim/work.vim` file that
+looks roughly like this:
+```
+" Coworker Git autocorrects
+iab gjane Co-authored-by: Jane Doe <jane.doe@company.com>
+```
 
 
 ## CTags
