@@ -558,7 +558,7 @@ nnoremap <leader>K :ALEHover<CR>
 
 
 """ fzf (fuzzy finder)
-set runtimepath+=/usr/bin/fzf
+set runtimepath+=/usr/local/bin/fzf
 nnoremap <C-p> :<C-u>FZF<CR>
 
 

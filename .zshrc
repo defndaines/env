@@ -78,3 +78,5 @@ fi
 # zstyle ':vcs_info:*' enable git
  
 PROMPT='%* %F{cyan}%5~%f %(?.%#.%F{red}%? %#)%f '
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
