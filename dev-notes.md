@@ -204,6 +204,10 @@ SHOW ALL;
 ]s
 " Move to previous highlight
 [s
+" Add current word to dictionary
+zg
+" Remove current work from dictionary
+zw
 ```
 
 ### Redraw the Screen if Things Have Gone Odd
@@ -211,7 +215,7 @@ SHOW ALL;
 :redraw!
 ```
 
-### Text Alignment with 
+### Text Alignment with
 ```
 :right
 :center
