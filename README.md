@@ -47,6 +47,7 @@ I've used at one point or another.
 
 ### Elixir
 * [vim-elixir](https://github.com/elixir-editors/vim-elixir.git)
+* [elixir-ls](https://github.com/elixir-lsp/elixir-ls.git)
 
 ### Clojure
 * [vim-iced](https://github.com/liquidz/vim-iced.git)
