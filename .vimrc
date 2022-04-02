@@ -538,7 +538,7 @@ let b:ale_fixers = {
       \ 'rust': ['rustfmt'],
       \}
 
-let g:ale_elixir_elixir_ls_release = expand("/home/daines/src/elixir-ls/rel/")
+let g:ale_elixir_elixir_ls_release = expand("/Users/daines/src/elixir-ls/release/")
 
 let g:ale_elixir_credo_strict = 1
 
