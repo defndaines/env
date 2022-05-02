@@ -158,6 +158,13 @@ for f in $(find lib/finance_api -type f); do
 done
 ```
 
+### In-Place sed on OSX
+
+```shell
+sed -i '' 's/before/after' <file>
+```
+
+
 ## PostgreSQL (and `psql` in Particular)
 
 Copy data to a CSV file.
@@ -307,3 +314,13 @@ const getMethods = (obj) => {
 ```
 npx json-server --watch db.json --port 3001
 ```
+
+### Node
+
+`npm list -g --depth 0` to list all global packages.
+
+`npm update` to update all packages to the latest (allowed).
+`npm outdated` to identify which libraries have newer versions.
+
+`npm install -g npm-check-updates` will then allow for ...
+`ncu -u` which will update all versions globally.
