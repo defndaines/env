@@ -11,6 +11,7 @@ alias excel='open -a Microsoft\ Excel'
 alias preview='open -a preview'
 alias utc='date -u +"%Y-%m-%dT%H:%M:%SZ"'
 alias ll='ls -lhtr'
+alias h='history'
 
 # git
 #####
