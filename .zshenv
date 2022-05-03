@@ -6,9 +6,6 @@
 # Prioritize anything brewed in.
 PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 
-# Add SQLite to PATH
-PATH="/usr/local/opt/sqlite/bin:$PATH"
-
 # Prioritize RVM if installed
 if [ -e "${HOME}/.rvm" ] ; then
   PATH="${HOME}/.rvm/bin:${PATH}"
@@ -38,11 +35,6 @@ if [ -d "${HOME}/bin" ] ; then
   PATH=${HOME}/bin:${PATH}
 fi
 
-# Use node LTS version from homebrew.
-# if [ -d "/usr/local/opt/node@14" ] ; then
-  PATH="/usr/local/opt/node@14/bin:$PATH"
-# end
-
 # Clear out duplication in the PATH before exporting.
 PATH="$(echo $PATH | perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, scalar <>))')"
 export PATH
@@ -53,9 +45,6 @@ export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 # Prevent Homebrew from sending analytics
 export HOMEBREW_NO_ANALYTICS=1
-
-# Allows for quicker switching between source code repositories.
-export CDPATH=${HOME}/src:${CDPATH}
 
 export GREP_OPTIONS='--color=auto'
 
