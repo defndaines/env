@@ -1,11 +1,10 @@
 # basics
 ########
-alias be='bundle exec'
 alias clera='clear'
 alias f='find . -name'
-alias utc='date -u +"%Y-%m-%dT%H:%M:%SZ"'
-alias ll='ls -lhtr'
 alias h='history'
+alias ll='ls -lhtr'
+alias utc='date -u +"%Y-%m-%dT%H:%M:%SZ"'
 
 # git
 #####
@@ -31,3 +30,7 @@ alias ta='tmux attach -t'
 alias tl='tmux list-sessions'
 alias tmid='tmate show-messages'
 alias wrok='work'
+
+# ruby
+######
+alias be='bundle exec'
