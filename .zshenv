@@ -4,13 +4,26 @@
 # programs. For example, $PATH.
 
 # Prioritize anything brewed in.
-PATH="/usr/local/sbin:/usr/local/bin:$PATH"
+if [ -e "/usr/local/bin" ] ; then
+  PATH="/usr/local/bin:$PATH"
+fi
+if [ -e "/opt/homebrew/bin" ] ; then
+  PATH="/opt/homebrew/bin:$PATH"
+fi
+
+HOMEBREW_PREFIX="$(brew --prefix)"
+PATH="${HOMEBREW_PREFIX}/sbin:${HOMEBREW_PREFIX}/bin:$PATH"
 
 # Prioritize RVM if installed
 if [ -e "${HOME}/.rvm" ] ; then
   PATH="${HOME}/.rvm/bin:${PATH}"
-elif [ -e /usr/local/opt/ruby/bin ] ; then
-  PATH="/usr/local/opt/ruby/bin:$PATH"
+elif [ -e "${HOMEBREW_PREFIX}/opt/ruby/bin" ] ; then
+  PATH="${HOMEBREW_PREFIX}/opt/ruby/bin:$PATH"
+fi
+
+# psql and other PostgreSQL commands if no local DB installed
+if [ -e "${HOMEBREW_PREFIX}/opt/libpq/bin" ] ; then
+  PATH="${HOMEBREW_PREFIX}/opt/libpq/bin:$PATH"
 fi
 
 # vim-iced
@@ -19,12 +32,12 @@ if [ -e "${HOME}/.vim/pack/bundle/start/vim-iced/bin" ]; then
 fi
 
 # GNU grep
-if [ -e "/usr/local/opt/grep/libexec/gnubin" ]; then
-  PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+if [ -e "${HOMEBREW_PREFIX}/opt/grep/libexec/gnubin" ]; then
+  PATH="${HOMEBREW_PREFIX}/opt/grep/libexec/gnubin:$PATH"
 fi
 
+# Java
 export JAVA_HOME=$(/usr/libexec/java_home);
-
 export PATH=$JAVA_HOME/bin:$PATH
 
 # Quiet warning about "Options -Xverify:none and -noverify were deprecated in JDK 13"

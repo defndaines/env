@@ -15,6 +15,14 @@ bindkey '\e/' history-incremental-pattern-search-backward
 
 # autoload -Uz compinit && compinit
 
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
+
 
 # History Options
 # ###############
@@ -76,7 +84,7 @@ fi
 # RPROMPT=\$vcs_info_msg_0_
 # zstyle ':vcs_info:git:*' formats '%F{magenta}(%b)%f'
 # zstyle ':vcs_info:*' enable git
- 
+
 PROMPT='%* %F{cyan}%5~%f %(?.%#.%F{red}%? %#)%f '
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
