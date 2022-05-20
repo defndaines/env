@@ -23,7 +23,7 @@ keyboard is set):
 ## Command Line
 
 
-### Generate a dot Graph
+### Generate a Dot Graph [Graphviz](https://graphviz.org/)
 ```bash
 dot -Tpng file.dot -o ruby-deps.png
 dot -Tsvg file.dot -o ruby-deps.svg
