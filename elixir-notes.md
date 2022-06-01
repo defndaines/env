@@ -51,3 +51,17 @@ will dump the statement.
 
 https://paraxial.io/blog/throttle-requests
   - https://github.com/michalmuskala/plug_attack
+
+## Quick Timing Check
+
+To quickly get a sense of how long something is taking, wrap it in
+`:timer.tc/1`. It returns result in μs (microseconds)
+
+```elixir
+{time, result} = :timer.tc(fn ->
+  # code to test here
+end)
+
+IO.inspect(time, label: :microseconds)
+result
+```
