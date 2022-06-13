@@ -1,6 +1,9 @@
 -- connect to a db.
 \c db_name
 
+-- run queries from file.
+\i /tmp/scratch.sql
+
 -- Turn off paging
 \pset pager off
 
