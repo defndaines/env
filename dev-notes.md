@@ -261,6 +261,10 @@ d/regex/-1
 vim --startuptime /dev/stdout slow_to_open_file.ex +q | less
 ```
 
+### Search for merge conflicts
+```
+/[<=>][<=>][<=>][<=>][<=>][<=>][<=>]
+```
 
 ## Ruby
 

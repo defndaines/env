@@ -7,4 +7,3 @@ then
   tmux split-window -v -t work
 fi
 tmux attach -t work
-
