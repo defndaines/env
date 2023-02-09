@@ -66,6 +66,11 @@ ORDER BY n_live_tup DESC;
                        )
 ORDER BY pg_relation_size(s.indexrelid) DESC;
 
+-- Find invalid indices (can happen when running concurrently on release)
+SELECT relname
+  FROM pg_class, pg_index
+ WHERE pg_index.indisvalid = false AND pg_index.indexrelid = pg_class.oid;
+
 -- DB size
 SELECT pg_size_pretty(pg_database_size(current_database()));
 
@@ -271,7 +276,7 @@ SELECT pid, usename, application_name, client_addr, backend_start, query_start, 
  WHERE datname = 'your_db_name';
 
 -- As above, showing the query:
-SELECT pid, usename, application_name, client_addr, backend_start, query_start, wait_event_type, state, query 
+SELECT pid, usename, application_name, client_addr, backend_start, query_start, wait_event_type, state, query
   FROM pg_stat_activity
  WHERE datname = 'your_db_name';
 
@@ -288,7 +293,7 @@ SELECT setval('your_table_id_seq', COALESCE((SELECT MAX(id)+1 FROM your_table), 
 COMMIT;
 
 -- count all tables
-CREATE OR REPLACE FUNCTION 
+CREATE OR REPLACE FUNCTION
 count_rows(schema TEXT, tablename TEXT) RETURNS INTEGER
 AS
 $body$
