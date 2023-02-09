@@ -65,3 +65,22 @@ end)
 IO.inspect(time, label: :microseconds)
 result
 ```
+
+## Truncate
+
+Dangerous to use, even for testing.
+```elixir
+Ecto.Repo.query("TRUNCATE #{Module.Name.__schema__(:source)}", [])
+```
+
+## Docs
+
+To output the formatted docs.
+```elixir
+h Your.Module.Name
+```
+
+To see the exported functions of a module.
+```elixir
+exports Your.Module
+```
