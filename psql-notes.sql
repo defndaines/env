@@ -254,7 +254,9 @@ ORDER BY 1 DESC
          round(
           (100 * total_time / sum(total_time::NUMERIC) OVER ())::NUMERIC,
           2
-         ) AS percentage_cpu
+         ) AS percentage_cpu,
+         max_time,
+         stddev_time
     FROM pg_stat_statements
 ORDER BY total_time DESC
    LIMIT 20;
