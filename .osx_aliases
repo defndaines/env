@@ -12,6 +12,7 @@ alias preview='open -a preview'
 alias utc='date -u +"%Y-%m-%dT%H:%M:%SZ"'
 alias ll='ls -lhtr'
 alias h='history'
+alias eighty='echo ........10........20........30........40........50........60........70........80'
 
 # git
 #####
