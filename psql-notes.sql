@@ -50,21 +50,20 @@ ORDER BY query_start DESC;
 ORDER BY n_live_tup DESC;
 
 -- Unused indexes
-  SELECT s.schemaname,
-         s.relname AS tablename,
-         s.indexrelname AS indexname,
-         pg_relation_size(s.indexrelid) AS index_size
-    FROM pg_catalog.pg_stat_user_indexes AS s
-         JOIN pg_catalog.pg_index AS i ON s.indexrelid = i.indexrelid
-   WHERE s.idx_scan = 0
-         AND 0 != ALL i.indkey
-         AND NOT i.indisunique
-         AND NOT EXISTS(
-                        SELECT 1
-                          FROM pg_catalog.pg_constraint AS c
-                         WHERE c.conindid = s.indexrelid
-                       )
-ORDER BY pg_relation_size(s.indexrelid) DESC;
+  SELECT idstat.relname AS table_name,
+         indexrelname AS index_name,
+         idstat.idx_scan AS index_scans_count,
+         pg_size_pretty(pg_relation_size(indexrelid)) AS index_size,
+         tabstat.idx_scan AS table_reads_index_count,
+         tabstat.seq_scan AS table_reads_seq_count,
+         tabstat.seq_scan + tabstat.idx_scan AS table_reads_count,
+         n_tup_upd + n_tup_ins + n_tup_del AS table_writes_count,
+         pg_size_pretty(pg_relation_size(idstat.relid)) AS table_size
+    FROM pg_stat_user_indexes AS idstat
+    JOIN pg_indexes ON indexrelname = indexname AND idstat.schemaname = pg_indexes.schemaname
+    JOIN pg_stat_user_tables AS tabstat ON idstat.relid = tabstat.relid
+   WHERE indexdef !~* 'unique'
+ORDER BY idstat.idx_scan DESC, pg_relation_size(indexrelid) DESC;
 
 -- Find invalid indices (can happen when running concurrently on release)
 SELECT relname
@@ -75,7 +74,7 @@ SELECT relname
 SELECT pg_size_pretty(pg_database_size(current_database()));
 
 -- Export to CSV
-COPY products TO '/tmp/products.csv' WITH (FORMAT CSV, HEADER);
+\copy reactions TO '/tmp/reactions.csv' WITH (FORMAT CSV, HEADER);
 
 -- Copy in files (pipe-delimited)
 \copy rxnorm_concepts_temp FROM 'rrf/RXNCONSO.RRF' DELIMITER '|' CSV QUOTE AS e'\x1f';
@@ -119,7 +118,6 @@ SELECT DISTINCT ARRAY (SELECT jsonb_object_keys(meta->'task')) AS keys
 UPDATE events
    SET payload = jsonb_set(payload, '{"companies"}', '[]')
  WHERE id = 821252;
-
 
 -- CTEs
   WITH x AS (SELECT * FROM y), z AS (SELECT * FROM w WHERE id > 666)
