@@ -2,6 +2,10 @@
 
 These are shortcuts, commands, and notes about using Elixir.
 
+## Debugging from Command Line
+
+Prefix with `MIX_DEBUG=1`
+
 ## Recompile Code without Restart
 
 ```elixir
