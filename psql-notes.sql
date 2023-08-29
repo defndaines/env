@@ -49,7 +49,7 @@ ORDER BY query_start DESC;
     FROM pg_stat_user_tables
 ORDER BY n_live_tup DESC;
 
--- Unused indexes
+-- Unused indexes (not perfect) ... relative to last reset of statistics
   SELECT idstat.relname AS table_name,
          indexrelname AS index_name,
          idstat.idx_scan AS index_scans_count,
@@ -65,10 +65,38 @@ ORDER BY n_live_tup DESC;
    WHERE indexdef !~* 'unique'
 ORDER BY idstat.idx_scan DESC, pg_relation_size(indexrelid) DESC;
 
+  SELECT relname,
+         indexrelname,
+         idx_scan,
+         idx_tup_read,
+         idx_tup_fetch,
+         pg_size_pretty(pg_relation_size(indexrelname::REGCLASS)) AS size
+    FROM pg_stat_all_indexes
+   WHERE schemaname = 'public'
+     AND indexrelname NOT LIKE 'pg_toast_%'
+     AND idx_scan = 0
+     AND idx_tup_read = 0
+     AND idx_tup_fetch = 0
+ORDER BY pg_relation_size(indexrelname::REGCLASS) DESC;
+
+-- Reset statistics
+SELECT oid FROM pg_class c WHERE relname = 'table_name';
+
+SELECT pg_stat_reset_single_table_counters( <that oid> );
+
 -- Find invalid indices (can happen when running concurrently on release)
 SELECT relname
   FROM pg_class, pg_index
  WHERE pg_index.indisvalid = false AND pg_index.indexrelid = pg_class.oid;
+
+-- Table bloat
+https://github.com/ioguix/pgsql-bloat-estimation/blob/master/table/table_bloat.sql
+
+-- Index bloat
+https://github.com/ioguix/pgsql-bloat-estimation/blob/master/btree/btree_bloat.sql
+
+-- Reindex
+REINDEX INDEX CONCURRENTLY index_name;
 
 -- DB size
 SELECT pg_size_pretty(pg_database_size(current_database()));
@@ -163,12 +191,12 @@ SELECT pg_catalog.setval(pg_get_serial_sequence('table_name', 'id'), max(id))
 ORDER BY pg_total_relation_size(c.oid) DESC;
 
 -- Find tables with a certain field name ('organization_id')
-  SELECT t.table_schema, t.table_name
+  SELECT c.column_name, t.table_name
     FROM information_schema.tables AS t
          INNER JOIN information_schema.columns AS c
                  ON c.table_name = t.table_name
                     AND c.table_schema = t.table_schema
-   WHERE c.column_name = 'organization_id'
+   WHERE c.column_name LIKE '%_count'
          AND t.table_schema NOT IN ('information_schema', 'pg_catalog')
          AND t.table_type = 'BASE TABLE'
 ORDER BY t.table_schema;
@@ -216,14 +244,13 @@ SELECT current_database() AS database,
   SELECT table_name, pg_relation_size(quote_ident(table_name))
     FROM information_schema.tables
    WHERE table_schema = 'public'
-ORDER BY pg_relation_size;
+ORDER BY pg_relation_size DESC;
 
 -- To see size of DBs on disk:
 \l+
 
 -- Query for Locking
   SELECT pg_stat_activity.pid,
-         pg_class.relname,
          pg_locks.transactionid,
          pg_locks.granted,
          substr(pg_stat_activity.query, 1, 30) AS query_snippet,
@@ -234,6 +261,7 @@ ORDER BY pg_relation_size;
    WHERE pg_stat_activity.query != '<insufficient privilege>'
          AND pg_locks.pid = pg_stat_activity.pid
          AND pg_locks.mode = 'ExclusiveLock'
+         AND pg_locks.transactionid IS NOT NULL
 ORDER BY query_start;
 
 -- Queries for Stats Statements
@@ -269,6 +297,9 @@ ORDER BY total_time DESC
     FROM pg_stat_user_tables
 ORDER BY n_dead_tup DESC
    LIMIT 10;
+
+-- When was vacuum last run?
+SELECT last_vacuum, vacuum_count FROM pg_stat_all_tables WHERE relname = 'mytable';
 
 -- Just see what's going on in the DB at the moment:
 SELECT pid, usename, application_name, client_addr, backend_start, query_start, wait_event_type, state
