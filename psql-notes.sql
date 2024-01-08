@@ -80,7 +80,7 @@ ORDER BY idstat.idx_scan DESC, pg_relation_size(indexrelid) DESC;
 ORDER BY pg_relation_size(indexrelname::REGCLASS) DESC;
 
 -- Reset statistics
-SELECT oid FROM pg_class c WHERE relname = 'table_name';
+SELECT oid FROM pg_class WHERE relname = 'table_name';
 
 SELECT pg_stat_reset_single_table_counters( <that oid> );
 
