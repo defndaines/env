@@ -2,7 +2,7 @@
 # Functions for the shell
 
 # Update only vim bundles
-function vup() {
+vup() {
   echo "### Updating vim bundles"
   bundles=(${HOME}/.vim/pack/bundle/start/*)
   for bundle in "${bundles[@]}"; do
@@ -22,43 +22,47 @@ function vup() {
 }
 
 # Pipe into this command for ten most common results with counts
-function most-common {
+most-common {
   sort "$@" | uniq -c | sort -n | tail
 }
 
-function usage {
+usage {
   echo "error: $*" 2>&1
   exit 1
 }
 
 # Back up an existing file.
-function bak() {
+bak() {
   cp "$@"{,.bak}
 }
 
+letters() {
+  sed 's/./&\n/g' $@ | grep -v "^$" | sort | uniq -c | sort -n
+}
+
 # Securely create a temporary directory.
-function tmpdir() {
+tmpdir() {
   tmp=${TMPDIR-/tmp}
   tmp=$tmp/somedir.$RANDOM.$RANDOM.$RANDOM.$$
   (umask 077 && mkdir "$tmp") || {
-    echo "Could not create temporary directory! Exiting." 1>&2 
+    echo "Could not create temporary directory! Exiting." 1>&2
     exit 1
   }
 }
 
-function psgrep {
+psgrep {
   ps axuf | grep -v grep | grep "$@" -i --color=auto;
 }
 
-function fname {
+fname {
   find . -iname "*$@*";
 }
 
-function lt {
+lt {
   ls -targ "$@" | tail;
 }
 
-function eunit {
+eunit {
   proj=$@
   if [ -z "${proj}" ]; then
     d=$(pwd)
@@ -68,6 +72,6 @@ function eunit {
 }
 
 # Select a random line from a file.
-function rl {
+rl {
   sort --random-sort "$@" | head -1
 }
