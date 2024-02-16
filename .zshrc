@@ -92,3 +92,5 @@ PROMPT='%* %F{cyan}%5~%f %(?.%#.%F{red}%? %#)%f '
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 . ~/bin/daily-lyric.sh
+
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
