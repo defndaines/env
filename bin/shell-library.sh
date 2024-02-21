@@ -22,11 +22,11 @@ vup() {
 }
 
 # Pipe into this command for ten most common results with counts
-most-common {
+most-common() {
   sort "$@" | uniq -c | sort -n | tail
 }
 
-usage {
+usage() {
   echo "error: $*" 2>&1
   exit 1
 }
@@ -50,19 +50,19 @@ tmpdir() {
   }
 }
 
-psgrep {
+psgrep() {
   ps axuf | grep -v grep | grep "$@" -i --color=auto;
 }
 
-fname {
+fname() {
   find . -iname "*$@*";
 }
 
-lt {
+lt() {
   ls -targ "$@" | tail;
 }
 
-eunit {
+eunit() {
   proj=$@
   if [ -z "${proj}" ]; then
     d=$(pwd)
@@ -72,6 +72,6 @@ eunit {
 }
 
 # Select a random line from a file.
-rl {
+rl() {
   sort --random-sort "$@" | head -1
 }
