@@ -88,3 +88,7 @@ To see the exported functions of a module.
 ```elixir
 exports Your.Module
 ```
+
+## Infinit Output in Console
+
+IEx.configure(inspect: [limit: :infinity])
