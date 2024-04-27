@@ -35,6 +35,7 @@
   # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
   whitespace = space-before-tab,-indent-with-non-tab,trailing-space
   symlinks = false
+  excludesfile = /Users/daines/.gitignore
 [help]
   autocorrect = 1
 [color]
