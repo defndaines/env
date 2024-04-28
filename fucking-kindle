@@ -1,3 +1,4 @@
+:g/^$/d
 :%s/–/\&ndash;/g
 :%s/é/\&eacute;/g
 :%s/É/\&Eacute;/g
@@ -7,8 +8,10 @@
 :%s/à/\&agrave;/g
 :%s/á/\&aacute;/g
 :%s/ä/\&auml;/g
+:%s/â/\&acirc;/g
 :%s/ï/\&iuml;/g
 :%s/í/\&iacute;/g
+:%s/î/\&icirc;/g
 :%s/ó/\&oacute;/g
 :%s/ö/\&ouml;/g
 :%s/ô/\&ocirc;/g
@@ -23,9 +26,12 @@
 :%s/…/\&hellip;/g
 :%s/€/\&euro;/g
 :%s/£/\&pound;/g
+:%s/°/\&deg;/g
 :%s/<p>\(&nbsp;\)* */<p>/
 :%s/&nbsp;/ /g
 :%s#<p></p>##g
 :%s/\(\S \) \+/\1/g
+:%s#</a>##g
+:%s#<a[^>]*>##g
 
 /[^\x00-\x7F]
