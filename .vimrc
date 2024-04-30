@@ -231,7 +231,8 @@ let g:markdown_fenced_languages = ['bash', 'shell=bash', 'sql', 'html', 'css', '
 """ Slime
 
 let g:slime_target = 'tmux'
-let g:slime_paste_file = tempname()
+let g:slime_paste_file = expand("$HOME/.slime_paste")
+" let g:slime_paste_file = tempname()
 " This allows slime to work with tmate!
 let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.1"}
 
@@ -363,7 +364,7 @@ augroup END
 nnoremap <leader>z :call OpenElixirTestFile()<CR>
 
 function! OpenElixirTestFile()
-  let s:ns = 'test/' . fnamemodify(expand('%'), ':r:s#^lib/##') . '_test.exs'
+  let s:ns = fnamemodify(expand('%'), ':r:s#lib#test#') . '_test.exs'
   execute "edit " . s:ns
 endfunction
 

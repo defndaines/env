@@ -2,6 +2,10 @@
 
 Collection of useful tools, aliases, shortcuts, etc. which come in handy.
 
+## Words file
+
+/usr/share/dict/words
+
 
 ## Special Characters
 

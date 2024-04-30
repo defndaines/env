@@ -344,3 +344,9 @@ LANGUAGE plpgsql;
    WHERE table_schema NOT IN ('pg_catalog', 'information_schema')
          AND table_type = 'BASE TABLE'
 ORDER BY count_rows DESC;
+
+-- Query Configuration
+SELECT name, setting FROM pg_settings WHERE name IN ('max_replication_slots','wal_level','max_wal_senders');
+
+-- Instance Uptime
+SELECT current_timestamp - pg_postmaster_start_time() AS uptime;
