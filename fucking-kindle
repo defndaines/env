@@ -16,6 +16,7 @@
 :%s/ö/\&ouml;/g
 :%s/ô/\&ocirc;/g
 :%s/ú/\&uacute;/g
+:%s/ü/\&uuml;/g
 :%s/ç/\&ccedil;/g
 :%s/—/\&mdash;/g
 :%s/’/\&rsquo;/g
@@ -29,6 +30,7 @@
 :%s/°/\&deg;/g
 :%s/<p>\(&nbsp;\)* */<p>/
 :%s/&nbsp;/ /g
+:%s/½/\&frac12;/g
 :%s#<p></p>##g
 :%s/\(\S \) \+/\1/g
 :%s#</a>##g
