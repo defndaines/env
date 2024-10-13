@@ -162,6 +162,13 @@ done
 sed -i '' 's/before/after' <file>
 ```
 
+### Hex to Decimal
+
+```shell
+echo $((0x077C))
+# And the other way:
+printf '%x\n' 432
+```
 
 ## PostgreSQL (and `psql` in Particular)
 
