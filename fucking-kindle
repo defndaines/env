@@ -22,6 +22,8 @@
 :%s/ç/\&ccedil;/g
 :%s/ð/\&eth;/g
 :%s/ş/\&scedil;/g
+:%s/ﬁ/fi/g
+:%s/ﬂ/fl/g
 :%s/—/\&mdash;/g
 :%s/’/\&rsquo;/g
 :%s/‘/\&lsquo;/g
