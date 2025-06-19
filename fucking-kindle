@@ -1,3 +1,31 @@
+/<\(style\|script\|aside\|iframe\|form\|footer\|figure\)
+
+:%s/<html[^>]*>/<html lang="en-US">\r/
+:%s/<head [^>]*>/<head>\r/
+:%s/<meta http-equiv="X-UA-Compatible"[^>]*>//
+:%s/<meta name="viewport"[^>]*>//
+:%s/<meta property="og:url"[^>]*>//
+:%s/<meta property="og:site_name"[^>]*>//
+:%s/<meta property="og:image:width"[^>]*>//
+:%s/<meta property="og:image:height"[^>]*>//
+:%s/<meta name="msapplication[^>]*>//
+:%s/<meta name="robots"[^>]*>//
+:%s/<meta name="twitter:[^>]*>//
+:%s/<meta name="generator"[^>]*>//
+:%s/<meta name="theme-color"[^>]*>//
+:%s/<meta/\r&/g
+:%s/<link [^>]*>//g
+:%s/<div/\r&/g
+:%s/<body [^>]*>/\r<body>\r/g
+:%s#</body>#\r&\r#g
+:%s/<a href[^>]*>//g
+:%s#</a>##g
+:%s/&nbsp;/ /g
+:%s/<span[^>]*>//g
+:%s#</span>##g
+:%s/<!--[^>]*-->//g
+:g/^$/d
+
 :g/^$/d
 :%s/–/\&ndash;/g
 :%s/é/\&eacute;/g
@@ -5,6 +33,7 @@
 :%s/è/\&egrave;/g
 :%s/ë/\&euml;/g
 :%s/ê/\&ecirc;/g
+:%s/ẹ/\&#x1eb9;/g
 :%s/à/\&agrave;/g
 :%s/á/\&aacute;/g
 :%s/ä/\&auml;/g
@@ -17,11 +46,17 @@
 :%s/ö/\&ouml;/g
 :%s/ô/\&ocirc;/g
 :%s/ǫ/\&#x1EB;/g
+:%s/ò/\&ograve;/g
+:%s/ọ/\&#x1ecd;/g
+:%s/ø/\&oslash;/g
 :%s/ú/\&uacute;/g
 :%s/ü/\&uuml;/g
+:%s/ù/\&ugrave;/g
 :%s/ç/\&ccedil;/g
 :%s/ð/\&eth;/g
+:%s/ñ/\&ntilde;/g
 :%s/ş/\&scedil;/g
+:%s/ṣ/\&#x1e63;/g
 :%s/ﬁ/fi/g
 :%s/ﬂ/fl/g
 :%s/—/\&mdash;/g
@@ -31,12 +66,15 @@
 :%s/“/\&ldquo;/g
 :%s/”/\&rdquo;/g
 :%s/…/\&hellip;/g
+:%s/¡/\&iexcl;/g
+:%s/¿/\&iquest;/g
 :%s/€/\&euro;/g
 :%s/£/\&pound;/g
 :%s/°/\&deg;/g
 :%s/<p>\(&nbsp;\)* */<p>/
 :%s/&nbsp;/ /g
 :%s/½/\&frac12;/g
+:%s/™/\&trade;/g
 :%s#<p></p>##g
 :%s/\(\S \) \+/\1/g
 :%s#</a>##g
