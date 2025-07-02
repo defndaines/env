@@ -33,6 +33,7 @@ alias gph-f='git push --force-with-lease'
 alias gpl='git pull'
 alias pd='git patdiff'
 alias st='git status'
+alias dfmt='git diff --name-only | xargs mix format'
 
 # tmux
 ######

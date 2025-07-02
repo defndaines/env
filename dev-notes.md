@@ -156,6 +156,19 @@ for f in $(find lib/finance_api -type f); do
 done
 ```
 
+### What Have I Committed This Year
+```
+git log --date=format:'%Y-%m-%d' --pretty=format:"%ad %s" --after="2024-01-01" --author="yOuRnAmE"
+```
+
+### What Have I Worked on This Year
+```
+https://github.com/issues?q=is%3Amerged+author%3A%40me
+
+# repo specific
+https://github.com/<org>/<repo>/pulls?q=involves%3A%40me
+```
+
 ### In-Place sed on OSX
 
 ```shell
@@ -333,3 +346,10 @@ npx json-server --watch db.json --port 3001
 
 `npm install -g npm-check-updates` will then allow for ...
 `ncu -u` which will update all versions globally.
+
+
+### Docker
+
+Prune old images, networks, containers, and volumes:
+
+`docker system prune --volumes`

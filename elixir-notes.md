@@ -41,7 +41,14 @@ v()
 IEx by default shortens long results. To get around it,
 ```elixir
 fun() |> IO.inspect(limit: :infinity)
+
+# If order matters:
+fun() |> IO.inspect(limit: :infinity, custom_options: [sort_maps: true])
 ```
+
+Other inspect options include:
+* `pretty: true`
+* `width: 80`
 
 ## Abort Syntax Error
 
@@ -87,6 +94,16 @@ h Your.Module.Name
 To see the exported functions of a module.
 ```elixir
 exports Your.Module
+```
+
+Download docs locally
+```shell
+mix hex.docs fetch
+```
+
+Open those docs in a browser
+```
+mix hex.docs offline elixir
 ```
 
 ## Infinit Output in Console

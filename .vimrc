@@ -119,6 +119,8 @@ cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W')
 " This doesn't do what I want, but at least it doesn't open up a file called "3" for editing.
 cnoreabbrev <expr> e3 ((getcmdtype() is# ':' && getcmdline() is# 'e3')?(''):(''))
 
+" Sort a comma-separated selection
+:xnoremap s s<c-r>=join(sort(split(@", '\s*,\s*')), ', ')<cr><esc>
 
 "" Visual star search ... make *|# act upon the current visual selection.
 xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
@@ -417,6 +419,7 @@ augroup text
 augroup END
 
 iabbrev teh the
+iabbrev funciton function
 
 " Wrap selection with quotation marks.
 vnoremap <leader>" <esc>`>a"<esc>`<i"<esc>
@@ -530,6 +533,7 @@ let g:phpstan_analyse_level = '7'
 let g:ale_linters = {
       \ 'elixir': ['elixir-ls', 'credo'],
       \ 'rust': ['rust-analyzer'],
+      \ 'lua': ['luac', 'luacheck'],
       \}
 
 let b:ale_fixers = {
