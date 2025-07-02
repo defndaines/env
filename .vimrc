@@ -542,6 +542,7 @@ let b:ale_fixers = {
       \ 'javascript': ['prettier', 'eslint'],
       \ 'rust': ['rustfmt'],
       \ 'lua': ['stylua'],
+      \ 'python': ['ruff'],
       \}
 
 let g:ale_elixir_elixir_ls_release = expand("/Users/daines/src/elixir-ls/release/")
