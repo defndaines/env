@@ -302,7 +302,6 @@ let g:clojure_maxlines = 1000
 " Causes 1-space indent if there is no argument after a function.
 " let g:clojure_align_subforms = 1
 
-
 augroup clojure
   autocmd!
   autocmd BufWritePre *.clj :%s/\s\+$//e
@@ -357,6 +356,19 @@ function! FormatEDN()
   endif
 endfunction
 
+"" sexp
+
+nnoremap <Space> <Nop>
+let g:maplocalleader=' '
+
+"" iced
+
+" Enable vim-iced's default key mapping
+let g:iced_enable_default_key_mappings = v:true
+" Automatically display expected arguments to the right
+" let g:iced_enable_auto_document = 'every'
+
+
 "" Elixir
 
 augroup elixir
@@ -369,18 +381,6 @@ function! OpenElixirTestFile()
   let s:ns = fnamemodify(expand('%'), ':r:s#lib#test#') . '_test.exs'
   execute "edit " . s:ns
 endfunction
-
-"" sexp
-
-nnoremap <Space> <Nop>
-let g:maplocalleader=' '
-
-"" iced
-
-" Enable vim-iced's default key mapping
-let g:iced_enable_default_key_mappings = v:true
-" Automatically display expected arguments to the right
-" let g:iced_enable_auto_document = 'every'
 
 
 """ Ruby Options
@@ -403,6 +403,33 @@ augroup ruby
 augroup END
 
 compiler ruby
+
+
+""" JavaScript Options
+
+augroup javascript
+  autocmd!
+  autocmd BufNewFile,BufRead *.json setf javascript
+augroup END
+
+
+""" PHP Options
+
+augroup php
+  " set expandtab tabstop=4 shiftwidth=4 softtabstop=4
+augroup END
+
+
+""" Lua options.
+
+augroup lua
+  " like StyLua
+  set noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
+augroup END
+
+
+""" Elm Options
+let g:elm_format_autosave=1
 
 
 """ Text options
@@ -440,20 +467,6 @@ augroup html
 augroup END
 
 
-""" JavaScript Options
-
-augroup javascript
-  autocmd!
-  autocmd BufNewFile,BufRead *.json setf javascript
-augroup END
-
-
-""" PHP Options
-
-augroup php
-  " set expandtab tabstop=4 shiftwidth=4 softtabstop=4
-augroup END
-
 """ TagList Options
 
 let g:Tlist_Use_Right_Window=1
@@ -468,10 +481,6 @@ nnoremap <leader>T :TlistToggle<CR>
 nnoremap <f5> :!ctags -R<CR> " Refresh ctags
 
 let g:gutentags_cache_dir = '~/.tags_cache'
-
-
-""" Elm Options
-let g:elm_format_autosave=1
 
 
 """ Nerdcommenter
