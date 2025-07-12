@@ -36,18 +36,38 @@ bak() {
   cp "$@"{,.bak}
 }
 
-letters() {
-  sed 's/./&\n/g' $@ | grep -v "^$" | sort | uniq -c | sort -n
-}
-
 # Securely create a temporary directory.
 tmpdir() {
-  tmp=${TMPDIR-/tmp}
-  tmp=$tmp/somedir.$RANDOM.$RANDOM.$RANDOM.$$
+  tmp=${TMPDIR-/tmp}somedir.${RANDOM}.${RANDOM}.${RANDOM}.$$
   (umask 077 && mkdir "$tmp") || {
     echo "Could not create temporary directory! Exiting." 1>&2
     exit 1
   }
+}
+
+# Helper script for Wordle, https://www.nytimes.com/games/wordle/
+#   Shows frequency of each letter present in passed file.
+letters() {
+  sed 's/./&\n/g' "$@" | grep -v "^$" | sort | uniq -c | sort -n
+}
+
+# Script for Spelling Bee puzzle, https://www.nytimes.com/puzzles/spelling-bee
+#   Expects two arguments: the center letter and a string of all the optional letters
+#   Creates /tmp/bee file will all possible words.
+#   Outputs all the pangrams.
+bee() {
+  # Contains center letter, no proper nouns, and at least four letter words.
+  grep "$1" /usr/share/dict/words | grep -v "^[A-Z]" | grep -v "^.\{1,3\}$" | grep "^[$1$2]*$" > /tmp/x
+  # Eliminate "misspelled" words.
+  comm -23 /tmp/x <(aspell list < /tmp/x) > /tmp/bee
+  # Find all pangrams.
+  bee="${1}${2}"
+  eval array=\( '${bee:'{0..6}':1}' \)
+  pangram=$(cat /tmp/bee)
+  for l in "${array[@]}"; do
+    pangram=$(grep "$l" <(echo $pangram))
+  done
+  echo $pangram
 }
 
 psgrep() {
