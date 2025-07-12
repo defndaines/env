@@ -372,6 +372,7 @@ let g:iced_enable_default_key_mappings = v:true
 "" Elixir
 
 augroup elixir
+  autocmd!
   autocmd FileType elixir setlocal textwidth=98
 augroup END
 
@@ -416,15 +417,23 @@ augroup END
 """ PHP Options
 
 augroup php
-  " set expandtab tabstop=4 shiftwidth=4 softtabstop=4
+  autocmd!
+  autocmd BufNewFile,BufRead *.php setlocal expandtab
+  autocmd BufRead,BufNewFile *.php setlocal tabstop=4
+  autocmd BufRead,BufNewFile *.php setlocal softtabstop=4
+  autocmd BufRead,BufNewFile *.php setlocal shiftwidth=4
 augroup END
 
 
 """ Lua options.
 
 augroup lua
+  autocmd!
   " like StyLua
-  set noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
+  autocmd BufNewFile,BufRead *.lua setlocal noexpandtab
+  autocmd BufRead,BufNewFile *.lua setlocal tabstop=4
+  autocmd BufRead,BufNewFile *.lua setlocal softtabstop=4
+  autocmd BufRead,BufNewFile *.lua setlocal shiftwidth=4
 augroup END
 
 
