@@ -61,8 +61,7 @@ bee() {
   # Eliminate "misspelled" words.
   comm -23 /tmp/x <(aspell list < /tmp/x) > /tmp/bee
   # Find all pangrams.
-  bee="${1}${2}"
-  eval array=\( '${bee:'{0..6}':1}' \)
+  eval array=\( '${2:'{0..6}':1}' \)
   pangram=$(cat /tmp/bee)
   for l in "${array[@]}"; do
     pangram=$(grep "$l" <(echo $pangram))
