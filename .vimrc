@@ -384,6 +384,15 @@ function! OpenElixirTestFile()
 endfunction
 
 
+""" Python Options
+
+augroup python
+  autocmd!
+  autocmd FileType python setlocal textwidth=88 shiftwidth=4 tabstop=4 softtabstop=4
+  autocmd BufWritePre *.py :%s/\s\+$//e
+augroup END
+
+
 """ Ruby Options
 
 " Allows gf to jump to Ruby requires.
@@ -552,6 +561,7 @@ let g:ale_linters = {
       \ 'elixir': ['elixir-ls', 'credo'],
       \ 'rust': ['rust-analyzer'],
       \ 'lua': ['luac', 'luacheck'],
+      \ 'python': ['ruff'],
       \}
 
 let b:ale_fixers = {

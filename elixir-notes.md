@@ -106,6 +106,10 @@ Open those docs in a browser
 mix hex.docs offline elixir
 ```
 
-## Infinit Output in Console
+## Infinite Output in Console
 
 IEx.configure(inspect: [limit: :infinity])
+
+## Run Test Multiple Times
+
+`mix test --repeat-until-failure 10000 path/to/failing_test.exs`
