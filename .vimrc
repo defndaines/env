@@ -388,7 +388,7 @@ endfunction
 
 augroup python
   autocmd!
-  autocmd FileType python setlocal textwidth=88 shiftwidth=4 tabstop=4 softtabstop=4
+  autocmd FileType python setlocal textwidth=88 shiftwidth=4 tabstop=4 softtabstop=4 colorcolumn=88
   autocmd BufWritePre *.py :%s/\s\+$//e
 augroup END
 
