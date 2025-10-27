@@ -4,7 +4,7 @@
 " Copyright by Linus Claußnitzer
 " Email: linus.vivaldi@gmail.com
 
-call setline(1, '<!DOCTYPE html>')
+call setline(1, '<!doctype html>')
 call setline(2, '<html lang="en">')
 call setline(3, '<head>')
 call setline(4, '<meta charset="UTF-8">')
