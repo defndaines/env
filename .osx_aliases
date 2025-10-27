@@ -11,9 +11,13 @@ alias ot='open -a TextEdit'
 alias excel='open -a Microsoft\ Excel'
 alias preview='open -a preview'
 alias utc='date -u +"%Y-%m-%dT%H:%M:%SZ"'
+alias ts='date -u +"%Y%m%d%H%M%S"'
 alias ll='ls -lhtr'
 alias h='history'
 alias eighty='echo ........10........20........30........40........50........60........70........80'
+alias sixtyfive='echo ........10........20........30........40........50........60...65'
+
+alias book='co ~/src/dal/gr'
 
 # git
 #####
@@ -35,6 +39,8 @@ alias pd='git patdiff'
 alias st='git status'
 alias dfmt='git diff --name-only | xargs mix format'
 alias gtags='git fetch --tags'
+alias wip='git wip main'
+alias rbh='git rebase -i HEAD~2'
 
 # tmux
 ######
@@ -75,3 +81,5 @@ alias minecraft-server='java -Xmx1024M -Xms1024M -jar minecraft_server.1.16.2.ja
 alias ism='iex -S mix'
 alias mr='mix run --no-halt'
 alias mps='mix phx.server'
+alias dia='mix dialyzer'
+alias credo='mix credo'
