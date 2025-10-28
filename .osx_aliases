@@ -17,7 +17,7 @@ alias h='history'
 alias eighty='echo ........10........20........30........40........50........60........70........80'
 alias sixtyfive='echo ........10........20........30........40........50........60...65'
 
-alias book='co ~/src/dal/gr'
+alias book='cd ~/src/dal/gr'
 
 # git
 #####
