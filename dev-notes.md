@@ -60,6 +60,11 @@ IFS="$OIFS"
 uuidgen
 ```
 
+### Decompress BZ Tarball
+```sh
+tar xjvf <file>
+```
+
 ### Replace Value in JSON
 ```bash
 new_id=$(uuidgen) && jq ".request" file.json | jq ".user.ids[0].value = \"${new_id}\"" | pbcopy
