@@ -289,6 +289,12 @@ vim --startuptime /dev/stdout slow_to_open_file.ex +q | less
 /[<=>][<=>][<=>][<=>][<=>][<=>][<=>]
 ```
 
+### `vimdiff`
+
+`]c` jump to next change
+`do` diff obtain (get changes from other window)
+`dp` diff put (put changes to other window)
+
 ## Ruby
 
 ### Read in Hash-syntax Map from File
