@@ -74,6 +74,7 @@
 :%s/¿/\&iquest;/g
 :%s/€/\&euro;/g
 :%s/£/\&pound;/g
+:%s/ł/\&lstrok;/g
 :%s/°/\&deg;/g
 :%s/<p>\(&nbsp;\)* */<p>/
 :%s/&nbsp;/ /g
