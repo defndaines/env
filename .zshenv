@@ -53,6 +53,11 @@ if [ -d "${HOME}/bin" ] ; then
   PATH=${HOME}/bin:${PATH}
 fi
 
+# Add escripts
+if [ -d "${HOME}/.mix/escripts" ] ; then
+  PATH=${HOME}/.mix/escripts:${PATH}
+fi
+
 # Clear out duplication in the PATH before exporting.
 PATH="$(echo $PATH | perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, scalar <>))')"
 export PATH

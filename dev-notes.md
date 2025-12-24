@@ -123,7 +123,7 @@ java -XX:+UnlockDiagnosticVMOptions -XX:+PrintFlagsFinal -version
 awk '! seen[$0]++'
 ```
 
-### Remove Lines from file2 that Are Found in file1
+### Remove Lines from file2 that Are Found in file1 (diff)
 ```bash
 grep -F -v -f file1 file2 > remaining
 ```
@@ -172,6 +172,14 @@ https://github.com/issues?q=is%3Amerged+author%3A%40me
 
 # repo specific
 https://github.com/<org>/<repo>/pulls?q=involves%3A%40me
+```
+
+### Commit an Empty Branch
+
+Useful for triggering CI workflows and builds without risk of having to undo
+anything later.
+```
+git commit --allow-empty
 ```
 
 ### In-Place sed on OSX

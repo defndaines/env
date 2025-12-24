@@ -350,3 +350,6 @@ SELECT name, setting FROM pg_settings WHERE name IN ('max_replication_slots','wa
 
 -- Instance Uptime
 SELECT current_timestamp - pg_postmaster_start_time() AS uptime;
+
+-- Median
+SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY field) AS median FROM table;
