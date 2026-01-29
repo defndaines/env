@@ -113,3 +113,7 @@ IEx.configure(inspect: [limit: :infinity])
 ## Run Test Multiple Times
 
 `mix test --repeat-until-failure 10000 path/to/failing_test.exs`
+
+## Mess with Timing to Help Finding Flaky Tests
+
+`ERL_FLAGS="+T 9" mix test`
