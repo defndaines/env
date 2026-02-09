@@ -1,6 +1,7 @@
 /<\(style\|script\|aside\|iframe\|form\|footer\|figure\)
 
 :%s/<html[^>]*>/<html lang="en-US">\r/
+
 :%s/<head [^>]*>/<head>\r/
 :%s/<meta http-equiv="X-UA-Compatible"[^>]*>//
 :%s/<meta name="viewport"[^>]*>//
