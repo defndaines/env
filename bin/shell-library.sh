@@ -19,6 +19,13 @@ vup() {
       popd
     done
   fi
+  BINARIES_DIR=${HOME}/.local/nightly
+  if [[ $(ls -A ${BINARIES_DIR}) ]]; then
+    pushd $BINARIES_DIR
+    gh release download nightly --clobber --pattern 'expert_darwin_arm64' --repo elixir-lang/expert
+    chmod +x expert_darwin_arm64
+    popd
+  fi
 }
 
 # Pipe into this command for ten most common results with counts

@@ -558,7 +558,7 @@ let g:ale_php_phpstan_level = '7'
 let g:phpstan_analyse_level = '7'
 
 let g:ale_linters = {
-      \ 'elixir': ['elixir-ls', 'credo'],
+      \ 'elixir': ['credo', 'expert'],
       \ 'rust': ['rust-analyzer'],
       \ 'lua': ['luac', 'luacheck'],
       \ 'python': ['ruff'],
@@ -573,11 +573,9 @@ let b:ale_fixers = {
       \ 'python': ['ruff'],
       \}
 
-let g:ale_elixir_elixir_ls_release = expand("/Users/daines/src/elixir-ls/release/")
-
 let g:ale_elixir_credo_strict = 1
-
-" let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}
+let g:ale_elixir_expert_executable = '/Users/mdaines/.local/bin/expert'
+" let g:ale_disable_lsp = 'auto'
 
 let g:ale_sign_error = '✘'
 " let g:ale_sign_warning = '⚠'
