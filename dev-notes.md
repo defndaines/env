@@ -182,6 +182,14 @@ anything later.
 git commit --allow-empty
 ```
 
+### Align with Upstream Fork
+
+```shell
+# git remote add upstream https://github.com/...
+git fetch upstream
+get rebase upstream/master
+```
+
 ### In-Place sed on OSX
 
 ```shell
