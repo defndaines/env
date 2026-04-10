@@ -117,3 +117,9 @@ IEx.configure(inspect: [limit: :infinity])
 ## Mess with Timing to Help Finding Flaky Tests
 
 `ERL_FLAGS="+T 9" mix test`
+
+## Get Current Stack Trace
+
+```elixir
+IO.inspect(Process.info(self(), :current_stacktrace), label: :STACKTRACE)
+```
