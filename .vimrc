@@ -33,10 +33,16 @@ nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
 
-" Turn off auto-commenting
 augroup all-files
   autocmd!
+  " Turn off auto-commenting
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+  " When editing a file, always jump to the last known cursor position.
+  autocmd BufReadPost *
+        \ if line("'\"") > 1 && line("'\"") <= line("$") |
+        \   exe "normal! g`\"" |
+        \ endif
 augroup END
 
 " Don't redraw screen during macro execution (makes them faster)
@@ -73,7 +79,6 @@ set smartcase
 inoremap <c-u> <esc>viwUea
 
 set visualbell t_vb=
-set novisualbell
 
 set backspace=indent,eol,start
 set complete-=i
@@ -116,8 +121,8 @@ let g:netrw_banner=0
 
 " Handle my common command typos.
 cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W'))
-" This doesn't do what I want, but at least it doesn't open up a file called "3" for editing.
-cnoreabbrev <expr> e3 ((getcmdtype() is# ':' && getcmdline() is# 'e3')?(''):(''))
+" When I mis-type ":e#" as ":e3", just do what I want.
+cnoreabbrev <expr> e3 ((getcmdtype() is# ':' && getcmdline() is# 'e3')?('e#'):('e3'))
 
 " Sort a comma-separated selection
 :xnoremap s s<c-r>=join(sort(split(@", '\s*,\s*')), ', ')<cr><esc>
@@ -145,24 +150,9 @@ function! QuickfixFilenames()
 endfunction
 
 
-" When editing a file, always jump to the last known cursor position.
-augroup all-files
-  autocmd BufReadPost *
-        \ if line("'\"") > 1 && line("'\"") <= line("$") |
-        \   exe "normal! g`\"" |
-        \ endif
-augroup END
-
 " Maintain some set-up between sessions
 set sessionoptions=blank,buffers,curdir,help,resize,tabpages,winsize
 
-
-"" Persistent Undo
-if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
-  silent !mkdir ~/.vim/backups > /dev/null 2>&1
-  set undodir=~/.vim/backups
-  set undofile
-endif
 
 " Strip all trailing whitespace, but doesn't include MSWin Returns
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
@@ -178,7 +168,6 @@ highlight rightMargin term=bold ctermfg=black guifg=brown
 
 " Format XML
 command! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
-" command! C14N11 :!xmllint --c14n11 %
 nnoremap <leader>x :FormatXML<CR>
 
 " Format JSON
@@ -210,9 +199,6 @@ function! FormatJSON()
   while search('^\( *\)\(.[^{]*\): {')
     execute '%s/^\( *\)\(.[^{]*\): {/\1\2:\r\1  {/g'
   endwhile
-  " if search('\n\( *])\[ .*\n\1]')
-    " execute '%s#\n\( *\)\[ \(.*\)\n\1]# [ \2 ]#'
-  " endif
 endfunction
 
 
@@ -254,25 +240,12 @@ augroup git
   autocmd FileType gitcommit setlocal spell textwidth=72
 augroup END
 
-" function! s:Branch()
-"   let s:branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
-"   if branch != ''
-"     return substitute(substitute(branch, '\n', '', 'g'), 'daines.', '', 'g')
-"   en
-"   return ''
-" endfunction
-" Output branch name to the second line of the commit message.
-" command! -nargs=0 Branch put=s:Branch()
-
-" autocmd FileType gitcommit Branch
-" autocmd FileType gitcommit execute "normal ggO"
-
 
 """ Erlang options.
 
 augroup erlang
   autocmd!
-  autocmd BufRead,BufNewFile *.erl,*.es.*.hrl,*.yaws,*.xrl set expandtab
+  autocmd BufRead,BufNewFile *.erl,*.es,*.hrl,*.yaws,*.xrl set expandtab
   autocmd BufNewFile,BufRead *.erl,*.es,*.hrl,*.yaws,*.xrl setf erlang
 
   " Highlight when a comma is not followed by a space.
@@ -285,11 +258,6 @@ augroup END
 highlight SyntaxHighlight ctermbg=darkblue guibg=darkblue
 
 set wildignore+=*.so,*.swp,*.beam
-
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.git$',
-  \ 'file': '\v\.(beam|png|jpg)$',
-  \ }
 
 
 """ Clojure options.
@@ -312,49 +280,6 @@ augroup clojure
 augroup END
 
 set wildignore+=*/target/*
-
-" TODO Make this only applicable if editing a Clojure file?
-" nnoremap <leader>c :call AddClojureNamespace()<CR>
-
-function! AddClojureNamespace()
-  let s:ns = ["(ns " . fnamemodify(expand('%'), ':r:s#^src/##:s#^test/##:gs#/#.#:gs#_#-#')]
-  if (expand('%') =~ "test/")
-    let s:under_test = fnamemodify(expand('%'), ':r:s#^test/##:s#_test$##:gs#/#.#:gs#_#-#')
-    let s:as_var = split(s:under_test, '\.')[-1]
-    call add(s:ns, '  "Tests against the ' . s:under_test . ' namespace."')
-    call add(s:ns, "  (:require [clojure.test :refer [deftest is testing]]")
-    call add(s:ns, "            [" . s:under_test . " :as " . s:as_var . "]))")
-  else
-    call add(s:ns, '  "TODO: Write a clear explanation of what purpose this namespace serves."')
-    call add(s:ns, "  (:require [clojure.spec.alpha :as s]))")
-  endif
-  call add(s:ns, "")
-
-  let s:failed = append(0, s:ns)
-  if (s:failed)
-    echo "Problem creating namespace!"
-  else
-    let &modified = 1
-  endif
-endfunction
-
-" nnoremap <leader>e :call FormatEDN()<CR>1G=G<CR>
-
-function! FormatEDN()
-  " TODO: There are better tools for this, just plug into them (joker?)
-  " Separate sequences of strings to separate lines.
-  if search('" "')
-    execute '%s/" "/"\r"/g'
-  endif
-  " Break lists of maps onto separate lines.
-  if search('} {')
-    execute '%s/} {/}\r{/g'
-  endif
-  " Convert commas into newlines in maps.
-  if search(', :')
-    execute '%s/, :/\r:/g'
-  endif
-endfunction
 
 "" sexp
 
@@ -404,23 +329,10 @@ augroup ruby
   autocmd BufWritePre *.rb :%s/\t/  /ge
   " autoindent with two spaces, always expand tabs
   autocmd FileType ruby,yaml set ai sw=2 sts=2 et
-  " treat thor files as Ruby
-  autocmd BufNewFile,BufReadPost *.thor set filetype=ruby
-  autocmd BufRead,BufNewFile *.thor set filetype=ruby
-  autocmd BufRead,BufNewFile *.jbuilder set filetype=ruby
 
-  autocmd BufWritePre *.rb :%s/\s\+$//e
+  autocmd FileType ruby compiler ruby
 augroup END
 
-compiler ruby
-
-
-""" JavaScript Options
-
-augroup javascript
-  autocmd!
-  autocmd BufNewFile,BufRead *.json setf javascript
-augroup END
 
 
 """ PHP Options
@@ -457,7 +369,6 @@ augroup text
   autocmd FileType text setlocal nosmartindent
   autocmd FileType text :set spl=en_us spell
   " Force markdown over modula2
-  autocmd BufNewFile,BufReadPost *.md set filetype=markdown
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd FileType markdown setlocal spell
   autocmd BufRead,BufNewFile *.md setlocal textwidth=78
@@ -483,22 +394,6 @@ augroup html
   autocmd!
   autocmd BufNewFile *.html source ~/.vim/ftplugin/htmltemplate.vim
 augroup END
-
-
-""" TagList Options
-
-let g:Tlist_Use_Right_Window=1
-let g:Tlist_Enable_Fold_Column=0
-let g:Tlist_Show_One_File=1 " especially with this one
-let g:Tlist_Compact_Format=1
-let g:Tlist_Ctags_Cmd='/usr/local/bin/ctags'
-set updatetime=1000
-nmap ,t :!(cd %:p:h;ctags *)& " Maps the updates of tags to key ,t.
-set tags=tags; " The ';' at the end will cause the ctags plugin to search for current dir and above dirs until it find a tag file.
-nnoremap <leader>T :TlistToggle<CR>
-nnoremap <f5> :!ctags -R<CR> " Refresh ctags
-
-let g:gutentags_cache_dir = '~/.tags_cache'
 
 
 """ Nerdcommenter
@@ -564,7 +459,7 @@ let g:ale_linters = {
       \ 'python': ['ruff'],
       \}
 
-let b:ale_fixers = {
+let g:ale_fixers = {
       \ '*': ['remove_trailing_lines', 'trim_whitespace'],
       \ 'elixir': ['mix_format'],
       \ 'javascript': ['prettier', 'eslint'],
@@ -591,7 +486,6 @@ nnoremap <leader>K :ALEHover<CR>
 
 
 """ fzf (fuzzy finder)
-set runtimepath+=/usr/local/bin/fzf
 nnoremap <C-p> :<C-u>FZF<CR>
 
 
