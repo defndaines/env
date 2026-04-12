@@ -83,7 +83,6 @@ set visualbell t_vb=
 set backspace=indent,eol,start
 set complete-=i
 set complete+=kspell
-" set completeopt=menuone,preview,noinsert
 set completeopt=menuone,preview
 
 set ttimeout
@@ -121,7 +120,6 @@ let g:netrw_banner=0
 
 " Handle my common command typos.
 cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W'))
-" When I mis-type ":e#" as ":e3", just do what I want.
 cnoreabbrev <expr> e3 ((getcmdtype() is# ':' && getcmdline() is# 'e3')?('e#'):('e3'))
 
 " Sort a comma-separated selection
@@ -138,7 +136,6 @@ function! s:VSetSearch()
   let @s = s:temp
 endfunction
 
-
 " Push Quickfix list into args
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
 function! QuickfixFilenames()
@@ -149,10 +146,8 @@ function! QuickfixFilenames()
   return join(map(values(s:buffer_numbers), 'fnameescape(v:val)'))
 endfunction
 
-
 " Maintain some set-up between sessions
 set sessionoptions=blank,buffers,curdir,help,resize,tabpages,winsize
-
 
 " Strip all trailing whitespace, but doesn't include MSWin Returns
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
@@ -169,6 +164,7 @@ highlight rightMargin term=bold ctermfg=black guifg=brown
 " Format XML
 command! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
 nnoremap <leader>x :FormatXML<CR>
+
 
 " Format JSON
 nnoremap <leader>j :%!python3 -m json.tool<CR>1G=G<CR>:call FormatJSON()<CR>
@@ -225,14 +221,6 @@ let g:slime_paste_file = expand("$HOME/.slime_paste")
 let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.1"}
 
 
-""" Hg options
-
-augroup mercurial
-  autocmd!
-  autocmd FileType hgcommit setlocal spell textwidth=72
-augroup END
-
-
 """ Git options
 
 augroup git
@@ -260,40 +248,6 @@ highlight SyntaxHighlight ctermbg=darkblue guibg=darkblue
 set wildignore+=*.so,*.swp,*.beam
 
 
-""" Clojure options.
-
-let g:clj_highlight_builtins = 1
-let g:clojure_special_indent_words = 'deftype,defrecord,reify,proxy,extend-type,extend-protocol,letfn,defcomponent'
-let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^for-all']
-" Don't stop indentation fixes at 100 lines.
-let g:clojure_maxlines = 1000
-" Causes 1-space indent if there is no argument after a function.
-" let g:clojure_align_subforms = 1
-
-augroup clojure
-  autocmd!
-  autocmd BufWritePre *.clj :%s/\s\+$//e
-  autocmd BufWritePre *.clj :%s/\t/  /ge
-  autocmd FileType clojure setlocal textwidth=78
-  autocmd FileType clojure setlocal lispwords+=fdef
-  autocmd BufNewFile,BufReadPost .lein-env set filetype=clojure
-augroup END
-
-set wildignore+=*/target/*
-
-"" sexp
-
-nnoremap <Space> <Nop>
-let g:maplocalleader=' '
-
-"" iced
-
-" Enable vim-iced's default key mapping
-let g:iced_enable_default_key_mappings = v:true
-" Automatically display expected arguments to the right
-" let g:iced_enable_auto_document = 'every'
-
-
 "" Elixir
 
 augroup elixir
@@ -318,23 +272,6 @@ augroup python
 augroup END
 
 
-""" Ruby Options
-
-" Allows gf to jump to Ruby requires.
-set suffixesadd+=.rb
-
-augroup ruby
-  autocmd!
-  autocmd BufWritePre *.rb :%s/\s\+$//e
-  autocmd BufWritePre *.rb :%s/\t/  /ge
-  " autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,yaml set ai sw=2 sts=2 et
-
-  autocmd FileType ruby compiler ruby
-augroup END
-
-
-
 """ PHP Options
 
 augroup php
@@ -356,10 +293,6 @@ augroup lua
   autocmd BufRead,BufNewFile *.lua setlocal softtabstop=4
   autocmd BufRead,BufNewFile *.lua setlocal shiftwidth=4
 augroup END
-
-
-""" Elm Options
-let g:elm_format_autosave=1
 
 
 """ Text options
