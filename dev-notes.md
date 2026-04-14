@@ -143,6 +143,11 @@ cat testfile | awk '{ print length, $0 }' | sort -nr | cut -d" " -f2-
 du -hs */ | sort -hr | head
 ```
 
+### Sort a CSV by Two Numeric Columns (not safe vs. "" escaping)
+```shell
+sort -t, -k1,1n -k2,2n file.csv
+```
+
 ### Find git Commits Involving File, Even if File Doesn't Exist Anymore
 ```
 git log --full-history -- app/assets/images/3.gif
