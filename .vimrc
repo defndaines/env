@@ -366,6 +366,36 @@ augroup exercism
 augroup END
 
 
+""" vim-lsp
+
+function! s:FindElixirRoot(server_info) abort
+  let l:mix_dir = lsp#utils#find_nearest_parent_file_directory(
+        \ lsp#utils#get_buffer_path(), 'mix.exs')
+  let l:grandparent = fnamemodify(l:mix_dir, ':h:h')
+  if filereadable(l:grandparent . '/mix.exs')
+    return lsp#utils#path_to_uri(l:grandparent)
+  endif
+  let l:parent = fnamemodify(l:mix_dir, ':h')
+  if filereadable(l:parent . '/mix.exs')
+    return lsp#utils#path_to_uri(l:parent)
+  endif
+  return lsp#utils#path_to_uri(l:mix_dir)
+endfunction
+
+augroup vim_lsp_servers
+  autocmd!
+  autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'dexter',
+        \ 'cmd': {_ -> ['/Users/mdaines/.local/bin/dexter', 'lsp']},
+        \ 'allowlist': ['elixir'],
+        \ 'root_uri': function('s:FindElixirRoot'),
+        \})
+augroup END
+
+noremap <leader>ad :LspDefinition<CR>
+noremap <leader>ar :LspReferences<CR>
+nnoremap <leader>K :LspHover<CR>
+
 """ ALE
 
 " Enable completion where available.
@@ -386,7 +416,7 @@ let g:ale_php_phpstan_level = '7'
 let g:phpstan_analyse_level = '7'
 
 let g:ale_linters = {
-      \ 'elixir': ['credo', 'expert'],
+      \ 'elixir': ['credo', 'expert', 'dexter'],
       \ 'rust': ['rust-analyzer'],
       \ 'lua': ['luac', 'luacheck'],
       \ 'python': ['ruff'],
@@ -402,8 +432,8 @@ let g:ale_fixers = {
       \}
 
 let g:ale_elixir_credo_strict = 1
-let g:ale_elixir_expert_executable = '/Users/mdaines/.local/bin/expert'
-" let g:ale_disable_lsp = 'auto'
+let g:ale_elixir_expert_executable = '/opt/homebrew/bin/expert'
+let g:ale_disable_lsp = 0
 
 let g:ale_sign_error = '✘'
 " let g:ale_sign_warning = '⚠'
@@ -412,10 +442,11 @@ let g:ale_sign_error = '✘'
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 
-noremap <leader>ad :ALEGoToDefinition<CR>
 nnoremap <leader>af :ALEFix<CR>
-noremap <leader>ar :ALEFindReferences<CR>
-nnoremap <leader>K :ALEHover<CR>
+" These are handled by vim-lsp
+" noremap <leader>ad :ALEGoToDefinition<CR>
+" noremap <leader>ar :ALEFindReferences<CR>
+" nnoremap <leader>K :ALEHover<CR>
 
 
 """ fzf (fuzzy finder)
