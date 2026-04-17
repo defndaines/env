@@ -94,3 +94,9 @@ eunit() {
 rl() {
   sort --random-sort "$@" | head -1
 }
+
+# Fix up previous commit without having to add a throwaway commit message.
+gfix() {
+  git commit --fixup HEAD && GIT_SEQUENCE_EDITOR=: git rebase -i --autosquash
+HEAD~2
+}
