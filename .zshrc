@@ -91,7 +91,19 @@ PROMPT='%* %F{cyan}%5~%f %(?.%#.%F{red}%? %#)%f '
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-[ -f ~/bin/daily-lyric.sh ] && . ~/bin/daily-lyric.sh
+# Run once per day.
+_daily_run_marker="$HOME/.cache/daily_run_$(date +%Y-%m-%d)"
+if [[ ! -f "$_daily_run_marker" ]]; then
+  mkdir -p "$HOME/.cache"
+  touch "$_daily_run_marker"
+  # Clean up previous day markers
+  find "$HOME/.cache" -name 'daily_run_*' -not -name "daily_run_$(date +%Y-%m-%d)" -delete
+
+  [ -f ~/bin/daily-lyric.sh ] && . ~/bin/daily-lyric.sh
+
+  (uv run /Users/mdaines/src/hebi/goodreads/goodreads_giveaways.py &>/dev/null &) 2>/dev/null
+fi
+unset _daily_run_marker
 
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
