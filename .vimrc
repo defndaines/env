@@ -201,6 +201,9 @@ endfunction
 " Insert the current date
 nnoremap <leader>d "=strftime("%Y-%m-%d")<CR>p
 
+" Apply title_case() from common/format.py to the visual selection
+xnoremap <leader>t :!~/.vim/bin/title_case<CR>
+
 " Force save when using a read-only file
 cnoremap sudow w !sudo dd of=%
 

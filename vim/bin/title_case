@@ -1,0 +1,278 @@
+#!/usr/bin/env python3
+"""Standalone title_case filter.
+
+Reads lines from stdin, applies title_case(), writes to stdout.
+Requires only Python 3 stdlib; ftfy is used if available for mojibake repair.
+"""
+
+import re
+import string
+import sys
+from unicodedata import normalize
+
+
+TO_LOWER = [
+    "a",
+    "an",
+    "the",
+    "and",
+    "but",
+    "for",
+    "nor",
+    "or",
+    "so",
+    "yet",
+    "as",
+    "if",
+    "aboard",
+    "about",
+    "above",
+    "abreast",
+    "absent",
+    "across",
+    "after",
+    "against",
+    "ago",
+    "along",
+    "aloft",
+    "alongside",
+    "amid",
+    "amidst",
+    "among",
+    "apropos",
+    "around",
+    "astride",
+    "at",
+    "atop",
+    "before",
+    "behind",
+    "below",
+    "beneath",
+    "beside",
+    "besides",
+    "between",
+    "beyond",
+    "by",
+    "circa",
+    "cum",
+    "de",
+    "despite",
+    "during",
+    "except",
+    "from",
+    "in",
+    "including",
+    "inside",
+    "into",
+    "notwithstanding",
+    "of",
+    "on",
+    "onto",
+    "over",
+    "per",
+    "pre",
+    "sans",
+    "since",
+    "than",
+    "through",
+    "throughout",
+    "to",
+    "toward",
+    "towards",
+    "under",
+    "underneath",
+    "unlike",
+    "until",
+    "unto",
+    "upon",
+    "versus",
+    "vs.",
+    "v.",
+    "via",
+    "vis-à-vis",
+    "with",
+    "within",
+    "without",
+]
+
+COMPLEX = [
+    "À La",
+    "According to",
+    "Ahead of",
+    "Apart from",
+    "as Regards",
+    "as Soon as",
+    "as Well as",
+    "Aside from",
+    "Away from",
+    "Back to",
+    "Because of",
+    "Close to",
+    "Counter to",
+    "Due to",
+    "Far from",
+    "from Above",
+    "from Below",
+    "in Case",
+    "Instead of",
+    "Near to",
+    "Opposite of",
+    "Other than",
+    "Outside of",
+    "Owing to",
+    "per Pro",
+    "Pertaining to",
+    "Prior to",
+    "Pursuant to",
+    "Rather than",
+    "Regardless of",
+    "Round about",
+    "Subsequent to",
+    "Such as",
+]
+
+
+def leading_punctuation(line: str) -> tuple[str, str]:
+    head = ""
+    rest = ""
+    while line.startswith("<") and (pos := line.find(">")) > 0:
+        pos += 1
+        head += line[:pos]
+        line = line[pos:]
+    for ch in line:
+        if rest == "" and ch in string.punctuation:
+            head += ch
+        else:
+            rest += ch
+    return head, rest
+
+
+def capitalize_first_letter(word: str) -> str:
+    if not word:
+        return word
+    if word.startswith(("iP", "d'", "d\u2019")):
+        return word
+    if word.startswith("\u201c"):
+        return f"\u201c{capitalize_first_letter(word[1:])}"
+    if word.startswith("'"):
+        return f"'{capitalize_first_letter(word[1:])}"
+    if word.startswith("\u2019"):
+        return f"\u2019{capitalize_first_letter(word[1:])}"
+    if word.startswith("\u2026"):
+        return f"\u2026{capitalize_first_letter(word[1:])}"
+    punct, rest = leading_punctuation(word)
+    if punct:
+        punct = punct.replace("'", "\u2019").replace('"', "\u201d")
+        return f"{punct}{capitalize_first_letter(rest)}"
+    return word.replace(word[0], word[0].upper(), 1)
+
+
+def capitalize(word: str) -> str:
+    word = capitalize_first_letter(word)
+    down = word.lower()
+    if down.strip(string.punctuation) in TO_LOWER:
+        return down
+    return word
+
+
+def capitalize_last_word(line: str) -> str:
+    chunks = line.split()
+    if not chunks:
+        return line
+    if chunks[-1].strip(string.punctuation) in TO_LOWER:
+        punct, rest = leading_punctuation(chunks[-1])
+        chunks[-1] = f"{punct}{capitalize_first_letter(rest)}"
+        return " ".join(chunks)
+    return line
+
+
+def _normalize_ellipsis(text: str) -> str:
+    text = text.replace("....", ".…")
+    text = text.replace("...", "…")
+    text = text.replace("….", ".…")
+    text = re.sub(r'(?<=.)(?<![.\s>"\'\u201c\u2018])…', r" …", text)
+    text = re.sub(r'…(?![\s<"\'.,;:!?)\]\u201d\u2019]|$)', r"… ", text)
+    text = re.sub(r"\. …", ".…", text)
+    return text
+
+
+def repair(line: str) -> str:
+    line = line.replace("\\r\\n", " ")
+    line = line.replace("\r\n", " ")
+    line = line.replace("\n", " ")
+    line = re.sub(r" {2,}", " ", line)
+    line = re.sub(r" +([,.])", r"\1", line)
+    line = line.replace("–", "—")
+    line = re.sub(r"(\d)[—-](\d)", r"\1–\2", line)
+    line = re.sub(r" —", "—", line)
+    line = re.sub(r"— ", "—", line)
+    line = re.sub(r"\b(\w+)wards\b", r"\1ward", line)
+    line = re.sub(r"(?<!, )\bLA\b", "L.A.", line)
+    line = re.sub(r"\bUS\b", "U.S.", line)
+    line = re.sub(r"\bUN\b", "U.N.", line)
+    line = re.sub(r"\bUK\b", "U.K.", line)
+    line = re.sub(r"\bEU\b", "E.U.", line)
+    line = re.sub(r"\b[Cc]ovid\b", "COVID", line)
+    line = re.sub(r"i\.e\.(?!,)", "i.e.,", line)
+    line = re.sub(r"e\.g\.(?!,)", "e.g.,", line)
+    line = _normalize_ellipsis(line)
+    return line
+
+
+def smart_quotes(text: str) -> str:
+    text = normalize("NFC", text)
+    segments = re.split(r"(<[^>]+>)", text)
+    out: list[str] = []
+    prev_text_char = ""
+    for i, part in enumerate(segments):
+        if i % 2 == 1:
+            out.append(part)
+            continue
+        if prev_text_char and prev_text_char not in " \t\n\r([{\u2013\u2014":
+            part = re.sub(r'^"', "\u201d", part)
+        part = re.sub(
+            r'(^|[\s(\[{\u2013\u2014])"', "\\1\u201c", part, flags=re.MULTILINE
+        )
+        part = part.replace('"', "\u201d")
+        part = re.sub(r"'(\d)", "\u2019\\1", part)
+        part = re.sub(r"(\w)'(\w)", "\\1\u2019\\2", part)
+        if prev_text_char and prev_text_char not in " \t\n\r([{\u2013\u2014":
+            part = re.sub(r"^'", "\u2019", part)
+        part = re.sub(
+            r"(^|[\s(\[{\u2013\u2014])'", "\\1\u2018", part, flags=re.MULTILINE
+        )
+        part = part.replace("'", "\u2019")
+        out.append(part)
+        if part:
+            prev_text_char = part[-1]
+    return "".join(out)
+
+
+def title_case(line: str) -> str:
+    line = normalize("NFC", line)
+    line = line.replace("–", "—")
+    line = line.replace("\\'", "'")
+    line = line.replace('\\"', '"')
+    line = repair(line)
+    line = re.sub(r"(\d)[—-](\d)", "\\1–\\2", line)
+    line = smart_quotes(line)
+    line = " ".join(capitalize(word) for word in line.split())
+    for phrase in COMPLEX:
+        line = line.replace(phrase, phrase.lower())
+    for punct in [". ", "? ", "! ", ": ", "—"]:
+        if punct in line:
+            if punct == ". ":
+                parts = re.split(r"(?<![A-Z])\. ", line)
+            else:
+                parts = line.split(punct)
+            line = punct.join(
+                capitalize_last_word(capitalize(part.strip())) for part in parts
+            )
+    line = capitalize_first_letter(line)
+    line = capitalize_last_word(line)
+    return line
+
+
+if __name__ == "__main__":
+    for line in sys.stdin:
+        print(title_case(line.rstrip("\n")))
