@@ -41,6 +41,8 @@ alias dfmt='git diff --name-only | xargs mix format'
 alias gtags='git fetch --tags'
 alias wip='git wip main'
 alias rbh='git rebase -i HEAD~2'
+alias restore='git restore --staged'
+alias vist='vim $(git diff --name-only && git ls-files --others --exclude-standard)'
 
 # tmux
 ######
@@ -83,3 +85,5 @@ alias mr='mix run --no-halt'
 alias mps='mix phx.server'
 alias dia='mix dialyzer'
 alias credo='mix credo'
+alias stf='mix format $(git diff --name-only)'
+alias stt='mix test $(git diff --name-only| sort| grep "_test.exs")'

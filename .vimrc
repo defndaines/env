@@ -397,6 +397,7 @@ augroup END
 
 noremap <leader>ad :LspDefinition<CR>
 noremap <leader>ar :LspReferences<CR>
+noremap <leader>aa :LspCodeAction<CR>
 nnoremap <leader>K :LspHover<CR>
 
 """ ALE

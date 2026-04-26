@@ -2,7 +2,7 @@
 
 Collection of useful tools, aliases, shortcuts, etc. which come in handy.
 
-## Words file
+## Words File
 
 /usr/share/dict/words
 
@@ -45,7 +45,7 @@ dot -Tsvg file.dot -o ruby-deps.svg
 > file-name ssh remote-host "cat - < file-name"
 ```
 
-### Loop over Files with Spaces in Name
+### Loop Over Files with Spaces in Name
 ```bash
 OIFS="$IFS"
 IFS=$'\n'
@@ -98,7 +98,7 @@ ls -i
 find . -inum <inode> -exec rm -i {} \;
 ```
 
-### Force Reinstall of All brew Libraries
+### Force Reinstall of All `brew` Libraries
 ```bash
 brew reinstall `brew list`
 ```
@@ -123,12 +123,12 @@ java -XX:+UnlockDiagnosticVMOptions -XX:+PrintFlagsFinal -version
 awk '! seen[$0]++'
 ```
 
-### Remove Lines from file2 that Are Found in file1 (diff)
+### Remove Lines from `file2` that Are Found in `file1` (`diff`)
 ```bash
 grep -F -v -f file1 file2 > remaining
 ```
 
-### To Redirect where slime Is Pointing
+### To Redirect Where `slime` Is Pointing
 ```
 ^-c v
 ```
@@ -143,12 +143,12 @@ cat testfile | awk '{ print length, $0 }' | sort -nr | cut -d" " -f2-
 du -hs */ | sort -hr | head
 ```
 
-### Sort a CSV by Two Numeric Columns (not safe vs. "" escaping)
+### Sort a CSV by Two Numeric Columns (Not Safe vs. “” Escaping)
 ```shell
 sort -t, -k1,1n -k2,2n file.csv
 ```
 
-### Find git Commits Involving File, Even if File Doesn't Exist Anymore
+### Find `Git` Commits Involving File, Even if File Doesn’t Exist Anymore
 ```
 git log --full-history -- app/assets/images/3.gif
 ```
@@ -158,7 +158,7 @@ git log --full-history -- app/assets/images/3.gif
 git log -Swhat_i_am_looking_for
 ```
 
-### Audit git for Authors
+### Audit `git` for Authors
 ```
 for f in $(find lib/finance_api -type f); do
   echo $f
@@ -195,7 +195,7 @@ git fetch upstream
 get rebase upstream/master
 ```
 
-### In-Place sed on OSX
+### In-Place `sed` on OSX
 
 ```shell
 sed -i '' 's/before/after' <file>
@@ -227,7 +227,7 @@ SHOW ALL;
 ```
 
 
-## vim
+## `vim`
 
 ### Copy to Clipboard
 ```
@@ -235,7 +235,7 @@ SHOW ALL;
 " or use "+
 ```
 
-### See What the Current Mappings Are:
+### See What the Current Mappings Are
 ```
 :map
 :nmap " normal mode
@@ -266,7 +266,7 @@ zw
 :redraw!
 ```
 
-### Text Alignment with
+### Text Alignment With
 ```
 :right
 :center
@@ -300,12 +300,17 @@ d<c-v>2j
 d/regex/-1
 ```
 
+### Apply Command to All Open Files
+```
+:bufdo %s|src="/media/|src="/file/|
+```
+
 ### Why Is Start-up Slow?
 ```
 vim --startuptime /dev/stdout slow_to_open_file.ex +q | less
 ```
 
-### Search for merge conflicts
+### Search for Merge Conflicts
 ```
 /[<=>][<=>][<=>][<=>][<=>][<=>][<=>]
 ```
@@ -328,7 +333,7 @@ data = JSON.parse(File.read('/path/to/file-name').gsub('=>', ':'))
 RAILS_ENV=production bundle exec rails dbconsole -p
 ```
 
-### Create pg_dump Command from Rails Config
+### Create `pg_dump` Command from Rails Config
 ```
 awk '/host/ {host=$2}; /password/ {pass=$2}; /database/ {dbname=$2}; /port/ {port=$2}; /username/ {username=$2}; END {printf("\npassword is: %s\n\ndump command is:\n pg_dump --format=c --host=%s --port=%s --dbname=%s --username=%s > /tmp/%s-$(date +%%F).dump\n", pass, host, port, dbname, username, dbname)}' config/local_database.yml
 ```
@@ -364,7 +369,7 @@ const getMethods = (obj) => {
 }
 ```
 
-### Use json-server to Treat JSON File as DB
+### Use `json-server` to Treat JSON File as DB
 ```
 npx json-server --watch db.json --port 3001
 ```
