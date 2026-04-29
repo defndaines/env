@@ -515,7 +515,7 @@ CNAME vs Alias
 
 Alias:
 - include ELB, CloudFront Distributions, API Gateway, Elastic Beanstalk,
-  S3 Websites, VPC Interface Endpoints, Global Acelerator, Route 53 same zone
+  S3 Websites, VPC Interface Endpoints, Global Accelerator, Route 53 same zone
   - Cannot use Alias for an EC2 DNS name
 
 Routing Policies:
@@ -814,7 +814,7 @@ Glacier Vault Lock: to adopt a WORM (Write Once Read Many) model
 S3 Object Lock: WORM
 - have to designate time to block deletion
 - Retention: 1) Retention Period (fixed period), 2) Legal Hold (no expiry date)
-- Modes: 1) Governance (block overwrite/deletion except special permisions)
+- Modes: 1) Governance (block overwrite/deletion except special permissions)
   2) Compliance (even root cannot overwrite/delete!)
 
 ### Athena
@@ -1274,10 +1274,10 @@ Read/Write Capacity Modes
   - Can add auto-scaling based upon RCU and WCU target utilization
 - On-Demand Mode
   - scales based upon reads/writes, so pay for what you use
-  - about 2–3x more expensive, but great for unpredicatable workloads
+  - about 2–3x more expensive, but great for unpredictable workloads
 
 DynamoDB Accelerator (DAX)
-- Seemless in-memory cache for DynamoDB
+- Seamless in-memory cache for DynamoDB
 - Helps solve read congestion by caching
 - microsecond latency for cached data
 - Doesn't require any changes to application logic
@@ -1665,7 +1665,7 @@ Key Policies
   - named with "aws/<service-name>"
 - Custom policy:
   - define users, roles that can access
-  - define who can administre
+  - define who can administer
   - useful for cross-account access
 
 Copy snapshots across regions:
@@ -1790,4 +1790,4 @@ Customer responsibility: security _in_ the cloud
 Shared responsibility:
 - patch management, configuration management, awareness & training
 
-## Virutal Private Cloud (VPC)
+## Virtual Private Cloud (VPC)

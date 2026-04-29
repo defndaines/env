@@ -59,7 +59,7 @@ mostly drawn from working through the [vim-iced Advent Calendar
 
 `,bs` -> browse spec
 
-## Non-mapped Comands
+## Non-mapped Commands
 
 IcedUseCaseOpen -> pull up "use cases" of a function (like, see how it is used in your own code)
 - IcedNextUseCase and IcedPrevUseCase
