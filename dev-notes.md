@@ -305,6 +305,12 @@ d/regex/-1
 :bufdo %s|src="/media/|src="/file/|
 ```
 
+### Open a URL under Cursor
+```
+gx
+```
+If that doesn’t work, my `.vimrc` has a leader key for visual selection, `,o`.
+
 ### Why Is Start-up Slow?
 ```
 vim --startuptime /dev/stdout slow_to_open_file.ex +q | less

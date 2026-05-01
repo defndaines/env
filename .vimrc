@@ -160,6 +160,8 @@ highlight ColorColumn ctermbg=7 guifg=black
 
 highlight rightMargin term=bold ctermfg=black guifg=brown
 
+" Open URL
+vnoremap <leader>o y:silent exec "!open ". shellescape(@", 1)<CR>:redraw!<CR>
 
 " Format XML
 command! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
