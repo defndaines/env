@@ -51,8 +51,6 @@ echo "Installing Homebrew packages ..."
 brew bundle --file="$REPO/Brewfile"
 
 echo "Installing vim extras ..."
-mkdir -p "$HOME/.vim"
-ln -sf "$REPO/.vim/bin" "$HOME/.vim/bin"
 
 mkdir -p "$HOME/.vim/pack/bundle/opt"
 mkdir -p "$HOME/.vim/pack/bundle/start"
@@ -80,6 +78,12 @@ vim_clone vim-lsp-ale      git@github.com:rhysd/vim-lsp-ale.git
 vim_clone vim-repeat       git@github.com:tpope/vim-repeat.git
 vim_clone vim-sandwich     git@github.com:machakann/vim-sandwich.git
 vim_clone vim-slime        git@github.com:jpalardy/vim-slime.git
+
+mkdir -p "$HOME/.vim"
+ln -sf "$REPO/.vim/bin" "$HOME/.vim/bin"
+
+mkdir -p "$HOME/.vim/ftplugin"
+ln -sf "$REPO/.vim/ftplugin/htmltemplate.vim" "$HOME/.vim/ftplugin/htmltemplate.vim"
 
 echo "Setting up Terminal profile ..."
 "$REPO/bin/setup-terminal"
