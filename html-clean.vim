@@ -1,3 +1,7 @@
+" Vim script for preparing web articles for Kindle via kindlegen. OCCASIONAL USE.
+" Provides KindleGenPrep() function mapped to <leader>k.
+" To use: source this file manually or place in ~/.vim/plugin/.
+" WARNING: The <script> tag removal loop can delete content on some sites - use with caution.
 " to be placed in ~/.vim/plugin/
 nnoremap <leader>k :call KindleGenPrep()<CR>
 

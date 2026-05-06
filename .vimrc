@@ -1,3 +1,4 @@
+" Key plugins: ALE (linting/fixing), vim-lsp (Elixir via dexter), fzf, vim-slime, grepper.
 filetype plugin indent on
 
 " Reload vimrc immediately when saved.

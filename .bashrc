@@ -1,3 +1,6 @@
+# Bash interactive shell configuration. NOT ACTIVELY USED
+# Kept for reference/compatibility if ever on a system without zsh.
+# Loads .bash_aliases, .osx_aliases, shell libraries, .debianrc, .osxrc, .workrc.
 set -o vi
 export EDITOR=vim
 
@@ -65,8 +68,8 @@ fi
 # Functions
 # #########
 
-if [ -f ~/bin/shell-library.sh ]; then
-  . ~/bin/shell-library.sh
+if [ -f ~/lib/shell/functions.sh ]; then
+  . ~/lib/shell/functions.sh
 fi
 
 if [ -f ~/bin/bash-library.sh ]; then

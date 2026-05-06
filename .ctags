@@ -1,3 +1,5 @@
+# Universal/Exuberant Ctags configuration. HISTORICAL - primarily for Clojure.
+# Contains Clojure regex patterns and common excludes. Not useful without active Clojure work.
 --exclude=.git
 --exclude=.svn
 --exclude=resources/*

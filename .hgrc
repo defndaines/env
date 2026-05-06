@@ -1,3 +1,5 @@
+# Mercurial (hg) version control configuration. HISTORICAL - not actively used.
+# Mercurial is largely obsolete; keep for reference if encountering hg repositories.
 [ui]
 editor = vim
 

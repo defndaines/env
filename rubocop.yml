@@ -1,3 +1,6 @@
+# RuboCop Ruby linter configuration. HISTORICAL - Ruby development inactive.
+# TargetRubyVersion 2.7 is likely outdated for modern Ruby projects.
+# Kept as style reference; copy to project root as .rubocop.yml when needed.
 ---
 AllCops:
   DisabledByDefault: false

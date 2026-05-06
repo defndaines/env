@@ -1,3 +1,7 @@
+#!/bin/sh
+# Nexpose (InsightVM) IRB tmux session launcher. HISTORICAL/OBSOLETE.
+# Sets up vim + IRB session for the Nexpose Ruby security scanner library.
+# Nexpose gem is abandoned; this workflow is no longer relevant.
 tmux has-session -t nexpose-irb
 if [ $? != 0 ]
 then

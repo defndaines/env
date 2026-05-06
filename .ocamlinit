@@ -1,3 +1,6 @@
+(* OCaml interactive top-level initialization. HISTORICAL - not actively used.
+   Requires: OPAM, camlp4, core packages.
+   WARNING: Core.Std is the old API - modern Jane Street Core dropped the Std submodule. *)
 (* Added by OPAM. *)
 let () =
   try Topdirs.dir_directory (Sys.getenv "OCAML_TOPLEVEL_PATH")

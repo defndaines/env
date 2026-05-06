@@ -1,3 +1,6 @@
+# GNU Readline configuration. ACTIVELY USED.
+# Applies to bash, psql on Linux, and any program linking against GNU Readline.
+# Note: macOS tools typically use libedit - see .editrc for that.
 set editing-mode vi
 set keymap vi
 

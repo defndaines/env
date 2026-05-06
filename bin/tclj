@@ -1,3 +1,7 @@
+#!/bin/sh
+# Clojure development tmux session launcher. HISTORICAL.
+# Sets up vim + lein REPL in a tmux session for Clojure work.
+# Only useful if actively working on Clojure projects with Leiningen.
 tmux has-session -t clojure
 if [ $? != 0 ]
 then

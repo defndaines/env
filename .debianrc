@@ -1,3 +1,7 @@
+# Debian Linux-specific bash settings.
+# Only relevant on Debian/Ubuntu systems. Sourced by .bashrc when present.
+# Contains color prompt setup, lesspipe, bash completion, ls colors, alert alias.
+
 # Debian options
 # ##############
 

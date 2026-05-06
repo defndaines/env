@@ -1,3 +1,4 @@
+# Main zsh interactive shell configuration. ACTIVELY USED.
 # Sourced in interactive shells only.
 
 # It should contain commands to set up aliases, functions, options, key
@@ -57,8 +58,8 @@ fi
 # Functions
 # #########
 
-if [ -f ~/bin/shell-library.sh ]; then
-  . ~/bin/shell-library.sh
+if [ -f ~/lib/shell/functions.sh ]; then
+  . ~/lib/shell/functions.sh
 fi
 
 if [ -f ~/bin/work-library.sh ]; then

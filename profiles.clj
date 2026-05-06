@@ -1,3 +1,6 @@
+;; Leiningen user profile (~/.lein/profiles.clj). HISTORICAL - Clojure development inactive.
+;; Contains: test-refresh, cider, cljfmt, coverage, kondo, zprint plugins.
+;; If resuming Clojure work: check all plugin versions, some are likely outdated.
 {:user {:plugins [[com.jakemccrary/lein-test-refresh "0.24.1"]
                   [cider/cider-nrepl "0.26.0"]
                   [com.livingsocial/lein-dependency-check "1.1.5"]

@@ -1,3 +1,6 @@
+-- PostgreSQL psql client configuration. ACTIVELY USED.
+-- Configures null display, history (per-database), timing, verbosity, and error handling.
+
 \set QUIET 1
 \pset null '∅'
 -- Use ASCII (over Unicode) so pasting markdown tables are cleaner.

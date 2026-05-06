@@ -1,4 +1,7 @@
 ###
+# macOS-specific shell functions. OCCASIONALLY USED. Not currently sourced from .zshrc.
+# Functions: alert (voice + dialog notification after long tasks), postman (man page as PDF).
+# Source manually or add to .zshrc to enable: . ~/bin/macos-library.sh
 # Functions that only make sense on a macos machine.
 
 function alert() {

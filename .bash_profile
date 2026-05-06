@@ -1,3 +1,6 @@
+# Bash login shell configuration. NOT ACTIVELY USED
+# Keep for reference if working on a bash-only system (e.g., some Linux servers).
+# WARNING: Contains outdated paths - Python 3.7, /usr/local (pre-Apple Silicon), hardcoded Java.
 # ~/.bash_profile: executed by bash for login shells.
 
 # source the system wide bashrc if it exists

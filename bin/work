@@ -1,3 +1,6 @@
+#!/bin/sh
+# Work tmux session launcher. ACTIVELY USED.
+# Creates (or attaches to) a 'work' session with a 3-pane layout.
 tmux has-session -t work
 if [ $? != 0 ]
 then

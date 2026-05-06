@@ -1,3 +1,6 @@
+# Bash aliases. NOT ACTIVELY USED
+# This file duplicates many aliases from .osx_aliases; kept for bash compatibility.
+
 # basics
 ########
 alias clera='clear'

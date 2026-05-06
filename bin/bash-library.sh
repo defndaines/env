@@ -1,4 +1,8 @@
 #!/usr/local/bin/bash
+# Bash-specific functions and completions. NOT ACTIVELY USED
+# Provides: _current_branch (for bash PS1), branch completion for 'co' alias,
+#   database completion for 'psql'. Loaded by .bashrc only.
+# NOTE: Shebang uses /usr/local/bin/bash (Intel Mac path); may need /opt/homebrew/bin/bash.
 # Various functions meant to be loaded by .bashrc
 
 function _current_branch {

@@ -1,3 +1,7 @@
+# macOS shell aliases. ACTIVELY USED. Sourced by .zshrc.
+
+# Sections: basics, git, tmux, postgresql (active), clojure/ruby/javascript (historical), elixir (active).
+
 # basics
 ########
 alias be='bundle exec'

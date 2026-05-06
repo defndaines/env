@@ -1,3 +1,4 @@
+-- SQLite client configuration.
 .headers on
 .mode column
 .changes on

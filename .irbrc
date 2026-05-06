@@ -1,3 +1,5 @@
+# Ruby IRB (interactive Ruby) configuration. HISTORICAL - Ruby not actively used.
+# Enables tab completion and saves IRB history. source_for() helper uses gvim.
 require 'irb/completion'
 require 'irb/ext/save-history'
 

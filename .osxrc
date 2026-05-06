@@ -1,3 +1,6 @@
+# macOS-specific shell settings for bash. Sourced by .bashrc on macOS.
+# NOT loaded by zsh (zsh handles Java/Python paths in .zshenv instead).
+# WARNING: brew --prefix python path style may vary across Homebrew versions.
 JAVA_HOME=$(/usr/libexec/java_home)
 export JAVA_HOME
 export PATH=$JAVA_HOME/bin:$PATH

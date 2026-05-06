@@ -1,3 +1,6 @@
+# NetHack game configuration.
+
+# Controls autopickup behavior and item filtering. Edit to taste per run.
 OPTIONS=autopickup
 
 # Ask first if an item would exceed a burden level (default stressed):

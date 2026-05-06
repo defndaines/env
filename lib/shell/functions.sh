@@ -1,5 +1,8 @@
 ###
-# Functions for the shell
+# Shell function library for zsh and bash. ACTIVELY USED. Sourced by .zshrc from ~/lib/shell/.
+# Functions: vup (update vim plugins), bee/letters (NYT puzzle helpers),
+#   most-common, bak, tmpdir, psgrep, fname, lt, eunit (Erlang unit tests), rl, gfix.
+# (~/lib/shell/functions.sh)
 
 # Update only vim bundles
 vup() {

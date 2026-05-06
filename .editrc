@@ -1,2 +1,5 @@
+# BSD libedit configuration. ACTIVELY USED.
+# Applies to macOS tools using libedit: sqlite3, psql (Homebrew libpq), python REPL, etc.
+# Sets vi editing mode and tab completion.
 bind -v
 bind \\t rl_complete

@@ -1,3 +1,6 @@
+" Vim ex-commands for cleaning raw HTML for Kindle conversion. OCCASIONAL USE.
+" Copy-paste these commands individually or :source this file in vim.
+" Companion to html-clean.vim; handles search patterns, substitutions, unicode escaping.
 /<\(style\|script\|aside\|iframe\|form\|footer\|figure\)
 
 :%s/<html[^>]*>/<html lang="en-US">\r/

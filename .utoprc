@@ -1,3 +1,5 @@
+! utop (OCaml REPL) color theme configuration. HISTORICAL - not actively used.
+! Only relevant when using utop with the OCaml ecosystem. Uses a dark color profile.
 ! -*- conf-xdefaults -*-
 
 ! From https://github.com/diml/utop/blob/master/utoprc-dark
