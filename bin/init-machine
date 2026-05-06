@@ -1,0 +1,43 @@
+#!/bin/sh
+# New machine initialization. Run once after cloning this repo to ~/src/env.
+# Sets up dotfile symlinks, vim bin directory, shell function library, and Terminal profile.
+# Safe to re-run: symlinks are overwritten, directories are not removed.
+
+set -e
+REPO="$HOME/src/env"
+
+link() {
+  ln -sf "$REPO/$1" "$HOME/$2"
+}
+
+echo "Linking dotfiles ..."
+link .editrc       .editrc
+link .fzf.zsh      .fzf.zsh
+link .gitignore    .gitignore
+link .inputrc      .inputrc
+link .osx_aliases  .osx_aliases
+link .psqlrc       .psqlrc
+link .sqliterc     .sqliterc
+link .tmux.conf    .tmux.conf
+link .vimrc        .vimrc
+link .zshenv       .zshenv
+link .zshrc        .zshrc
+
+echo "Linking notes ..."
+link dev-notes.md    dev-notes.md
+link elixir-notes.md elixir-notes.md
+link psql-notes.sql  psql-notes.sql
+link five            five
+
+echo "Setting up shell function library ..."
+mkdir -p "$HOME/lib/shell"
+link lib/shell/functions.sh lib/shell/functions.sh
+
+echo "Setting up vim bin ..."
+mkdir -p "$HOME/.vim"
+ln -sf "$REPO/vim/bin" "$HOME/.vim/bin"
+
+echo "Setting up Terminal profile ..."
+"$REPO/bin/setup-terminal"
+
+echo "Done. Note: copy .gitconfig manually and update email/work URLs as needed."
