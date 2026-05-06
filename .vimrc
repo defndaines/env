@@ -313,6 +313,7 @@ augroup text
 augroup END
 
 iabbrev teh the
+iabbrev fo of
 iabbrev funciton function
 
 " Wrap selection with quotation marks.

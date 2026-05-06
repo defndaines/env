@@ -311,6 +311,16 @@ gx
 ```
 If that doesn’t work, my `.vimrc` has a leader key for visual selection, `,o`.
 
+### Convert camelCase to snake_case
+```
+:'<,'>s/\([A-Z]\)/_\L\1/g
+```
+
+### Use `vim-sandwich` to Surround with "_"
+```
+saiw_
+```
+
 ### Why Is Start-up Slow?
 ```
 vim --startuptime /dev/stdout slow_to_open_file.ex +q | less
