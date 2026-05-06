@@ -47,12 +47,39 @@ echo "Setting up shell function library ..."
 mkdir -p "$HOME/lib/shell"
 link lib/shell/functions.sh lib/shell/functions.sh
 
-echo "Setting up vim bin ..."
-mkdir -p "$HOME/.vim"
-ln -sf "$REPO/vim/bin" "$HOME/.vim/bin"
-
 echo "Installing Homebrew packages ..."
 brew bundle --file="$REPO/Brewfile"
+
+echo "Installing vim extras ..."
+mkdir -p "$HOME/.vim"
+ln -sf "$REPO/.vim/bin" "$HOME/.vim/bin"
+
+mkdir -p "$HOME/.vim/pack/bundle/opt"
+mkdir -p "$HOME/.vim/pack/bundle/start"
+vim_start="$HOME/.vim/pack/bundle/start"
+vim_clone() {
+  name="$1"; url="$2"
+  if [ ! -d "$vim_start/$name" ]; then
+    git clone "$url" "$vim_start/$name"
+  else
+    echo "  $name already present, skipping"
+  fi
+}
+vim_clone ale              git@github.com:dense-analysis/ale
+vim_clone fzf              git@github.com:junegunn/fzf.git
+vim_clone fzf.vim          git@github.com:junegunn/fzf.vim.git
+vim_clone nerdcommenter    git@github.com:scrooloose/nerdcommenter.git
+vim_clone rainbow          git@github.com:luochen1990/rainbow.git
+vim_clone spelunker.vim    git@github.com:kamykn/spelunker.vim.git
+vim_clone tabular          git@github.com:godlygeek/tabular.git
+vim_clone vim-elixir       git@github.com:elixir-editors/vim-elixir.git
+vim_clone vim-endwise      git@github.com:tpope/vim-endwise.git
+vim_clone vim-grepper      git@github.com:mhinz/vim-grepper.git
+vim_clone vim-lsp          git@github.com:prabirshrestha/vim-lsp.git
+vim_clone vim-lsp-ale      git@github.com:rhysd/vim-lsp-ale.git
+vim_clone vim-repeat       git@github.com:tpope/vim-repeat.git
+vim_clone vim-sandwich     git@github.com:machakann/vim-sandwich.git
+vim_clone vim-slime        git@github.com:jpalardy/vim-slime.git
 
 echo "Setting up Terminal profile ..."
 "$REPO/bin/setup-terminal"
