@@ -10,12 +10,6 @@ export EDITOR=vim
 # Fix the "do you wish to see all #### possibilities" issue when searching.
 bindkey '\e/' history-incremental-pattern-search-backward
 
-# Git Completion
-# zstyle ':completion:*:*:git:*' script /usr/local/opt/git/share/zsh/site-functions/git-completion.bash
-# fpath=(/usr/local/opt/git/share/zsh/site-functions $fpath)
-
-# autoload -Uz compinit && compinit
-
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
@@ -63,8 +57,8 @@ if [ -f ~/lib/shell/functions.sh ]; then
   . ~/lib/shell/functions.sh
 fi
 
-if [ -f ~/bin/work-library.sh ]; then
-  . ~/bin/work-library.sh
+if [ -f ~/lib/shell/work.sh ]; then
+  . ~/lib/shell/work.sh
 fi
 
 

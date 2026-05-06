@@ -15,21 +15,9 @@ fi
 HOMEBREW_PREFIX="$(brew --prefix)"
 PATH="${HOMEBREW_PREFIX}/sbin:${HOMEBREW_PREFIX}/bin:$PATH"
 
-# Prioritize RVM if installed
-if [ -e "${HOME}/.rvm" ] ; then
-  PATH="${HOME}/.rvm/bin:${PATH}"
-elif [ -e "${HOMEBREW_PREFIX}/opt/ruby/bin" ] ; then
-  PATH="${HOMEBREW_PREFIX}/opt/ruby/bin:$PATH"
-fi
-
 # psql and other PostgreSQL commands if no local DB installed
 if [ -e "${HOMEBREW_PREFIX}/opt/libpq/bin" ] ; then
   PATH="${HOMEBREW_PREFIX}/opt/libpq/bin:$PATH"
-fi
-
-# vim-iced
-if [ -e "${HOME}/.vim/pack/bundle/start/vim-iced/bin" ]; then
-  PATH="$PATH:${HOME}/.vim/pack/bundle/start/vim-iced/bin"
 fi
 
 # GNU grep
@@ -37,19 +25,12 @@ if [ -e "${HOMEBREW_PREFIX}/opt/grep/libexec/gnubin" ]; then
   PATH="${HOMEBREW_PREFIX}/opt/grep/libexec/gnubin:$PATH"
 fi
 
-# Java
-export JAVA_HOME=$(/usr/libexec/java_home);
-export PATH=$JAVA_HOME/bin:$PATH
-
-# Quiet warning about "Options -Xverify:none and -noverify were deprecated in JDK 13"
-export LEIN_JVM_OPTS="-XX:TieredStopAtLevel=1"
-
 # Lua
 if [ -e "${HOMEBREW_PREFIX}/bin/luarocks" ]; then
   eval "$(luarocks path)"
 fi
 
-# Set PATH so it includes user's private bin if it exists
+# Set PATH so it includes user’s private bin if it exists
 if [ -d "${HOME}/bin" ] ; then
   PATH=${HOME}/bin:${PATH}
 fi
