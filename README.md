@@ -3,54 +3,44 @@
 Environmental configuration files to be shared across any machine I happen to
 be using.
 
-## `vim`
+## New Machine Setup
 
-When setting up a new environment, add vim ephemera to the git ignore file.
-The git configuration has to be set per environment, since the path should be
-absolute.
+After cloning this repo to `~/src/env`, run:
 
-For vim, install these plugins by cloning into
-`${HOME}/.vim/pack/bundle/start/`. The following are a list of vim libraries
-I’ve used at one point or another.
+```sh
+bin/init-machine
+```
 
-* [vim-slime](https://github.com/jpalardy/vim-slime.git) Inject from one tmux
-  pane to another.
-* [ale](https://github.com/dense-analysis/ale) Asynchronous Lint Engine
-* [tabular](https://github.com/godlygeek/tabular.git) Auto-align text,
-  typically by a record separator. For example, `:Tabularize /|` aligns on
-  pipe characters.
-* [vim-repeat](https://github.com/tpope/vim-repeat.git) Allows using `.` with
-  plugins.
-* [vim-sandwich](https://github.com/machakann/vim-sandwich.git)
-* [nerdcommenter](https://github.com/scrooloose/nerdcommenter.git) Code
-  commenting functions.
-* [vim-grepper](https://github.com/mhinz/vim-grepper.git) Grepper for
-  asynchronous greps
-* [rainbow](https://github.com/luochen1990/rainbow.git) For rainbow
-  parentheses.
-* [spelunker](https://github.com/kamykn/spelunker.vim.git) For catching
-  spelling errors inside code (smart about camelCase, etc.)
-* [endwise.vim](https://github.com/tpope/vim-endwise.git) For automatically
-  adding `end` statements in Elixir, Ruby, etc.
-* [fzf](https://github.com/junegunn/fzf.git) and
-  [fzf.vim](https://github.com/junegunn/fzf.vim.git) Fuzzy finder for quickly
-  locating files.
+This sets up dotfile symlinks, installs Homebrew packages from `Brewfile`,
+installs vim plugins, and configures the Terminal profile.
 
-### Elixir
-* [vim-elixir](https://github.com/elixir-editors/vim-elixir.git)
+One manual step: copy `.gitconfig` to `~/.gitconfig` and update the email
+address.
 
-### Erlang
-* [erlang-motions](https://github.com/edkolev/erlang-motions.vim.git)
-* [vim-erlang-compiler](https://github.com/vim-erlang/vim-erlang-compiler.git)
-* [vim-erlang-tags](https://github.com/vim-erlang/vim-erlang-tags.git)
-* [vim-erlang-omnicomplete](https://github.com/vim-erlang/vim-erlang-omnicomplete.git)
+## vim
 
+Plugins are installed automatically by `init-machine` into
+`~/.vim/pack/bundle/start/`. Current plugins:
+
+* [ale](https://github.com/dense-analysis/ale) — asynchronous lint engine
+* [fzf](https://github.com/junegunn/fzf.git) and [fzf.vim](https://github.com/junegunn/fzf.vim.git) — fuzzy finder for quickly locating files
+* [nerdcommenter](https://github.com/scrooloose/nerdcommenter.git) — code commenting functions
+* [rainbow](https://github.com/luochen1990/rainbow.git) — rainbow parentheses
+* [spelunker](https://github.com/kamykn/spelunker.vim.git) — spell checking inside code (smart about camelCase, etc.)
+* [tabular](https://github.com/godlygeek/tabular.git) — auto-align text by a separator, e.g., `:Tabularize /|`
+* [vim-elixir](https://github.com/elixir-editors/vim-elixir.git) — Elixir syntax and indentation
+* [vim-endwise](https://github.com/tpope/vim-endwise.git) — automatically adds `end` in Elixir, etc.
+* [vim-grepper](https://github.com/mhinz/vim-grepper.git) — asynchronous grep
+* [vim-lsp](https://github.com/prabirshrestha/vim-lsp.git) — LSP client
+* [vim-repeat](https://github.com/tpope/vim-repeat.git) — allows using `.` with plugins
+* [vim-sandwich](https://github.com/machakann/vim-sandwich.git) — add/remove/replace surrounding delimiters
+* [vim-slime](https://github.com/jpalardy/vim-slime.git) — inject text from one `tmux` pane to another
 
 ### Customizations
 
-When we want to track pairing at work, I’ll add a `.vim/work.vim` file that
-looks roughly like this:
-```
+For pairing at work, add a `.vim/work.vim` with co-author abbreviations:
+
+```vim
 " Coworker Git autocorrects
 iab gjane Co-authored-by: Jane Doe <jane.doe@company.com>
 ```
