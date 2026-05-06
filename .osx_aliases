@@ -1,11 +1,7 @@
 # macOS shell aliases. ACTIVELY USED. Sourced by .zshrc.
 
-# Sections: basics, git, tmux, postgresql (active), clojure/ruby/javascript (historical), elixir (active).
-
 # basics
 ########
-alias be='bundle exec'
-alias brave='open -a Brave'
 alias bu='brew update | tee ${HOME}/.brew_update_log && brew upgrade | tee ${HOME}/.brew_upgrade_log'
 alias clera='clear'
 alias grpe='grep'
@@ -59,28 +55,6 @@ alias wrok='work'
 ############
 alias pgup='pg_ctl -D /usr/local/var/postgres start'
 alias pgdown='pg_ctl -D /usr/local/var/postgres stop'
-
-# clojure
-#########
-alias ltr='lein test-refresh :changes-only'
-alias lf='lein cljfmt fix'
-alias node-cljs='clj -m cljs.main --repl-env node'
-alias br='rlwrap bb repl'
-
-# javascript
-############
-alias ntw='npm run test -- --watch'
-if [ $(command -v rlwrap) ]; then
-  alias node='NODE_NO_READLINE=1 rlwrap node'
-fi
-
-# ruby
-# ####
-alias rc='rubocop --auto-correct'
-
-# minecraft
-# #########
-alias minecraft-server='java -Xmx1024M -Xms1024M -jar minecraft_server.1.16.2.jar nogui'
 
 # elixir
 # ######
