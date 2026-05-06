@@ -37,6 +37,9 @@ echo "Setting up vim bin ..."
 mkdir -p "$HOME/.vim"
 ln -sf "$REPO/vim/bin" "$HOME/.vim/bin"
 
+echo "Installing Homebrew packages ..."
+brew bundle --file="$REPO/Brewfile"
+
 echo "Setting up Terminal profile ..."
 "$REPO/bin/setup-terminal"
 
