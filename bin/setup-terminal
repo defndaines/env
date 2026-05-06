@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+# Imports the Novel Terminal profile and sets it as the default and startup profile.
+# Run once on a new machine: python3 ~/src/env/bin/setup-terminal
+import plistlib
+import subprocess
+from pathlib import Path
+
+profile_path = Path.home() / 'src/env/Novel.terminal'
+with open(profile_path, 'rb') as f:
+    profile = plistlib.load(f)
+
+name = profile['name']
+
+result = subprocess.run(['defaults', 'export', 'com.apple.Terminal', '-'], capture_output=True)
+prefs = plistlib.loads(result.stdout)
+prefs.setdefault('Window Settings', {})[name] = profile
+subprocess.run(['defaults', 'import', 'com.apple.Terminal', '-'], input=plistlib.dumps(prefs))
+
+subprocess.run(['defaults', 'write', 'com.apple.Terminal', 'Default Window Settings', name])
+subprocess.run(['defaults', 'write', 'com.apple.Terminal', 'Startup Window Settings', name])
+
+print(f"Imported '{name}' and set as default.")
