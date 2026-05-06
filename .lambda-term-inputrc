@@ -1,8 +1,0 @@
-# Lambda-term input configuration for utop (OCaml interactive REPL). HISTORICAL.
-# Only relevant when using utop with OCaml. Binds Ctrl-^ to beginning-of-line.
-[edit]
-
-C-^ : goto-bol
-
-[read-line]
-
