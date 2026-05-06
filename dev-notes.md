@@ -320,6 +320,10 @@ If that doesn’t work, my `.vimrc` has a leader key for visual selection, `,o`.
 ```
 saiw_
 ```
+Using a visual selection:
+```
+sa_
+```
 
 ### Why Is Start-up Slow?
 ```
