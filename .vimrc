@@ -109,7 +109,7 @@ set display+=lastline
 " Copies into Mac OS X clipboard for pasting.
 set clipboard=unnamed
 
-" Causes % to navigate XML tags and Ruby loops.
+" Causes % to navigate XML tags.
 runtime macros/matchit.vim
 
 " Request terminal version string (for xterm)
@@ -215,7 +215,7 @@ inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
 inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 
 
-let g:markdown_fenced_languages = ['bash', 'shell=bash', 'sql', 'html', 'css', 'javascript', 'js=javascript', 'json=javascript', 'clojure', 'erlang', 'ruby', 'eruby', 'erb=eruby', 'vim', 'xml', 'yaml']
+let g:markdown_fenced_languages = ['bash', 'shell=bash', 'sql', 'html', 'css', 'javascript', 'js=javascript', 'json=javascript', 'clojure', 'erlang', 'vim', 'xml', 'yaml']
 
 
 """ Slime
