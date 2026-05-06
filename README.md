@@ -1,26 +1,17 @@
 # env
 
 Environmental configuration files to be shared across any machine I happen to
-be using. I try to keep things happy between Linux and macos.
-
-In addition to these files, it have also installed git completion manually
-(not sure if this is still needed):
-https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
-
+be using.
 
 ## `vim`
 
 When setting up a new environment, add vim ephemera to the git ignore file.
 The git configuration has to be set per environment, since the path should be
 absolute.
-```shell
-echo "*.swp" >> ~/.gitignore
-git config --global core.excludesfile ~/.gitignore
-```
 
 For vim, install these plugins by cloning into
 `${HOME}/.vim/pack/bundle/start/`. The following are a list of vim libraries
-I've used at one point or another.
+I’ve used at one point or another.
 
 * [vim-slime](https://github.com/jpalardy/vim-slime.git) Inject from one tmux
   pane to another.
@@ -47,11 +38,6 @@ I've used at one point or another.
 
 ### Elixir
 * [vim-elixir](https://github.com/elixir-editors/vim-elixir.git)
-* [elixir-ls](https://github.com/elixir-lsp/elixir-ls.git)
-
-### Clojure
-* [vim-iced](https://github.com/liquidz/vim-iced.git)
-* [vim-sexp](https://github.com/guns/vim-sexp.git)
 
 ### Erlang
 * [erlang-motions](https://github.com/edkolev/erlang-motions.vim.git)
@@ -60,15 +46,9 @@ I've used at one point or another.
 * [vim-erlang-omnicomplete](https://github.com/vim-erlang/vim-erlang-omnicomplete.git)
 
 
-### vim Colors
-
-I've been favoring light themes for a bit now, but I keep a sparse
-.`.vim/colors/` directory. Currently using
-[PaperColor](https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim).
-
 ### Customizations
 
-When we want to track pairing at work, I'll add a `.vim/work.vim` file that
+When we want to track pairing at work, I’ll add a `.vim/work.vim` file that
 looks roughly like this:
 ```
 " Coworker Git autocorrects

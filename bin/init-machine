@@ -74,7 +74,6 @@ vim_clone vim-elixir       git@github.com:elixir-editors/vim-elixir.git
 vim_clone vim-endwise      git@github.com:tpope/vim-endwise.git
 vim_clone vim-grepper      git@github.com:mhinz/vim-grepper.git
 vim_clone vim-lsp          git@github.com:prabirshrestha/vim-lsp.git
-vim_clone vim-lsp-ale      git@github.com:rhysd/vim-lsp-ale.git
 vim_clone vim-repeat       git@github.com:tpope/vim-repeat.git
 vim_clone vim-sandwich     git@github.com:machakann/vim-sandwich.git
 vim_clone vim-slime        git@github.com:jpalardy/vim-slime.git
