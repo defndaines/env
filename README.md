@@ -74,27 +74,3 @@ looks roughly like this:
 " Coworker Git autocorrects
 iab gjane Co-authored-by: Jane Doe <jane.doe@company.com>
 ```
-
-
-## CTags
-
-I sometimes set up projects to use ctags.
-[universal-ctags](https://github.com/universal-ctags/ctags)
-
-
-## OCaml
-
-I'm not actively developing in OCaml at the moment, but I still like to have
-it set up in my environment, particularly so I can take advantage of
-[patdiff](https://github.com/janestreet/patdiff). My
-[.bash_profile](.bash_profile) already checks for `opam` installation (the
-OCaml package manager), [.ocamlinit](.ocamlinit) is already set up, and
-[.gitconfig](.gitconfig) is set up to allow `git patdiff <file>`.
-
-```bash
-brew install opam
-opam init
-eval `opam config env`
-opam update
-opam install patdiff
-```
