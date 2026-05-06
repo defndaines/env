@@ -1,4 +1,4 @@
-" Key plugins: ALE (linting/fixing), vim-lsp (Elixir via dexter), fzf, vim-slime, grepper.
+" Key plugins: ALE (linting/fixing), vim-lsp (Elixir via expert), fzf, vim-slime, grepper.
 filetype plugin indent on
 
 " Reload vimrc immediately when saved.
@@ -391,8 +391,8 @@ endfunction
 augroup vim_lsp_servers
   autocmd!
   autocmd User lsp_setup call lsp#register_server({
-        \ 'name': 'dexter',
-        \ 'cmd': {_ -> ['/Users/mdaines/.local/bin/dexter', 'lsp']},
+        \ 'name': 'expert',
+        \ 'cmd': {_ -> ['/opt/homebrew/bin/expert', '--stdio']},
         \ 'allowlist': ['elixir'],
         \ 'root_uri': function('s:FindElixirRoot'),
         \})
@@ -423,7 +423,7 @@ let g:ale_php_phpstan_level = '7'
 let g:phpstan_analyse_level = '7'
 
 let g:ale_linters = {
-      \ 'elixir': ['credo', 'expert', 'dexter'],
+      \ 'elixir': ['credo', 'expert'],
       \ 'rust': ['rust-analyzer'],
       \ 'lua': ['luac', 'luacheck'],
       \ 'python': ['ruff'],
