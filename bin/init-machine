@@ -2,9 +2,23 @@
 # New machine initialization. Run once after cloning this repo to ~/src/env.
 # Sets up dotfile symlinks, vim bin directory, shell function library, and Terminal profile.
 # Safe to re-run: symlinks are overwritten, directories are not removed.
+#
+# Prerequisites (install manually before running):
+#   Xcode CLT:  xcode-select --install
+#   Homebrew:   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 set -e
 REPO="$HOME/src/env"
+
+if ! xcode-select -p >/dev/null 2>&1; then
+  echo "Error: Xcode Command Line Tools not installed. Run: xcode-select --install"
+  exit 1
+fi
+
+if ! command -v brew >/dev/null 2>&1; then
+  echo "Error: Homebrew not installed. See https://brew.sh"
+  exit 1
+fi
 
 link() {
   ln -sf "$REPO/$1" "$HOME/$2"
