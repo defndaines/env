@@ -44,22 +44,6 @@ Just an interesting algorithm to explore as a kata.
 relieving hot spots on the World Wide Web](http://dl.acm.org/citation.cfm?id=258660)
 
 
-## Amazon Wish List
-
-Figure out Amazon API (or create authenticated web scraper) to monitor wish
-list and notify if an item is about to go out of stock or the price had
-dropped dramatically.
-
-I started playing with this a couple years
-ago—[az-wish](https://github.com/defndaines/az-wish)—but it has languished
-for a while.
-
-I also threw together a [gist on using
-Jsoup](https://gist.github.com/defndaines/8e4124fa2d6c530d477e06f91223188d)
-from Clojure. It is probably a simpler scraper compared to the library I was
-using before (which caused problems in the REPL).
-
-
 ## Graph Problems
 
 My graph algorithm skills are weak. I could spend some time beefing them up.
@@ -83,26 +67,10 @@ description. I have played with using
 capture that learning in a repository.
 
 
-## Twitter Bot
-
-Monitor changes to a website and automatically tweet links to new articles.
-
-
-## Look into in-Browser Editing
-
-Use [Quill](http://quilljs.com/) to handle article editing.
-
-
 ## Civic Analysis
 
 Analyze data from government sources. Perhaps scrape out information of interest
 that isn't formatted for easy use. Maybe something local like Culver City.
-
-
-## Census
-
-Spider and grab all the [census data from 1940](http://1940census.archives.gov/search/?search.result_type=image&search.state=OH&search.county=Athens+County&search.city=&search.street=#)
- ... then see if I can OCR it and locate the information under Daines.
 
 
 ## Games
@@ -125,7 +93,7 @@ Ghost AIs
  * Developmental AI ... playful learning.
 
 Maze generation
- * Original vertical 
+ * Original vertical
  * Dead ends? Limited by length and number, based upon level
  * Transportation walls / warp tunnels
  * Home base for ghosts
