@@ -123,7 +123,7 @@ cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W')
 cnoreabbrev <expr> e3 ((getcmdtype() is# ':' && getcmdline() is# 'e3')?('e#'):('e3'))
 
 " Sort a comma-separated selection
-:xnoremap s s<c-r>=join(sort(split(@", '\s*,\s*')), ', ')<cr><esc>
+xnoremap s s<c-r>=join(sort(split(@", '\s*,\s*')), ', ')<cr><esc>
 
 "" Visual star search ... make *|# act upon the current visual selection.
 xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
@@ -158,8 +158,6 @@ nnoremap <leader>p :%s/\(\S \) \+/\1/g<CR>
 set colorcolumn=98
 highlight ColorColumn ctermbg=7 guifg=black
 
-highlight rightMargin term=bold ctermfg=black guifg=brown
-
 " Avoid bogging down start-up on large files.
 autocmd BufReadPre * if getfsize(expand("%")) > 1000000 | let b:enable_spelunker_vim = 0 | endif
 
@@ -172,7 +170,7 @@ nnoremap <leader>x :FormatXML<CR>
 
 
 " Format JSON
-nnoremap <leader>j :%!python3 -m json.tool<CR>1G=G<CR>:call FormatJSON()<CR>
+nnoremap <leader>j :%!python3 -m json.tool<CR>1G=G:call FormatJSON()<CR>
 nnoremap <leader>r :call FormatJSON()<CR>
 
 function! FormatJSON()
@@ -308,7 +306,7 @@ augroup END
 augroup text
   autocmd!
   autocmd FileType text setlocal nosmartindent
-  autocmd FileType text :set spl=en_us spell
+  autocmd FileType text setlocal spl=en_us spell
   " Force markdown over modula2
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd FileType markdown setlocal spell
@@ -411,9 +409,6 @@ nnoremap <leader>K :LspHover<CR>
 " Enable completion where available.
 let g:ale_completion_enabled = 1
 
-" Enable alex for all files
-let g:ale_alex_use_global = 1
-
 " Navigate to ALE errors.
 nmap <silent> <C-k> <Plug>(ale_previous)
 nmap <silent> <C-j> <Plug>(ale_next)
@@ -446,17 +441,10 @@ let g:ale_elixir_expert_executable = '/opt/homebrew/bin/expert'
 let g:ale_disable_lsp = 0
 
 let g:ale_sign_error = '✘'
-" let g:ale_sign_warning = '⚠'
-" highlight ALEErrorSign ctermbg=NONE ctermfg=red
-" highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 
 nnoremap <leader>af :ALEFix<CR>
-" These are handled by vim-lsp
-" noremap <leader>ad :ALEGoToDefinition<CR>
-" noremap <leader>ar :ALEFindReferences<CR>
-" nnoremap <leader>K :ALEHover<CR>
 
 
 """ fzf (fuzzy finder)
