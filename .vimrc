@@ -239,7 +239,7 @@ augroup END
 
 augroup erlang
   autocmd!
-  autocmd BufRead,BufNewFile *.erl,*.es,*.hrl,*.yaws,*.xrl set expandtab
+  autocmd BufRead,BufNewFile *.erl,*.es,*.hrl,*.yaws,*.xrl setlocal expandtab
   autocmd BufNewFile,BufRead *.erl,*.es,*.hrl,*.yaws,*.xrl setf erlang
 
   " Highlight when a comma is not followed by a space.
@@ -274,18 +274,6 @@ endfunction
 augroup python
   autocmd!
   autocmd FileType python setlocal textwidth=88 shiftwidth=4 tabstop=4 softtabstop=4 colorcolumn=88
-  autocmd BufWritePre *.py :%s/\s\+$//e
-augroup END
-
-
-""" PHP Options
-
-augroup php
-  autocmd!
-  autocmd BufNewFile,BufRead *.php setlocal expandtab
-  autocmd BufRead,BufNewFile *.php setlocal tabstop=4
-  autocmd BufRead,BufNewFile *.php setlocal softtabstop=4
-  autocmd BufRead,BufNewFile *.php setlocal shiftwidth=4
 augroup END
 
 
@@ -416,10 +404,6 @@ nmap <silent> <C-j> <Plug>(ale_next)
 " Only lint on save.
 let g:ale_lint_on_text_changed = 'never'
 
-" PHP settings
-let g:ale_php_phpstan_level = '7'
-let g:phpstan_analyse_level = '7'
-
 let g:ale_linters = {
       \ 'elixir': ['credo', 'expert'],
       \ 'rust': ['rust-analyzer'],
@@ -438,7 +422,6 @@ let g:ale_fixers = {
 
 let g:ale_elixir_credo_strict = 1
 let g:ale_elixir_expert_executable = '/opt/homebrew/bin/expert'
-let g:ale_disable_lsp = 0
 
 let g:ale_sign_error = '✘'
 let g:ale_lint_on_save = 1
