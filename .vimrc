@@ -160,6 +160,9 @@ highlight ColorColumn ctermbg=7 guifg=black
 
 highlight rightMargin term=bold ctermfg=black guifg=brown
 
+" Avoid bogging down start-up on large files.
+autocmd BufReadPre * if getfsize(expand("%")) > 1000000 | let b:enable_spelunker_vim = 0 | endif
+
 " Open URL
 vnoremap <leader>o y:silent exec "!open ". shellescape(@", 1)<CR>:redraw!<CR>
 
@@ -472,13 +475,7 @@ nnoremap <leader>* :Grepper -cword -noprompt<CR>
 nmap gs <plug>(GrepperOperator)
 xmap gs <plug>(GrepperOperator)
 
-
-" Put these lines at the very end of your vimrc file.
-
-" Load all plugins now.
-" Plugins need to be added to runtimepath before helptags can be generated.
-packloadall
-
+" NOTE: This is expensive. Run once after a plugin update/install.
 " Load all of the helptags now, after plugins have been loaded.
 " All messages and errors will be ignored.
-silent! helptags ALL
+" silent! helptags ALL
