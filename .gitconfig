@@ -16,6 +16,7 @@
   renames = true
 [pull]
   rebase = false
+  ff = only
 [merge]
   ff = only
   tool = vimdiff

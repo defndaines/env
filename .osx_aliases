@@ -43,6 +43,7 @@ alias wip='git wip main'
 alias rbh='git rebase -i HEAD~2'
 alias restore='git restore --staged'
 alias vist='vim $(git diff --name-only && git ls-files --others --exclude-standard)'
+alias ffetch='git fetch origin && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)'
 
 # tmux
 ######
