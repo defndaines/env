@@ -18,6 +18,8 @@ then
   compinit
 fi
 
+eval "$(direnv hook zsh)"
+
 
 # History Options
 # ###############
@@ -95,7 +97,7 @@ if [[ ! -f "$_daily_run_marker" ]]; then
   # Clean up previous day markers
   find "$HOME/.cache" -name 'daily_run_*' -not -name "daily_run_$(date +%Y-%m-%d)" -delete
 
-  [ -f ~/bin/daily-lyric.sh ] && . ~/bin/daily-lyric.sh
+  [ -f ~/bin/daily-lyric.sh ] && . ~/bin/daily-lyric.sh &
 
   (uv run /Users/mdaines/src/hebi/goodreads/goodreads_giveaways.py &>/dev/null &) 2>/dev/null
 fi

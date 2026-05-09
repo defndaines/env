@@ -10,6 +10,7 @@ brew "ripgrep"
 brew "shellcheck"
 brew "tmux"
 brew "wget"
+brew "direnv"
 
 # Formatters
 brew "prettier"
