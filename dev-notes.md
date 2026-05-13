@@ -209,6 +209,12 @@ echo $((0x077C))
 printf '%x\n' 432
 ```
 
+### See the Same Line # in Two Different Files
+
+```shell
+awk 'FNR==55' file-a.txt file-b.txt
+```
+
 ## PostgreSQL (and `psql` in Particular)
 
 Copy data to a CSV file.
