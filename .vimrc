@@ -220,7 +220,16 @@ endfunction
 nnoremap <leader>d "=strftime("%Y-%m-%d")<CR>p
 
 " Apply title_case() to the visual selection
-xnoremap <leader>t :!~/.vim/bin/title_case<CR>
+function! s:TitleCase()
+  let [_, lnum1, col1, _] = getpos("'<")
+  let [_, lnum2, col2, _] = getpos("'>")
+  if lnum1 != lnum2 | return | endif
+  let line = getline(lnum1)
+  let selected = strpart(line, col1 - 1, col2 - col1 + 1)
+  let processed = substitute(system(expand('~/.vim/bin/title_case'), selected), '\n$', '', '')
+  call setline(lnum1, strpart(line, 0, col1 - 1) . processed . strpart(line, col2))
+endfunction
+xnoremap <leader>t :<C-u>call <SID>TitleCase()<CR>
 
 " Wrap selection with quotation marks or markdown emphasis.
 vnoremap <leader>" <esc>`>a"<esc>`<i"<esc>
