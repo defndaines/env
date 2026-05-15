@@ -219,6 +219,7 @@ endfunction
 " Insert the current date
 nnoremap <leader>d "=strftime("%Y-%m-%d")<CR>p
 
+
 " Apply title_case() to the visual selection
 function! s:TitleCase()
   let [_, lnum1, col1, _] = getpos("'<")
@@ -284,6 +285,35 @@ function! OpenElixirTestFile()
   let s:ns = fnamemodify(expand('%'), ':r:s#lib#test#') . '_test.exs'
   execute "edit " . s:ns
 endfunction
+
+" Collapse a multi-line def/if block to a single-line keyword form.
+function! s:CollapseElixirBlock()
+  let def_lnum = search('^\s*\(def\|defp\|if\)\s\+.\{-}\s\+do\s*$', 'bcnW')
+  if def_lnum == 0
+    return
+  endif
+
+  let indent = matchstr(getline(def_lnum), '^\s*')
+  let end_lnum = -1
+  for lnum in range(def_lnum + 1, line('$'))
+    if getline(lnum) =~# '^\s*end\s*$' && matchstr(getline(lnum), '^\s*') ==# indent
+      let end_lnum = lnum
+      break
+    endif
+  endfor
+
+  if end_lnum == -1
+    return
+  endif
+
+  let body = join(map(getline(def_lnum + 1, end_lnum - 1), 'trim(v:val)'), ' ')
+  let def_text = substitute(getline(def_lnum), '\s\+do\s*$', '', '')
+
+  call setline(def_lnum, def_text . ', do: ' . body)
+  silent execute (def_lnum + 1) . ',' . end_lnum . 'delete _'
+endfunction
+
+nnoremap <leader>c :<C-u>call <SID>CollapseElixirBlock()<CR>
 
 
 """ Language: Python
