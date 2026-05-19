@@ -215,6 +215,12 @@ printf '%x\n' 432
 awk 'FNR==55' file-a.txt file-b.txt
 ```
 
+### Remove Names Files Recursively
+
+```shell
+find . -name ".DS_Store" -delete
+```
+
 ## PostgreSQL (and `psql` in Particular)
 
 Copy data to a CSV file.
