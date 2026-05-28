@@ -18,6 +18,18 @@ then
   compinit
 fi
 
+# Vim completion for modified/added files in current git branch
+_vim_git_modified() {
+  local git_files
+  git_files=($(git status --porcelain 2>/dev/null | grep -E '^[ ]?[MA]' | awk '{print $NF}'))
+
+  if (( ${#git_files[@]} > 0 )); then
+    compadd "${git_files[@]}"
+  fi
+  _files
+}
+compdef _vim_git_modified vim
+
 eval "$(direnv hook zsh)"
 
 
