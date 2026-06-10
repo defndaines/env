@@ -13,22 +13,8 @@ bindkey '\e/' history-incremental-pattern-search-backward
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
-  autoload -Uz compinit
-  compinit
 fi
-
-# Vim completion for modified/added files in current git branch
-_vim_git_modified() {
-  local git_files
-  git_files=($(git status --porcelain 2>/dev/null | grep -E '^[ ]?[MA]' | awk '{print $NF}'))
-
-  if (( ${#git_files[@]} > 0 )); then
-    compadd "${git_files[@]}"
-  fi
-  _files
-}
-compdef _vim_git_modified vim
+autoload -Uz compinit && compinit
 
 eval "$(direnv hook zsh)"
 
@@ -112,6 +98,7 @@ if [[ ! -f "$_daily_run_marker" ]]; then
   [ -f ~/bin/daily-lyric.sh ] && . ~/bin/daily-lyric.sh &
 
   (uv run /Users/mdaines/src/hebi/goodreads/goodreads_giveaways.py &>/dev/null &) 2>/dev/null
+  (uv run /Users/mdaines/src/hebi/storygraph/storygraph_giveaways.py &>/dev/null &) 2>/dev/null
   (uv run /Users/mdaines/src/hebi/village_well/village_well_events.py &>/dev/null &) 2>/dev/null
 fi
 unset _daily_run_marker

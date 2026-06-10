@@ -118,6 +118,8 @@ IEx.configure(inspect: [limit: :infinity])
 
 `ERL_FLAGS="+T 9" mix test`
 
+You can use `"+S 1"` in the flags to reduce the schedulers to 1 as well.
+
 ## Get Current Stack Trace
 
 ```elixir
