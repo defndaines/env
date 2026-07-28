@@ -120,6 +120,10 @@ IEx.configure(inspect: [limit: :infinity])
 
 You can use `"+S 1"` in the flags to reduce the schedulers to 1 as well.
 
+## Test Ordering
+
+Idiomatically, aim for `assert expected == actual`
+
 ## Get Current Stack Trace
 
 ```elixir

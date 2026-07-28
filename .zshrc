@@ -97,9 +97,9 @@ if [[ ! -f "$_daily_run_marker" ]]; then
 
   [ -f ~/bin/daily-lyric.sh ] && . ~/bin/daily-lyric.sh &
 
-  (uv run /Users/mdaines/src/hebi/goodreads/goodreads_giveaways.py &>/dev/null &) 2>/dev/null
-  (uv run /Users/mdaines/src/hebi/storygraph/storygraph_giveaways.py &>/dev/null &) 2>/dev/null
-  (uv run /Users/mdaines/src/hebi/village_well/village_well_events.py &>/dev/null &) 2>/dev/null
+  nohup uv run /Users/mdaines/src/hebi/goodreads/goodreads_giveaways.py &>/dev/null &
+  nohub uv run /Users/mdaines/src/hebi/storygraph/storygraph_giveaways.py &>/dev/null &
+  nohub uv run /Users/mdaines/src/hebi/village_well/village_well_events.py &>/dev/null &
 fi
 unset _daily_run_marker
 

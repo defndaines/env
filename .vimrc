@@ -87,6 +87,8 @@ set ttimeoutlen=100
 
 set hidden
 
+set nojoinspaces
+
 " Use <F2> to toggle paste mode
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
@@ -234,13 +236,18 @@ xnoremap <leader>t :<C-u>call <SID>TitleCase()<CR>
 
 " Wrap selection with quotation marks or markdown emphasis.
 vnoremap <leader>" <esc>`>a"<esc>`<i"<esc>
+vnoremap <leader>“ <esc>`>a”<esc>`<i“<esc>
+vnoremap <leader>” <esc>`>a”<esc>`<i“<esc>
 vnoremap <leader>' <esc>`>a'<esc>`<i'<esc>
 vnoremap <leader>` <esc>`>a`<esc>`<i`<esc>
 nnoremap <leader>" viw<esc>`>a"<esc>`<i"<esc>
+nnoremap <leader>“ viw<esc>`>a”<esc>`<i“<esc>
+nnoremap <leader>” viw<esc>`>a”<esc>`<i“<esc>
 nnoremap <leader>' viw<esc>`>a'<esc>`<i'<esc>
 nnoremap <leader>` viw<esc>`>a`<esc>`<i`<esc>
 vnoremap <leader>i <esc>`>a*<esc>`<i*<esc>
 vnoremap <leader>b <esc>`>a**<esc>`<i**<esc>
+vnoremap <leader>u <esc>`>a_<esc>`<i_<esc>
 
 iabbrev teh the
 iabbrev fo of

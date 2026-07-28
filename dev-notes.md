@@ -195,6 +195,18 @@ git fetch upstream
 get rebase upstream/master
 ```
 
+### Have GitHub Delete Cache
+
+```shell
+gh cache delete -all --repo OWNER/REPO
+```
+
+### Get the PR # for the Current Branch
+
+```shell
+PR=$(gh pr view --json number -q .number)
+```
+
 ### In-Place `sed` on OSX
 
 ```shell
