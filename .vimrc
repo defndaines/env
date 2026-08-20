@@ -183,6 +183,46 @@ endfunction
 " Open URL
 vnoremap <leader>o y:silent exec "!open ". shellescape(@", 1)<CR>:redraw!<CR>
 
+" Wrap a GitHub PR or Jira URL under the cursor as a markdown link,
+" e.g., https://github.com/org/repo/pull/24557
+"   -> [repo#24557](https://github.com/org/repo/pull/24557)
+" and https://atlassian.net/browse/ABC-2581
+"   -> [ABC-2581](https://atlassian.net/browse/ABC-2581)
+function! s:WrapUrl()
+  let l:line = getline('.')
+  let l:col = col('.') - 1
+  let l:pattern = 'https\?://[^ \t)>\]]*'
+  let l:start = 0
+  while 1
+    let l:s = match(l:line, l:pattern, l:start)
+    if l:s == -1
+      return
+    endif
+    let l:e = matchend(l:line, l:pattern, l:start)
+    if l:col >= l:s && l:col < l:e
+      break
+    endif
+    let l:start = l:e
+  endwhile
+  let l:url = strpart(l:line, l:s, l:e - l:s)
+
+  let l:replacement = ''
+  let l:m = matchlist(l:url, '^https\?://github\.com/[^/]\+/\([^/]\+\)/pull/\([0-9]\+\)')
+  if !empty(l:m)
+    let l:replacement = '[' . l:m[1] . '#' . l:m[2] . '](' . l:url . ')'
+  else
+    let l:m = matchlist(l:url, '^https\?://[^/]*\.atlassian\.net/browse/\([A-Z]\+-[0-9]\+\)')
+    if !empty(l:m)
+      let l:replacement = '[' . l:m[1] . '](' . l:url . ')'
+    endif
+  endif
+
+  if l:replacement != ''
+    call setline('.', strpart(l:line, 0, l:s) . l:replacement . strpart(l:line, l:e))
+  endif
+endfunction
+nnoremap <leader>w :call <SID>WrapUrl()<CR>
+
 " Format XML
 command! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
 nnoremap <leader>x :FormatXML<CR>
