@@ -249,6 +249,9 @@ def smart_quotes(text: str) -> str:
 
 
 def title_case(line: str) -> str:
+    header_match = re.match(r"^(#+\s+)(.*)$", line)
+    if header_match:
+        return header_match.group(1) + title_case(header_match.group(2))
     line = normalize("NFC", line)
     line = line.replace("–", "—")
     line = line.replace("\\'", "'")
