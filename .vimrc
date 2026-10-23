@@ -112,8 +112,13 @@ set t_RV=
 " See netrw-browse-maps for more info.
 let g:netrw_banner=0
 
-" Avoid bogging down start-up on large files.
-autocmd BufReadPre * if getfsize(expand("%")) > 1000000 | let b:enable_spelunker_vim = 0 | endif
+" Check only the visible words, on CursorHold, so cost doesn't scale with file size.
+let g:spelunker_check_type = 2
+set updatetime=2000
+
+" Avoid bogging down start-up on large files. Disabled while trying
+" g:spelunker_check_type = 2 above.
+" autocmd BufReadPre * if getfsize(expand("%")) > 1000000 | let b:enable_spelunker_vim = 0 | endif
 
 augroup all-files
   autocmd!
