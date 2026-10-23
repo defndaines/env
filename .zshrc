@@ -7,14 +7,58 @@
 bindkey -v
 export EDITOR=vim
 
+# Pretty output
+export CLICOLOR=1
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+alias grep='grep --color=auto'
+
+# Enable Erlang/Elixir shell history
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+# If using both fzf and rg.
+if (( $+commands[fzf] && $+commands[rg] )); then
+  export FZF_DEFAULT_COMMAND='rg --files'
+fi
+
+# Lua rocks. `luarocks path` is slow (~0.2s), so cache the LUA_PATH and
+# LUA_CPATH it prints, keyed on the resolved luarocks binary so a brew upgrade
+# regenerates it.
+_luarocks_bin="${HOMEBREW_PREFIX}/bin/luarocks"
+if [ -x "$_luarocks_bin" ]; then
+  _luarocks_cache="$HOME/.cache/luarocks-path.zsh"
+  _luarocks_key="# ${_luarocks_bin:A}"
+  [ -f "$_luarocks_cache" ] && read -r _luarocks_cached_key < "$_luarocks_cache"
+  if [[ "$_luarocks_cached_key" != "$_luarocks_key" ]]; then
+    mkdir -p "$HOME/.cache"
+    { print -r -- "$_luarocks_key"; "$_luarocks_bin" path | grep -E '^export LUA_C?PATH='; } > "$_luarocks_cache"
+  fi
+  . "$_luarocks_cache"
+  unset _luarocks_cache _luarocks_key _luarocks_cached_key
+fi
+unset _luarocks_bin
+
 # Fix the "do you wish to see all #### possibilities" issue when searching.
 bindkey '\e/' history-incremental-pattern-search-backward
 
 if type brew &>/dev/null
 then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+  FPATH="${HOMEBREW_PREFIX}/share/zsh/site-functions:${FPATH}"
 fi
-autoload -Uz compinit && compinit
+
+# Docker CLI completions.
+fpath=(/Users/mdaines/.docker/completions $fpath)
+
+# Run compinit once, after every fpath addition. Rebuild the completion dump at
+# most daily; otherwise trust it (-C skips the slow security audit and rescan).
+autoload -Uz compinit
+() {
+  setopt local_options extended_glob
+  if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+    compinit
+  else
+    compinit -C
+  fi
+}
 
 eval "$(direnv hook zsh)"
 
@@ -106,3 +150,4 @@ unset _daily_run_marker
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH="${HOME}/.local/bin:$PATH"
+typeset -U path

@@ -12,22 +12,14 @@ if [ -e "/opt/homebrew/bin" ] ; then
   PATH="/opt/homebrew/bin:$PATH"
 fi
 
-HOMEBREW_PREFIX="$(brew --prefix)"
+# Avoids forking `brew --prefix` on every shell. Login shells also get this from
+# `brew shellenv` in .zprofile.
+HOMEBREW_PREFIX="${HOMEBREW_PREFIX:-/opt/homebrew}"
 PATH="${HOMEBREW_PREFIX}/sbin:${HOMEBREW_PREFIX}/bin:$PATH"
-
-# psql and other PostgreSQL commands if no local DB installed
-if [ -e "${HOMEBREW_PREFIX}/opt/libpq/bin" ] ; then
-  PATH="${HOMEBREW_PREFIX}/opt/libpq/bin:$PATH"
-fi
 
 # GNU grep
 if [ -e "${HOMEBREW_PREFIX}/opt/grep/libexec/gnubin" ]; then
   PATH="${HOMEBREW_PREFIX}/opt/grep/libexec/gnubin:$PATH"
-fi
-
-# Lua
-if [ -e "${HOMEBREW_PREFIX}/bin/luarocks" ]; then
-  eval "$(luarocks path)"
 fi
 
 # Set PATH so it includes user’s private bin if it exists
@@ -35,37 +27,16 @@ if [ -d "${HOME}/bin" ] ; then
   PATH=${HOME}/bin:${PATH}
 fi
 
-# Add escripts
-if [ -d "${HOME}/.mix/escripts" ] ; then
-  PATH=${HOME}/.mix/escripts:${PATH}
-fi
-
 # Clear out duplication in the PATH before exporting.
-PATH="$(echo $PATH | perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, scalar <>))')"
+typeset -U path
 export PATH
-
-# Pretty output
-export CLICOLOR=1
-export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 # Prevent Homebrew from sending analytics
 export HOMEBREW_NO_ANALYTICS=1
 
-export GREP_OPTIONS='--color=auto'
-
-# If using both fzf and rg.
-if [ -x "$(command -v fzf)" ] ; then
-  if [ -x "$(command -v rg)" ] ; then
-    export FZF_DEFAULT_COMMAND='rg --files'
-  fi
-fi
-
 # vim Options
 export VIMCONFIG=~/.vim
 export VIMDATA=~/.vim
-
-# Enable Erlang/Elixir shell history
-export ERL_AFLAGS="-kernel shell_history enabled"
 
 # SRC_DIR
 export SRC_DIR=${HOME}/src
