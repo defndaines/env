@@ -141,9 +141,12 @@ if [[ ! -f "$_daily_run_marker" ]]; then
 
   [ -f ~/bin/daily-lyric.sh ] && . ~/bin/daily-lyric.sh &
 
-  nohup uv run /Users/mdaines/src/hebi/goodreads/goodreads_giveaways.py &>/dev/null &
-  nohup uv run /Users/mdaines/src/hebi/storygraph/storygraph_giveaways.py &>/dev/null &
-  nohup uv run /Users/mdaines/src/hebi/village_well/village_well_events.py &>/dev/null &
+  # Start a fresh script log each Monday
+  [[ "$(date +%u)" == 1 ]] && : > "$HOME/.cache/hebi-daily.log"
+
+  nohup uv run /Users/mdaines/src/hebi/goodreads/goodreads_giveaways.py &>>"$HOME/.cache/hebi-daily.log" &
+  nohup uv run /Users/mdaines/src/hebi/storygraph/storygraph_giveaways.py &>>"$HOME/.cache/hebi-daily.log" &
+  nohup uv run /Users/mdaines/src/hebi/village_well/village_well_events.py &>>"$HOME/.cache/hebi-daily.log" &
 fi
 unset _daily_run_marker
 
